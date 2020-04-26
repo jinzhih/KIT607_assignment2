@@ -13,6 +13,8 @@
 		7794229A245562CE00B3CC24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77942298245562CE00B3CC24 /* Main.storyboard */; };
 		7794229C245562CF00B3CC24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7794229B245562CF00B3CC24 /* Assets.xcassets */; };
 		7794229F245562CF00B3CC24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7794229D245562CF00B3CC24 /* LaunchScreen.storyboard */; };
+		779422A724556C5000B3CC24 /* SQliteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779422A624556C5000B3CC24 /* SQliteDatabase.swift */; };
+		779422A924556CC500B3CC24 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779422A824556CC500B3CC24 /* Brain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		7794229B245562CF00B3CC24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7794229E245562CF00B3CC24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		779422A0245562CF00B3CC24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		779422A624556C5000B3CC24 /* SQliteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQliteDatabase.swift; sourceTree = "<group>"; };
+		779422A824556CC500B3CC24 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				77942294245562CE00B3CC24 /* SceneDelegate.swift */,
 				77942296245562CE00B3CC24 /* ViewController.swift */,
 				77942298245562CE00B3CC24 /* Main.storyboard */,
+				779422A624556C5000B3CC24 /* SQliteDatabase.swift */,
+				779422A824556CC500B3CC24 /* Brain.swift */,
 				7794229B245562CF00B3CC24 /* Assets.xcassets */,
 				7794229D245562CF00B3CC24 /* LaunchScreen.storyboard */,
 				779422A0245562CF00B3CC24 /* Info.plist */,
@@ -140,6 +146,8 @@
 			files = (
 				77942297245562CE00B3CC24 /* ViewController.swift in Sources */,
 				77942293245562CE00B3CC24 /* AppDelegate.swift in Sources */,
+				779422A724556C5000B3CC24 /* SQliteDatabase.swift in Sources */,
+				779422A924556CC500B3CC24 /* Brain.swift in Sources */,
 				77942295245562CE00B3CC24 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
