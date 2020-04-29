@@ -20,7 +20,7 @@ class SQLiteDatabase
      
         WARNING: DOING THIS WILL WIPE YOUR DATA, unless you modify how updateDatabase() works.
      */
-    private let DATABASE_VERSION = 4
+    private let DATABASE_VERSION = 7
     
     
     
@@ -217,6 +217,10 @@ class SQLiteDatabase
         sqlite3_finalize(insertStatement)
     }
     
+    //update function
+    
+   
+  
     //helper function to run Select statements
     //provide it with a function to do *something* with each returned row
     //(optionally) Provide it with a binding function for replacing the "?"'s in the WHERE clause
@@ -248,6 +252,38 @@ class SQLiteDatabase
         //clean up
         sqlite3_finalize(selectStatement)
     }
+    //delete
+       private func deleteWithQuery(
+             _ deleteStatementQuery : String,
+             bindingFunction: ((_ rowHandle: OpaquePointer?)->()))
+         {
+             //prepare the statement
+             var deleteStatement: OpaquePointer? = nil
+             if sqlite3_prepare_v2(db, deleteStatementQuery, -1, &deleteStatement, nil) == SQLITE_OK
+             {
+                 //do bindings
+                 bindingFunction(deleteStatement)
+                 
+                 //execute
+                 if sqlite3_step(deleteStatement) == SQLITE_DONE
+                 {
+                     print("Successfully deleted row.")
+                 }
+                 else
+                 {
+                     print("Could not delete row.")
+                     printCurrentSQLErrorMessage(db)
+                 }
+             }
+             else
+             {
+                 print("DELETE statement could not be prepared.")
+                 printCurrentSQLErrorMessage(db)
+             }
+             //clean up
+             sqlite3_finalize(deleteStatement)
+         }
+
     
     //helper function to run update statements.
     //Provide it with a binding function for replacing the "?"'s in the WHERE clause
@@ -265,11 +301,11 @@ class SQLiteDatabase
             //execute
             if sqlite3_step(updateStatement) == SQLITE_DONE
             {
-                print("Successfully inserted row.")
+                print("Successfully updateded row.")
             }
             else
             {
-                print("Could not insert row.")
+                print("Could not update row.")
                 printCurrentSQLErrorMessage(db)
             }
         }
@@ -290,34 +326,87 @@ class SQLiteDatabase
             CREATE TABLE Raffle(
                 ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                 Name CHAR(255),
+                Description CHAR(255),
                 
-                Description CHAR(255)
+                Raffletype INTEGER,
+                Maxnumber INTEGER,
+                Ticketprice INTEGER,
+                Launchstatus INTEGER,
+                Drawstatus INTEGER,
+                Drawtime CHAR(255)
+                
+
  );
  """
+
+        
        createTableWithQuery(createRafflesTableQuery,tableName: "Raffle")
     }
     func insert(raffle:Raffle){
         let insertStatementQuery =
-        "INSERT INTO Raffle (Name, Description) VALUES (?, ?);"
+        "INSERT INTO Raffle (Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?);"
         insertWithQuery(insertStatementQuery, bindingFunction: { (insertSatement) in
             sqlite3_bind_text(insertSatement, 1, NSString(string: raffle.name).utf8String, -1, nil)
-            
             sqlite3_bind_text(insertSatement, 2, NSString(string: raffle.description).utf8String, -1, nil)
-        
+           sqlite3_bind_int(insertSatement, 3, raffle.maxNumber)
+            sqlite3_bind_int(insertSatement, 4, raffle.type)
+            sqlite3_bind_int(insertSatement, 5, raffle.ticketPrice)
+            sqlite3_bind_int(insertSatement, 6, raffle.launchStatus)
+            sqlite3_bind_int(insertSatement, 7, raffle.drawStatus)
+            
+            sqlite3_bind_text(insertSatement, 8, NSString(string: raffle.drawTime).utf8String, -1, nil)
+            
+            
+            
             
         })
     }
+    
+    
+   func updateRaffle(raffle:Raffle,id:Int32){
+        
+        let updateStatementQuery = "UPDATE Raffle SET Name=?, Description=?, Raffletype=?, Maxnumber=?, Ticketprice=?, Launchstatus=?, Drawstatus=?, Drawtime=? WHERE ID=?"
+        updateWithQuery(
+        updateStatementQuery, bindingFunction: { (updateSatement) in
+            
+            
+          sqlite3_bind_text(updateSatement, 1, NSString(string: raffle.name).utf8String, -1, nil)
+            sqlite3_bind_text(updateSatement, 2, NSString(string: raffle.description).utf8String, -1, nil)
+           sqlite3_bind_int(updateSatement, 3, raffle.maxNumber)
+            sqlite3_bind_int(updateSatement, 4, raffle.type)
+            sqlite3_bind_int(updateSatement, 5, raffle.ticketPrice)
+            sqlite3_bind_int(updateSatement, 6, raffle.launchStatus)
+            sqlite3_bind_int(updateSatement, 7, raffle.drawStatus)
+            
+            sqlite3_bind_text(updateSatement, 8, NSString(string: raffle.drawTime).utf8String, -1, nil)
+             sqlite3_bind_int(updateSatement, 9, id)
+         })
+     
+      
+    }
+    
+    
+    
+    
+
 
     func selectAllRaffles() -> [Raffle]{
         var result = [Raffle]()
-        let selectStatementQuery = "SELECT id,name,description FROM Raffle"
+        let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime FROM Raffle"
         selectWithQuery(selectStatementQuery, eachRow: { (row) in
             //create a movie object from each result
             let raffle = Raffle(
                 ID: sqlite3_column_int(row, 0),
                 name: String(cString:sqlite3_column_text(row, 1)),
+                description: String(cString:sqlite3_column_text(row, 2)),
+                type: sqlite3_column_int(row, 3),
+                maxNumber: sqlite3_column_int(row, 4),
+                ticketPrice: sqlite3_column_int(row, 5),
+                launchStatus: sqlite3_column_int(row, 6),
+                drawStatus: sqlite3_column_int(row, 7),
+                drawTime: String(cString:sqlite3_column_text(row, 8))
                 
-                description: String(cString:sqlite3_column_text(row, 2))
+               
                 
                 
             )
@@ -328,7 +417,7 @@ class SQLiteDatabase
     
     func selectRaffleBy(id:Int32) -> Raffle?{
         var result : Raffle?
-        let selectStatementQuery = "SELECT id,name,description FROM Raffle WHERE ID=?"
+        let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime FROM Raffle WHERE ID=?"
         selectWithQuery(
         selectStatementQuery,
         eachRow: { (id) in
@@ -336,8 +425,14 @@ class SQLiteDatabase
         let raffle = Raffle(
             ID: sqlite3_column_int(id, 0),
             name: String(cString:sqlite3_column_text(id, 1)),
+            description: String(cString:sqlite3_column_text(id, 2)),
+            type: sqlite3_column_int(id, 3),
+            maxNumber: sqlite3_column_int(id, 4),
+            ticketPrice: sqlite3_column_int(id, 5),
+            launchStatus: sqlite3_column_int(id, 6),
+            drawStatus: sqlite3_column_int(id, 7),
+            drawTime: String(cString:sqlite3_column_text(id, 8))
             
-            description: String(cString:sqlite3_column_text(id, 2))
         )
             result = raffle
          },
@@ -348,6 +443,18 @@ class SQLiteDatabase
         
         return result
     }
+    
+    func deleteRaffleBy(id:Int32){
+        
+        let deleteStatementQuery = "DELETE FROM Raffle WHERE ID=?"
+        deleteWithQuery(deleteStatementQuery, bindingFunction: {(deleteSatement) in
+       
+            sqlite3_bind_int(deleteSatement, 1, id)
+           })
+        
+        
+    }
+    
     
     
     

@@ -16,8 +16,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        database.insert(raffle:Raffle(name:"Raffle1",  description:"Normal Raffle"))
-        database.insert(raffle:Raffle(name:"Raffle2", description:"Margin Raffle"))
+//        database.insert(raffle:Raffle(name:"Raffle1",  description:"Normal Raffle"))
+//        database.insert(raffle:Raffle(name:"Raffle2", description:"Margin Raffle"))
 
         print(database.selectAllRaffles())
       print(database.selectRaffleBy(id: 1) ??  "Raffle not found")
