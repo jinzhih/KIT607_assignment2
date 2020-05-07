@@ -11,12 +11,19 @@ var raffles1 = [Raffle]()
 class RaffleCusTableViewController: UIViewController {
     var raffleName = ""
     var raffleDes = ""
-    var raffles: [RaffleNew]=[
-        RaffleNew(name: "Raffle1", raffleDate: "3/15/2020", img: "url"),
-        RaffleNew(name: "Raffle2", raffleDate: "3/20/2020", img: "url"),
-        RaffleNew(name: "Raffle1", raffleDate: "3/23/2020", img: "url")
+    var raffleType = 0
+    var raffleDrawDate = "21/05/2020"
+    var raffleLimit = 10000
+    var rafflePrice = 5
+    var launtchStatus = 0
+    var drawStatus = 0
     
-    ]
+//    var raffles: [RaffleNew]=[
+//        RaffleNew(name: "Raffle1", raffleDate: "3/15/2020", img: "url"),
+//        RaffleNew(name: "Raffle2", raffleDate: "3/20/2020", img: "url"),
+//        RaffleNew(name: "Raffle1", raffleDate: "3/23/2020", img: "url")
+//
+//    ]
     
     @IBOutlet weak var raffleTable: UITableView!
     
