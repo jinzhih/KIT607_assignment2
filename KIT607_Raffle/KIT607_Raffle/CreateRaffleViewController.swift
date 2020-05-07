@@ -32,6 +32,9 @@ class CreateRaffleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        database.deleteRaffleBy(id: 3)
+        database.deleteRaffleBy(id: 4)
 
        
     }
@@ -49,7 +52,7 @@ class CreateRaffleViewController: UIViewController {
         
         if segue.identifier == "goToRaffleTableView" {
             
-            let destinationVC = segue.destination as! RaffleUITableViewController
+            let destinationVC = segue.destination as! RaffleCusTableViewController
             destinationVC.raffleName = raffleNameTextField.text!
             destinationVC.raffleDes = raffleDescriptionTextField.text!
            

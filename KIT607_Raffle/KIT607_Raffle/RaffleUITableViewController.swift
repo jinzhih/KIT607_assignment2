@@ -17,7 +17,9 @@ class RaffleUITableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        
 
 //
 //        database.insert(raffle:Raffle(name:"Raffle1", description:"Normal Raffle",type:0, ticketPrice:1, launchStatus:0, Drawstatus:0, Drawtime:"08/Mar/2021"))

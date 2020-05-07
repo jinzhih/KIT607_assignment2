@@ -17,3 +17,9 @@ public struct Raffle {
     
   
 }
+
+struct RaffleNew {
+    var name: String
+    var raffleDate: String
+    var img: String
+}
