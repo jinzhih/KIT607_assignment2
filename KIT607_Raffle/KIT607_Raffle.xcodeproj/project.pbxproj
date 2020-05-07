@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		773F26602459A7240009D5FB /* CreateRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F265F2459A7240009D5FB /* CreateRaffleViewController.swift */; };
 		77942293245562CE00B3CC24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77942292245562CE00B3CC24 /* AppDelegate.swift */; };
 		77942295245562CE00B3CC24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77942294245562CE00B3CC24 /* SceneDelegate.swift */; };
 		77942297245562CE00B3CC24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77942296245562CE00B3CC24 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		773F265F2459A7240009D5FB /* CreateRaffleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRaffleViewController.swift; sourceTree = "<group>"; };
 		7794228F245562CE00B3CC24 /* KIT607_Raffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KIT607_Raffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77942292245562CE00B3CC24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77942294245562CE00B3CC24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				77942294245562CE00B3CC24 /* SceneDelegate.swift */,
 				77942296245562CE00B3CC24 /* ViewController.swift */,
 				77942298245562CE00B3CC24 /* Main.storyboard */,
+				773F265F2459A7240009D5FB /* CreateRaffleViewController.swift */,
 				779422AE24559A1900B3CC24 /* RaffleDetailViewController.swift */,
 				779422AC2455924F00B3CC24 /* RaffleUITableViewController.swift */,
 				779422AA2455845400B3CC24 /* RaffleUITableViewCell.swift */,
@@ -157,6 +160,7 @@
 				77942293245562CE00B3CC24 /* AppDelegate.swift in Sources */,
 				779422AF24559A1900B3CC24 /* RaffleDetailViewController.swift in Sources */,
 				779422AD2455924F00B3CC24 /* RaffleUITableViewController.swift in Sources */,
+				773F26602459A7240009D5FB /* CreateRaffleViewController.swift in Sources */,
 				779422A724556C5000B3CC24 /* SQliteDatabase.swift in Sources */,
 				779422AB2455845400B3CC24 /* RaffleUITableViewCell.swift in Sources */,
 				779422A924556CC500B3CC24 /* Brain.swift in Sources */,

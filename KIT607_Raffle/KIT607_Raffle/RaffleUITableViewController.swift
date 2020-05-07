@@ -11,39 +11,27 @@ import UIKit
 var raffles = [Raffle]()
 
 class RaffleUITableViewController: UITableViewController {
+    
+    var raffleName = ""
+    var raffleDes = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
-////        ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-//var type: Int32
-//var maxNumber: Int32
-//var ticketPrice: Int32
-//var launchStatus: Int32
-//var drawStatus: Int32
-//var drawTime: String
-////Name CHAR(255),
-//Description CHAR(255)
-//
-//Raffletype INTEGER
-//Maxnumber INTEGER
-//Ticketprice INTEGER
-//Launchstatus INTEGER
-//Drawstatus INTEGER
-//Drawtime CHAR(255)
+
 //
 //        database.insert(raffle:Raffle(name:"Raffle1", description:"Normal Raffle",type:0, ticketPrice:1, launchStatus:0, Drawstatus:0, Drawtime:"08/Mar/2021"))
 //         database.insert(raffle:Raffle(name:"Raffle2", description:"Normal Raffle",type:0, ticketPrice:1, launchStatus:0, Drawstatus:0, Drawtime:"08/Mar/2021"))
         
-//        database.insert(raffle:Raffle(name:"Raffle3",  description:"Normal Raffle", type:0,maxNumber:30, ticketPrice: 1, launchStatus: 0, drawStatus:0, drawTime: "tomorrow"))
+        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type:0,maxNumber:30, ticketPrice: 1, launchStatus: 0, drawStatus:0, drawTime: "tomorrow"))
 //        database.insert(raffle:Raffle(name:"Raffle4",  description:"Normal Raffle", type:0,maxNumber:30, ticketPrice: 1, launchStatus: 0, drawStatus:0, drawTime: "tomorrow"))
 //        
         
-        database.updateRaffle(raffle: Raffle(name: "fengle2", description: "Raffle1", type: 3, maxNumber: 5, ticketPrice: 7, launchStatus: 9, drawStatus: 1, drawTime: "hello" ), id: 2)
+//        database.updateRaffle(raffle: Raffle(name: "fengle2", description: "Raffle1", type: 3, maxNumber: 5, ticketPrice: 7, launchStatus: 9, drawStatus: 1, drawTime: "hello" ), id: 2)
        // database.deleteRaffleBy(id: 1)
 //          print(database.selectAllRaffles())
         raffles = database.selectAllRaffles()
-        print(database.selectRaffleBy(id: 1) ??  "Raffle not found")
+        print(database.selectRaffleBy(id: 4) ??  "Raffle not found")
         
 
         // Uncomment the following line to preserve selection between presentations
