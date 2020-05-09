@@ -17,7 +17,7 @@
 		779422A724556C5000B3CC24 /* SQliteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779422A624556C5000B3CC24 /* SQliteDatabase.swift */; };
 		779422A924556CC500B3CC24 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779422A824556CC500B3CC24 /* Brain.swift */; };
 		779422AB2455845400B3CC24 /* RaffleUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779422AA2455845400B3CC24 /* RaffleUITableViewCell.swift */; };
-		779422AD2455924F00B3CC24 /* RaffleUITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779422AC2455924F00B3CC24 /* RaffleUITableViewController.swift */; };
+		779422AD2455924F00B3CC24 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779422AC2455924F00B3CC24 /* TestViewController.swift */; };
 		779422AF24559A1900B3CC24 /* RaffleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779422AE24559A1900B3CC24 /* RaffleDetailViewController.swift */; };
 		77BC401024639B920025CB80 /* RaffleCusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC400E24639B920025CB80 /* RaffleCusTableViewCell.swift */; };
 		77BC401124639B920025CB80 /* RaffleCusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77BC400F24639B920025CB80 /* RaffleCusTableViewCell.xib */; };
@@ -40,7 +40,7 @@
 		779422A624556C5000B3CC24 /* SQliteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQliteDatabase.swift; sourceTree = "<group>"; };
 		779422A824556CC500B3CC24 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
 		779422AA2455845400B3CC24 /* RaffleUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleUITableViewCell.swift; sourceTree = "<group>"; };
-		779422AC2455924F00B3CC24 /* RaffleUITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleUITableViewController.swift; sourceTree = "<group>"; };
+		779422AC2455924F00B3CC24 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		779422AE24559A1900B3CC24 /* RaffleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleDetailViewController.swift; sourceTree = "<group>"; };
 		77BC400E24639B920025CB80 /* RaffleCusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleCusTableViewCell.swift; sourceTree = "<group>"; };
 		77BC400F24639B920025CB80 /* RaffleCusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RaffleCusTableViewCell.xib; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 				77BC40152463AFB50025CB80 /* Cell.xib */,
 				773F265F2459A7240009D5FB /* CreateRaffleViewController.swift */,
 				779422AE24559A1900B3CC24 /* RaffleDetailViewController.swift */,
-				779422AC2455924F00B3CC24 /* RaffleUITableViewController.swift */,
+				779422AC2455924F00B3CC24 /* TestViewController.swift */,
 				779422AA2455845400B3CC24 /* RaffleUITableViewCell.swift */,
 				779422A624556C5000B3CC24 /* SQliteDatabase.swift */,
 				779422A824556CC500B3CC24 /* Brain.swift */,
@@ -179,7 +179,7 @@
 				77942297245562CE00B3CC24 /* ViewController.swift in Sources */,
 				77942293245562CE00B3CC24 /* AppDelegate.swift in Sources */,
 				779422AF24559A1900B3CC24 /* RaffleDetailViewController.swift in Sources */,
-				779422AD2455924F00B3CC24 /* RaffleUITableViewController.swift in Sources */,
+				779422AD2455924F00B3CC24 /* TestViewController.swift in Sources */,
 				77BC401324639F770025CB80 /* RaffleCusTableViewController.swift in Sources */,
 				77BC40162463AFB50025CB80 /* Cell.swift in Sources */,
 				773F26602459A7240009D5FB /* CreateRaffleViewController.swift in Sources */,

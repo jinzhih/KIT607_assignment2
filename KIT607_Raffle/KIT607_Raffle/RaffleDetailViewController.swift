@@ -35,7 +35,7 @@ class RaffleDetailViewController: UIViewController {
                     displayDrawType = "Marging Raffle"
                 }
                 
-                   nameRaffle.text  = displayRaffle.name
+                nameRaffle.text  = displayRaffle.name
                 desRaffle.text = displayRaffle.description
                 drawDate.text = displayRaffle.drawTime
                 drawType.text = displayDrawType

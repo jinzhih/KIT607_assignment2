@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+var tickets = [Ticket]()
 class ViewController: UIViewController {
 
     // a handle to the database itself
@@ -18,9 +18,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 //        database.insert(raffle:Raffle(name:"Raffle1",  description:"Normal Raffle"))
 //        database.insert(raffle:Raffle(name:"Raffle2", description:"Margin Raffle"))
+database.insert(ticket: Ticket(raffleID:3,  raffleName:"raffle55667", ticketPrice:0,customerID:30, customerName: "hello", purchaseDate: "89/987/99", winStatus:0, ticketNumber: 1002))
 
-        print(database.selectAllRaffles())
-      print(database.selectRaffleBy(id: 1) ??  "Raffle not found")
+     tickets = database.selectTicketBy(id: 3)
+      //        print(database.selectRaffleBy(id: 4) ??  "Raffle not found")
+              print(tickets )
+        
+        
     }
 
 }
