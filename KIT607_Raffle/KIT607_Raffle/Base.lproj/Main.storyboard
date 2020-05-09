@@ -108,9 +108,10 @@
             </objects>
             <point key="canvasLocation" x="3147" y="-57"/>
         </scene>
-        <!--Raffles-->
+        <!--Raffle Cus Table View Controller-->
         <scene sceneID="0A0-Eg-w3R">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3F-QJ-dXD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="JL3-8X-cP8" customClass="RaffleCusTableViewController" customModule="KIT607_Raffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ajH-OL-UcK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
@@ -196,12 +197,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="q2b-Li-gpa"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Raffles" id="OYG-BM-dZV"/>
+                    <navigationItem key="navigationItem" id="OYG-BM-dZV"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="414" height="896"/>
                     <connections>
                         <outlet property="raffleTable" destination="ni8-cs-AMs" id="qyz-pb-aOb"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3F-QJ-dXD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1800" y="887"/>
         </scene>
@@ -579,6 +580,7 @@
         <!--Navigation Controller-->
         <scene sceneID="8KP-lJ-3OD">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cf2-95-ag3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ss8-Qm-zP8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qfe-7d-KE5">
@@ -590,7 +592,6 @@
                         <segue destination="JL3-8X-cP8" kind="relationship" relationship="rootViewController" id="swX-CI-pod"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cf2-95-ag3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="603" y="1138"/>
         </scene>
