@@ -62,6 +62,7 @@ class RaffleCusTableViewController: UIViewController {
                     raffleCell.nameRaffle.text = raffle.name
                    raffleCell.desRaffle.text = raffle.description
                     
+                    
                 }
                 return cell
         

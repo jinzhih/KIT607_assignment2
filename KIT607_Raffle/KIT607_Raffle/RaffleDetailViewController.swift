@@ -10,20 +10,39 @@ import UIKit
 
 class RaffleDetailViewController: UIViewController {
     var raffle : Raffle?
+    var displayDrawType=""
 
     @IBOutlet var nameRaffle: UILabel!
     
     @IBOutlet var desRaffle: UILabel!
     
+    @IBOutlet weak var drawDate: UILabel!
     
+    @IBOutlet weak var drawType: UILabel!
+    @IBOutlet weak var drawLimit: UILabel!
+    @IBOutlet weak var drawPrice: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         if let  displayRaffle = raffle
                {
+                print(displayRaffle.type)
+                if(displayRaffle.type == 0){
+                    displayDrawType = "Normal Raffle"
+
+                } else {
+                    displayDrawType = "Marging Raffle"
+                }
+                
                    nameRaffle.text  = displayRaffle.name
                 desRaffle.text = displayRaffle.description
+                drawDate.text = displayRaffle.drawTime
+                drawType.text = displayDrawType
+                drawLimit.text = String(displayRaffle.maxNumber)
+                drawPrice.text = String(displayRaffle.ticketPrice)
+                
+                
                    
                    
                }
