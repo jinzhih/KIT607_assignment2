@@ -30,6 +30,9 @@ class RaffleDetailViewController: UIViewController {
     }
     
 
+    @IBAction func backToRaffle(_ sender: Any) {
+         dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
