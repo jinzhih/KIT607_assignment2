@@ -20,7 +20,7 @@ class SQLiteDatabase
      
         WARNING: DOING THIS WILL WIPE YOUR DATA, unless you modify how updateDatabase() works.
      */
-    private let DATABASE_VERSION = 8
+    private let DATABASE_VERSION = 10
     
     
     
@@ -66,6 +66,7 @@ class SQLiteDatabase
         //e.g. createMovieTable()
         createRaffleTable()
         createTicket()
+        createCustomer()
     }
     private func dropTables()
     {
@@ -339,10 +340,21 @@ class SQLiteDatabase
 
  );
  """
-
-        
        createTableWithQuery(createRafflesTableQuery,tableName: "Raffle")
     }
+    
+    //create customer
+       func createCustomer() {
+           let createCustomersTableQuery = """
+               CREATE TABLE Customer(
+                   ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                   CustomerName CHAR(255)
+            
+    );
+    """
+          createTableWithQuery(createCustomersTableQuery,tableName: "Customer")
+       }
+    
     //create ticket
     func createTicket() {
            let createTicketsTableQuery = """
@@ -360,8 +372,6 @@ class SQLiteDatabase
 
     );
     """
-
-           
           createTableWithQuery(createTicketsTableQuery,tableName: "Ticket")
        }
     
@@ -383,14 +393,16 @@ class SQLiteDatabase
         })
     }
 
-//       var raffleID:Int32
-//       var raffleName:String
-//       var ticketPrice: Int32
-//       var customerID: Int32
-         
-//       var purchaseDate: String
-//       var winStatus: Int32
-//       var ticketNumber: Int32
+    
+    func insert(customer:Customer){
+           let insertStatementQuery =
+           "INSERT INTO Customer (CustomerName) VALUES (?);"
+           insertWithQuery(insertStatementQuery, bindingFunction: { (insertSatement) in
+            sqlite3_bind_text(insertSatement, 1, NSString(string: customer.customerName).utf8String, -1, nil)
+               
+           })
+       }
+
 
     
     func insert(ticket:Ticket){
@@ -431,8 +443,21 @@ class SQLiteDatabase
              sqlite3_bind_int(updateSatement, 9, id)
          })
      
-      
     }
+    
+    func updateCustomer(customerName:String,id:Int32){
+         
+         let updateStatementQuery = "UPDATE Customer SET CustomerName=? WHERE ID=?"
+         updateWithQuery(
+         updateStatementQuery, bindingFunction: { (updateSatement) in
+             
+             
+           sqlite3_bind_text(updateSatement, 1, NSString(string: customerName).utf8String, -1, nil)
+           
+              sqlite3_bind_int(updateSatement, 2, id)
+          })
+      
+     }
     
 
     func updateTicket(customerName:String,id:Int32){
@@ -469,15 +494,27 @@ class SQLiteDatabase
                 launchStatus: sqlite3_column_int(row, 6),
                 drawStatus: sqlite3_column_int(row, 7),
                 drawTime: String(cString:sqlite3_column_text(row, 8))
-                
-               
-                
-                
+                 
             )
             //add it to the result array
             result += [raffle] })
         return result
     }
+    
+    func selectAllCustomers() -> [Customer]{
+           var result = [Customer]()
+           let selectStatementQuery = "SELECT ID, CustomerName FROM Customer"
+           selectWithQuery(selectStatementQuery, eachRow: { (row) in
+               //create a movie object from each result
+               let customer = Customer(
+                   ID: sqlite3_column_int(row, 0),
+                   customerName: String(cString:sqlite3_column_text(row, 1))
+                   
+               )
+               //add it to the result array
+               result += [customer] })
+           return result
+       }
     
 
     
@@ -510,20 +547,29 @@ class SQLiteDatabase
         
         return result
     }
-        //       var raffleID:Int32
-        //       var raffleName:String
-        //       var ticketPrice: Int32
-        //       var customerID: Int32
-        //       var purchaseDate: String
-        //       var winStatus: Int32
-        //       var ticketNumber: Int32
-    //    RaffleID INTEGER,
-    //                      RaffleName CHAR(255),
-    //                      Ticketprice INTEGER,
-    //                      CustomerID INTEGER,
-    //                      PurchaseDate CHAR(255),
-    //                      Winstatus INTEGER,
-    //                      TicketNumber INTEGER
+    
+    func selectCustomerBy(id:Int32) -> Customer?{
+        var result : Customer?
+        let selectStatementQuery = "SELECT ID, CustomerName FROM Customer WHERE ID=?"
+        selectWithQuery(
+        selectStatementQuery,
+        eachRow: { (id) in
+        //create a movie object from each result
+        let customer = Customer(
+            ID: sqlite3_column_int(id, 0),
+            customerName: String(cString:sqlite3_column_text(id, 1))
+            
+        )
+            result = customer
+         },
+        bindingFunction: {(selectSatement) in
+       
+            sqlite3_bind_int(selectSatement, 1, id)
+           })
+        
+        return result
+    }
+        
     
      func selectTicketBy(id:Int32) -> [Ticket]{
            var result = [Ticket]()
@@ -567,6 +613,28 @@ class SQLiteDatabase
         
         
     }
+    
+    func deleteTicketBy(id:Int32){
+          
+          let deleteStatementQuery = "DELETE FROM Ticket WHERE ID=?"
+          deleteWithQuery(deleteStatementQuery, bindingFunction: {(deleteSatement) in
+         
+              sqlite3_bind_int(deleteSatement, 1, id)
+             })
+          
+          
+      }
+    
+    func deleteCustomerBy(id:Int32){
+           
+           let deleteStatementQuery = "DELETE FROM Customer WHERE ID=?"
+           deleteWithQuery(deleteStatementQuery, bindingFunction: {(deleteSatement) in
+          
+               sqlite3_bind_int(deleteSatement, 1, id)
+              })
+           
+           
+       }
     
     
     

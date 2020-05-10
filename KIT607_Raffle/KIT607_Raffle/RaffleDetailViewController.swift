@@ -47,19 +47,49 @@ class RaffleDetailViewController: UIViewController {
                    
                }
     }
-    
+//    let segue: UIStoryboardSegue
+    @IBAction func sellTicket(_ sender: UIButton) {
+        performSegue(withIdentifier: "SellingTicket", sender: self)
+    }
+//        super.prepare(for: segue, sender: self)
+//        if segue.identifier == "SellingTicket"
+//               {
+//                   guard let   detailViewController = segue.destination as? SellTicketViewController else
+//               {
+//                   fatalError("Unexpected destination: \(segue.destination)")
+//
+//                   }
+//
+//                   let  selectedRaffle = raffle
+//                   detailViewController.raffleselling = selectedRaffle
+//
+//               }
+//
+             
+    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "SellingTicket"
+        {         guard let   detailViewController = segue.destination as? SellTicketViewController else
+        {
+            fatalError("Unexpected destination: \(segue.destination)")
+            
+            }
+            
+            let  selectedRaffle = raffle
+            detailViewController.raffleselling = selectedRaffle
+      
+            
+        }
+        
+        }
 
+       
+        
+ 
+    
     @IBAction func backToRaffle(_ sender: Any) {
          dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

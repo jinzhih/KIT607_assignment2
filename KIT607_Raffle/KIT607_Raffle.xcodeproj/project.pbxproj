@@ -28,6 +28,9 @@
 		77BC40172463AFB50025CB80 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77BC40152463AFB50025CB80 /* Cell.xib */; };
 		77BC40192463C4D40025CB80 /* RaffleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC40182463C4D40025CB80 /* RaffleCell.swift */; };
 		77FE927E2467F3BE00FDDFB4 /* TicketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE927D2467F3BE00FDDFB4 /* TicketDetailViewController.swift */; };
+		77FE928024681B1800FDDFB4 /* SellTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE927F24681B1800FDDFB4 /* SellTicketViewController.swift */; };
+		77FE9282246846F900FDDFB4 /* CustomerCusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE9281246846F900FDDFB4 /* CustomerCusTableViewController.swift */; };
+		77FE92842468498B00FDDFB4 /* CustomerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE92832468498B00FDDFB4 /* CustomerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		77BC40152463AFB50025CB80 /* Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
 		77BC40182463C4D40025CB80 /* RaffleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleCell.swift; sourceTree = "<group>"; };
 		77FE927D2467F3BE00FDDFB4 /* TicketDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDetailViewController.swift; sourceTree = "<group>"; };
+		77FE927F24681B1800FDDFB4 /* SellTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellTicketViewController.swift; sourceTree = "<group>"; };
+		77FE9281246846F900FDDFB4 /* CustomerCusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCusTableViewController.swift; sourceTree = "<group>"; };
+		77FE92832468498B00FDDFB4 /* CustomerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,9 @@
 				77942292245562CE00B3CC24 /* AppDelegate.swift */,
 				77942294245562CE00B3CC24 /* SceneDelegate.swift */,
 				77942298245562CE00B3CC24 /* Main.storyboard */,
+				77FE92832468498B00FDDFB4 /* CustomerTableViewCell.swift */,
+				77FE9281246846F900FDDFB4 /* CustomerCusTableViewController.swift */,
+				77FE927F24681B1800FDDFB4 /* SellTicketViewController.swift */,
 				77942296245562CE00B3CC24 /* ViewController.swift */,
 				771378072467979400254EDE /* TicketCusTableViewController.swift */,
 				77BC40182463C4D40025CB80 /* RaffleCell.swift */,
@@ -186,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77942297245562CE00B3CC24 /* ViewController.swift in Sources */,
+				77FE92842468498B00FDDFB4 /* CustomerTableViewCell.swift in Sources */,
 				7713780A24679D0F00254EDE /* TicketUITableViewCell.swift in Sources */,
 				77FE927E2467F3BE00FDDFB4 /* TicketDetailViewController.swift in Sources */,
 				77942293245562CE00B3CC24 /* AppDelegate.swift in Sources */,
@@ -197,10 +207,12 @@
 				779422A724556C5000B3CC24 /* SQliteDatabase.swift in Sources */,
 				779422AB2455845400B3CC24 /* RaffleUITableViewCell.swift in Sources */,
 				77BC401024639B920025CB80 /* RaffleCusTableViewCell.swift in Sources */,
+				77FE9282246846F900FDDFB4 /* CustomerCusTableViewController.swift in Sources */,
 				779422A924556CC500B3CC24 /* Brain.swift in Sources */,
 				77942295245562CE00B3CC24 /* SceneDelegate.swift in Sources */,
 				77BC40192463C4D40025CB80 /* RaffleCell.swift in Sources */,
 				771378082467979400254EDE /* TicketCusTableViewController.swift in Sources */,
+				77FE928024681B1800FDDFB4 /* SellTicketViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

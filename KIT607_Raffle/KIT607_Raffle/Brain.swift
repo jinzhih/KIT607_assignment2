@@ -17,15 +17,7 @@ public struct Raffle {
     
   
 }
-//define ticket
-//ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-//                  RaffleID INTEGER,
-//                  RaffleName CHAR(255),
-//                  Ticketprice INTEGER,
-//                  CutomerID INTEGER,
-//                  PurchaseDate CHAR(255),
-//                  Winstatus INTEGER,
-//                  TicketNumber INTEGER
+
                   
 public struct Ticket {
     var ID:Int32 = 1
@@ -38,9 +30,11 @@ public struct Ticket {
     var winStatus: Int32
     var ticketNumber: Int32
  
+}
+public struct Customer{
+    var ID:Int32 = 1
+    var customerName:String
     
-    
-  
 }
 
 

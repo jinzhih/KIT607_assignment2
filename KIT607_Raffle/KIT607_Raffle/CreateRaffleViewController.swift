@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 var raffles2 = [Raffle]()
-class CreateRaffleViewController: UIViewController {
+class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
 
     var raffleName = ""
     var raffleDes = ""
@@ -70,6 +70,12 @@ class CreateRaffleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
+        raffleNameTextField.delegate = self
+        maxTicketNumberTextField.delegate = self
+        rafflePriceTextField.delegate = self
+        raffleDescriptionTextField.delegate = self
+        
+        
           
         
        
@@ -89,6 +95,20 @@ class CreateRaffleViewController: UIViewController {
     @objc func donePressed(){
         drawDateTextField.text = "\(datePciker.date)"
         self.view.endEditing(true)
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text != ""{
+            return true
+        }else {
+            textField.placeholder = "Type something"
+            return false
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        raffleDescriptionTextField.endEditing(true)
+        return true
     }
     
     @IBAction func newRaffleClicked(_ sender: UIButton) {
