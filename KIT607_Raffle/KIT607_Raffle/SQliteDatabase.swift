@@ -435,14 +435,14 @@ class SQLiteDatabase
     }
     
 
-    func updateTicket(ticket:Ticket,id:Int32){
+    func updateTicket(customerName:String,id:Int32){
            
            let updateStatementQuery = "UPDATE Ticket SET CustomerName=? WHERE ID=?"
            updateWithQuery(
            updateStatementQuery, bindingFunction: { (updateSatement) in
                
                
-            sqlite3_bind_text(updateSatement, 1, NSString(string: ticket.customerName).utf8String, -1, nil)
+            sqlite3_bind_text(updateSatement, 1, NSString(string: customerName).utf8String, -1, nil)
            
                 sqlite3_bind_int(updateSatement, 2, id)
             })

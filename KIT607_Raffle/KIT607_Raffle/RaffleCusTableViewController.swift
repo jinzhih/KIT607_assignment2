@@ -32,9 +32,10 @@ class RaffleCusTableViewController: UIViewController {
         raffleTable.dataSource = self
 //               raffleTable.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "Cell")
 
-          let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+          var database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
 //        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type:0,maxNumber:30, ticketPrice: 1, launchStatus: 0, drawStatus:0, drawTime: "tomorrow"))
         raffles1 = database.selectAllRaffles()
+        print(raffles1)
         
     }
     

@@ -106,7 +106,7 @@ class CreateRaffleViewController: UIViewController {
         var refreshAlert=UIAlertController(title: "RaffleCreated", message: "", preferredStyle: .alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-          self.performSegue(withIdentifier: "goToRaffleTableView", sender: self)
+          self.performSegue(withIdentifier: "GoRaffleList", sender: self)
           }))
 
 //        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
