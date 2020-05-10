@@ -27,7 +27,7 @@ class RaffleDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         if let  displayRaffle = raffle
                {
-                print(displayRaffle.type)
+               
                 if(displayRaffle.type == 0){
                     displayDrawType = "Normal Raffle"
 

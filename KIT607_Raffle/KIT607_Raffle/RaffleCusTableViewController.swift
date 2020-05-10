@@ -18,12 +18,7 @@ class RaffleCusTableViewController: UIViewController {
     var launtchStatus = 0
     var drawStatus = 0
     
-//    var raffles: [RaffleNew]=[
-//        RaffleNew(name: "Raffle1", raffleDate: "3/15/2020", img: "url"),
-//        RaffleNew(name: "Raffle2", raffleDate: "3/20/2020", img: "url"),
-//        RaffleNew(name: "Raffle1", raffleDate: "3/23/2020", img: "url")
-//
-//    ]
+
     
     @IBOutlet weak var raffleTable: UITableView!
     

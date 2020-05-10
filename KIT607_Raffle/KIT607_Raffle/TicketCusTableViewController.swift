@@ -41,12 +41,38 @@ extension TicketCusTableViewController: UITableViewDataSource{
             
         }
         return cell
-        
-        
-        
-        
+       
         
     }
+    
+
+    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "goToTicketDetail"
+        {
+            guard let   detailViewController = segue.destination as? TicketDetailViewController else
+        {
+            fatalError("Unexpected destination: \(segue.destination)")
+            
+            }
+            guard let   selectedTicketCell = sender as? TicketUITableViewCell else
+            {            fatalError("Unexpected sender: \( String(describing: sender))")
+                
+            }
+            guard let   indexPath = ticketTable.indexPath(for: selectedTicketCell) else
+            {
+                fatalError("The selected cell is not being displayed by the table")
+                
+            }
+            let  selectedTicket = tickets1[indexPath.row]
+            detailViewController.ticket = selectedTicket
+            
+        }
+        
+        }
+
+    
 }
 
 
