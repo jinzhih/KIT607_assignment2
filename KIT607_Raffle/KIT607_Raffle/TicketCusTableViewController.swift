@@ -18,7 +18,7 @@ class TicketCusTableViewController: UIViewController {
         super.viewDidLoad()
 
         ticketTable.dataSource = self
-       var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabasesdfg")
+       var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
          tickets1 = database.selectTicketBy(id: 3)
         print(tickets1)
     }
@@ -35,7 +35,7 @@ extension TicketCusTableViewController: UITableViewDataSource{
         let ticket = tickets1[indexPath.row]
         if   let  ticketCell = cell as? TicketUITableViewCell
         {
-            ticketCell.ticketNO.text = ticket.raffleName
+            ticketCell.ticketNO.text = String(ticket.ticketNumber)
             ticketCell.customerName.text = ticket.customerName
             
             

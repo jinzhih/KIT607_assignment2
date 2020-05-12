@@ -123,20 +123,18 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
         
         
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate))
+        
         var refreshAlert=UIAlertController(title: "RaffleCreated", message: "", preferredStyle: .alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
           self.performSegue(withIdentifier: "GoRaffleList", sender: self)
           }))
 
-//        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-//          print("Handle Cancel Logic here")
-//          }))
+
 
         present(refreshAlert, animated: true, completion: nil)
                 
-        
-//        self.performSegue(withIdentifier: "goToRaffleTableView", sender: self)
+
 
         
     }

@@ -10,6 +10,8 @@ import UIKit
 var customers1 = [Customer]()
 
 class CustomerCusTableViewController: UIViewController {
+    
+     var raffleTemp : Raffle?
 
     @IBOutlet weak var customerTable: UITableView!
     override func viewDidLoad() {
@@ -67,6 +69,8 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
             }
             let  selectedCustomer = customers1[indexPath.row]
             sellViewController.customer = selectedCustomer
+            let  selectedRaffle = raffleTemp
+                          sellViewController.raffleselling = selectedRaffle
             
         }
         

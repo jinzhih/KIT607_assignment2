@@ -28,11 +28,11 @@ class ViewController: UIViewController {
 //        (raffle: Raffle(name: "fengle2", description: "Raffle1", type: 3, maxNumber: 5, ticketPrice: 7, launchStatus: 9, drawStatus: 1, drawTime: "hello" ), id: 2)
        
 //        database.insert(customer: Customer(customerName:"Jessie"))
-        database.updateCustomer(customerName: "Judy", id: 1)
-
+        //database.updateCustomer(customerName: "Judy", id: 1)
+      //  database.selectCustomerByName(customerName: "Judy")
      //tickets = database.selectTicketBy(id: 3)
       //        print(database.selectRaffleBy(id: 4) ??  "Raffle not found")
-        customers = database.selectAllCustomers()
+        customers = database.selectCustomerByName(customerName: "judy")
               print(customers )
         
         

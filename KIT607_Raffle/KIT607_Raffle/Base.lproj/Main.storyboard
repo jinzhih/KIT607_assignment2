@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JL3-8X-cP8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Od4-qE-f2R">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -296,7 +296,10 @@
                                                     <constraint firstAttribute="width" constant="36" id="OG2-g2-LOm"/>
                                                     <constraint firstAttribute="height" constant="37" id="eKv-ao-5a1"/>
                                                 </constraints>
-                                                <state key="normal" image="icons8-edit-50"/>
+                                                <state key="normal" image="icons8-ok-160"/>
+                                                <connections>
+                                                    <action selector="createNewTicket:" destination="Od4-qE-f2R" eventType="touchUpInside" id="JXM-oQ-q1m"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selling Portal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJx-Sq-kTN">
                                                 <rect key="frame" x="145" y="2" width="124" height="26.5"/>
@@ -483,14 +486,20 @@
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="m53-FM-PFV">
-                                                        <rect key="frame" x="160" y="509" width="94" height="40"/>
+                                                        <rect key="frame" x="170" y="509" width="74" height="40"/>
+                                                        <subviews>
+                                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nLP-lu-EG1">
+                                                                <rect key="frame" x="0.0" y="0.0" width="74" height="40"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            </tableView>
+                                                        </subviews>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="9yF-Df-81X" firstAttribute="centerX" secondItem="f4y-8m-lam" secondAttribute="centerX" id="2bz-Qc-q8k"/>
                                                     <constraint firstItem="9yF-Df-81X" firstAttribute="leading" secondItem="f4y-8m-lam" secondAttribute="leading" id="XRA-LX-GQc"/>
                                                     <constraint firstItem="fDq-yi-0Tr" firstAttribute="leading" secondItem="f4y-8m-lam" secondAttribute="leadingMargin" id="h9q-TP-vGR"/>
-                                                    <constraint firstItem="m53-FM-PFV" firstAttribute="leading" secondItem="f4y-8m-lam" secondAttribute="leading" constant="160" id="hjg-8v-zru"/>
+                                                    <constraint firstItem="m53-FM-PFV" firstAttribute="leading" secondItem="f4y-8m-lam" secondAttribute="leading" constant="170" id="hjg-8v-zru"/>
                                                     <constraint firstAttribute="trailing" secondItem="9yF-Df-81X" secondAttribute="trailing" id="x1y-Ae-m1b"/>
                                                 </constraints>
                                             </stackView>
@@ -607,10 +616,11 @@
                         <outlet property="drawDate" destination="v5L-Ir-uP6" id="iPJ-ja-95p"/>
                         <outlet property="drawType" destination="azN-7L-6QJ" id="rfu-ET-qf6"/>
                         <outlet property="raffleDes" destination="j6o-tx-hvS" id="uam-jT-kPj"/>
-                        <outlet property="raffleName" destination="vFu-Nw-Cid" id="d7H-Lm-h4E"/>
+                        <outlet property="raffleNameLable" destination="vFu-Nw-Cid" id="d7H-Lm-h4E"/>
                         <outlet property="rafflePrice" destination="aLt-zI-lSa" id="vyA-VL-skl"/>
                         <outlet property="ticketQty" destination="xco-X9-AGM" id="HPJ-Lo-r3u"/>
                         <segue destination="gC4-KE-C9p" kind="show" identifier="FindCustomer" id="kKw-Om-anO"/>
+                        <segue destination="q4z-gI-INz" kind="show" identifier="GoTicketList" id="ALi-hF-VRu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qt-0l-5fn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -925,7 +935,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GiB-40-JMS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1909" y="571"/>
+            <point key="canvasLocation" x="1884" y="717"/>
         </scene>
         <!--Create Raffle View Controller-->
         <scene sceneID="ktY-Wy-hoC">
@@ -1468,17 +1478,17 @@
             <objects>
                 <viewController id="q4z-gI-INz" customClass="TicketCusTableViewController" customModule="KIT607_Raffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iJJ-0Z-4vc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="V3Z-OT-x4V">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6w-nR-iKZ">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ticket List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3P-f6-KCJ">
-                                                <rect key="frame" x="167.5" y="0.0" width="79" height="20.5"/>
+                                                <rect key="frame" x="167.5" y="-0.5" width="79" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1492,7 +1502,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="THI-As-eMs">
-                                        <rect key="frame" x="0.0" y="20" width="414" height="714"/>
+                                        <rect key="frame" x="0.0" y="20" width="414" height="704"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketCell" rowHeight="142" id="dt3-4d-4B8" customClass="TicketUITableViewCell" customModule="KIT607_Raffle" customModuleProvider="target">
@@ -1593,7 +1603,7 @@
                                         </prototypes>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="Y2W-DL-icl">
-                                        <rect key="frame" x="0.0" y="734" width="414" height="84"/>
+                                        <rect key="frame" x="0.0" y="724" width="414" height="84"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="0Js-Cw-xhV">
                                                 <rect key="frame" x="0.0" y="0.0" width="86.5" height="84"/>
@@ -1700,6 +1710,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eAj-5P-LCS"/>
                     </view>
+                    <navigationItem key="navigationItem" id="bJt-NU-rjR"/>
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="896"/>
                     <connections>
                         <outlet property="ticketTable" destination="THI-As-eMs" id="FKL-H1-XEO"/>
@@ -2296,7 +2307,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hbe-7k-8a8"/>
+        <segue reference="UmF-iA-o8z"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1282410-ticket-png-clipart-ticket-png-400_320 copy" width="394" height="197"/>

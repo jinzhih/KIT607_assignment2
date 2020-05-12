@@ -569,6 +569,29 @@ class SQLiteDatabase
         
         return result
     }
+    
+    func selectCustomerByName(customerName:String) -> [Customer]{
+        var result = [Customer]()
+        let selectStatementQuery = "SELECT ID, CustomerName FROM Customer WHERE CustomerName LIKE ?"
+        selectWithQuery(
+        selectStatementQuery,
+        eachRow: { (id) in
+        //create a movie object from each result
+        let customer = Customer(
+            ID: sqlite3_column_int(id, 0),
+            customerName: String(cString:sqlite3_column_text(id, 1))
+            
+        )
+             result += [customer]
+         },
+        bindingFunction: {(selectSatement) in
+       
+            sqlite3_bind_text(selectSatement, 1, NSString(string: customerName).utf8String, -1, nil)
+              
+           })
+        
+        return result
+    }
         
     
      func selectTicketBy(id:Int32) -> [Ticket]{
