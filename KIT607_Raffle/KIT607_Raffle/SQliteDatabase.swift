@@ -501,6 +501,8 @@ class SQLiteDatabase
         return result
     }
     
+    
+    
     func selectAllCustomers() -> [Customer]{
            var result = [Customer]()
            let selectStatementQuery = "SELECT ID, CustomerName FROM Customer"
@@ -547,6 +549,8 @@ class SQLiteDatabase
         
         return result
     }
+    
+    
     
     func selectCustomerBy(id:Int32) -> Customer?{
         var result : Customer?
@@ -624,6 +628,30 @@ class SQLiteDatabase
            
            return result
        }
+  ///find max ticket
+
+    func selectMaxTicketBy(id:Int32) -> Int32?{
+        var result : Int32?
+       
+        let selectStatementQuery = "SELECT MAX(TicketNumber) FROM Ticket WHERE RaffleID=?"
+        selectWithQuery(
+        selectStatementQuery,
+        eachRow: { (id) in
+        //create a movie object from each result
+        let maxTicketNumber = sqlite3_column_int(id, 0)
+           
+            
+        
+            result = maxTicketNumber
+         },
+        bindingFunction: {(selectSatement) in
+       
+            sqlite3_bind_int(selectSatement, 1, id)
+           })
+        
+        return result
+    }
+    
     
     
     func deleteRaffleBy(id:Int32){
