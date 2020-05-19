@@ -19,7 +19,7 @@ class TicketCusTableViewController: UIViewController {
 
         ticketTable.dataSource = self
        var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
-         tickets1 = database.selectTicketBy(id: 3)
+         tickets1 = database.selectTicketBy(id: 1)
         //TODO raffleID from sell ticket
         print(tickets1)
     }

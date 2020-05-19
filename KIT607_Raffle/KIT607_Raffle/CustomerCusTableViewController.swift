@@ -23,7 +23,22 @@ class CustomerCusTableViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func newCustomer(_ sender: UIButton) {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add New Customer", message: "", preferredStyle: .alert)
+        alert.addTextField{(alertTextfield) in alertTextfield.placeholder="Create new customer"
+            textField = alertTextfield
+        }
+      alert.addAction(UIAlertAction(title: "Add Customer", style: .default, handler: { (action: UIAlertAction!) in
+          // insert customer into database
+           var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
+        database.insert(customer: Customer(customerName:textField.text!))
+        }))
 
+        
+            present(alert, animated:true, completion:nil)
+    }
+    
 }
 
 extension CustomerCusTableViewController: UITableViewDataSource{

@@ -31,7 +31,7 @@ database.insert(ticket: Ticket(raffleID:1,  raffleName:"raffle55667", ticketPric
         database.insert(customer: Customer(customerName:"Judy"))
        // database.updateCustomer(customerName: "jessie", id: 1)
       //  database.selectCustomerByName(customerName: "Judy")
-        ticketNumber = database.selectMaxTicketBy(id: 1)!
+       // ticketNumber = database.selectMaxTicketBy(id: 1)!
         tickets = database.selectTicketBy(id: 1)
       //        print(database.selectRaffleBy(id: 4) ??  "Raffle not found")
       //  customers = database.selectAllCustomers()
