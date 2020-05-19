@@ -382,8 +382,8 @@ class SQLiteDatabase
         insertWithQuery(insertStatementQuery, bindingFunction: { (insertSatement) in
             sqlite3_bind_text(insertSatement, 1, NSString(string: raffle.name).utf8String, -1, nil)
             sqlite3_bind_text(insertSatement, 2, NSString(string: raffle.description).utf8String, -1, nil)
-           sqlite3_bind_int(insertSatement, 3, raffle.maxNumber)
-            sqlite3_bind_int(insertSatement, 4, raffle.type)
+           sqlite3_bind_int(insertSatement, 3, raffle.type)
+            sqlite3_bind_int(insertSatement, 4, raffle.maxNumber)
             sqlite3_bind_int(insertSatement, 5, raffle.ticketPrice)
             sqlite3_bind_int(insertSatement, 6, raffle.launchStatus)
             sqlite3_bind_int(insertSatement, 7, raffle.drawStatus)

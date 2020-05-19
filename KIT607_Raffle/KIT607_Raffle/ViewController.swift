@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+     print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
 //        database.insert(raffle:Raffle(name:"Raffle1",  description:"Normal Raffle"))
 ////        database.insert(raffle:Raffle(name:"Raffle2", description:"Margin Raffle"))
 database.insert(ticket: Ticket(raffleID:1,  raffleName:"raffle55667", ticketPrice:0,customerID:30, customerName: "hello", purchaseDate: "89/987/99", winStatus:0, ticketNumber: 5))
@@ -28,7 +28,7 @@ database.insert(ticket: Ticket(raffleID:1,  raffleName:"raffle55667", ticketPric
 //        database.updateTicket(customerName: "houjinzhi", id: 2)
 //        (raffle: Raffle(name: "fengle2", description: "Raffle1", type: 3, maxNumber: 5, ticketPrice: 7, launchStatus: 9, drawStatus: 1, drawTime: "hello" ), id: 2)
        
-//        database.insert(customer: Customer(customerName:"Jessie"))
+        database.insert(customer: Customer(customerName:"Judy"))
        // database.updateCustomer(customerName: "jessie", id: 1)
       //  database.selectCustomerByName(customerName: "Judy")
         ticketNumber = database.selectMaxTicketBy(id: 1)!

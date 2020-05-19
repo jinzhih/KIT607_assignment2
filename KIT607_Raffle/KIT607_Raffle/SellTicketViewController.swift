@@ -66,7 +66,7 @@ class SellTicketViewController: UIViewController {
         ticketPrice = Int(raffleselling!.ticketPrice)
         customerID = Int(customer!.ID)
         customerName = customer!.customerName
-        purchaseDate = "20/Mar/2020"
+        purchaseDate = "20/Mar/2020"//TODO current time
         ticketNumber = 1
         
         

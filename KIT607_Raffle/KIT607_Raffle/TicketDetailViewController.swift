@@ -34,7 +34,7 @@ var ticket : Ticket?
             purchaseDate.text = displayTicket.purchaseDate
             winStatus.text = String(displayTicket.winStatus)
             
-            
+    //TODO search DrawDate according to Raffle ID
                         
         }
                       

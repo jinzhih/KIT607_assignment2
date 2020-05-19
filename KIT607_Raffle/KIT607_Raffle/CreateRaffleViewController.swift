@@ -55,8 +55,8 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
     
   
 
- let datePciker = UIDatePicker()
-    
+ let datePicker = UIDatePicker()
+  //  datePciker.minimumDate = Date()
     
     
 //        let dateFormatter = DateFormatter()
@@ -87,13 +87,13 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
         toolbar.setItems([doneBtn], animated: true)
         drawDateTextField.inputAccessoryView = toolbar
-        drawDateTextField.inputView = datePciker
-        
+        drawDateTextField.inputView = datePicker
+        datePicker.minimumDate = Date()
         
     }
     
     @objc func donePressed(){
-        drawDateTextField.text = "\(datePciker.date)"
+        drawDateTextField.text = "\(datePicker.date)"
         self.view.endEditing(true)
     }
     

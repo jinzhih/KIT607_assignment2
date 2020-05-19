@@ -17,7 +17,7 @@ class CustomerCusTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customerTable.dataSource = self
-        var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabasesdfg")
+        var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
         customers1 = database.selectAllCustomers()
 
         // Do any additional setup after loading the view.
