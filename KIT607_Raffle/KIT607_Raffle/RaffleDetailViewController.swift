@@ -11,6 +11,7 @@ import UIKit
 class RaffleDetailViewController: UIViewController {
     var raffle : Raffle?
     var displayDrawType=""
+    
 
     @IBOutlet var nameRaffle: UILabel!
     
@@ -51,6 +52,12 @@ class RaffleDetailViewController: UIViewController {
     @IBAction func sellTicket(_ sender: UIButton) {
         performSegue(withIdentifier: "SellingTicket", sender: self)
     }
+    
+    @IBAction func ticketListShowBtn(_ sender: UIButton) {
+              performSegue(withIdentifier: "ShowTicketList", sender: self)
+        
+    }
+    
 //        super.prepare(for: segue, sender: self)
 //        if segue.identifier == "SellingTicket"
 //               {
@@ -66,23 +73,47 @@ class RaffleDetailViewController: UIViewController {
 //               }
 //
              
+//    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
+//    {
+//        super.prepare(for: segue, sender: sender)
+//        if segue.identifier == "SellingTicket"
+//        {         guard let   detailViewController = segue.destination as? SellTicketViewController else
+//        {
+//            fatalError("Unexpected destination: \(segue.destination)")
+//
+//            }
+//
+//            let  selectedRaffle = raffle
+//            detailViewController.raffleselling = selectedRaffle
+//
+//
+//        }
+//
+//        }
+    
     override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        super.prepare(for: segue, sender: sender)
-        if segue.identifier == "SellingTicket"
-        {         guard let   detailViewController = segue.destination as? SellTicketViewController else
-        {
-            fatalError("Unexpected destination: \(segue.destination)")
-            
-            }
-            
-            let  selectedRaffle = raffle
+       {
+           super.prepare(for: segue, sender: sender)
+           if segue.identifier == "SellingTicket"
+           {
+             
+            let   detailViewController = segue.destination as! SellTicketViewController
+               let  selectedRaffle = raffle
             detailViewController.raffleselling = selectedRaffle
-      
-            
-        }
-        
-        }
+           }
+           else if segue.identifier == "ShowTicketList"
+           {
+                let ticketListViewController = segue.destination as! TicketCusTableViewController
+            ticketListViewController.raffleID = Int(raffle!.ID)
+           }
+            else
+           {
+               fatalError("Unexpected destination: \(segue.destination)")
+           }
+           
+           }
+    
+
 
        
         

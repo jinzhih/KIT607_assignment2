@@ -23,7 +23,7 @@ class SellTicketViewController: UIViewController {
     var winStatus = 0
     var ticketNumber = 1
    
-    var numberOfTicket = 1
+    var numberOfTicket : Int!
 
     var displayDrawType=""
     @IBOutlet weak var raffleNameLable: UILabel!
@@ -56,6 +56,8 @@ class SellTicketViewController: UIViewController {
             rafflePrice.text = String(displayRaffle.ticketPrice)
             drawType.text = displayDrawType
             drawDate.text = displayRaffle.drawTime
+            let numberofTicket = numberOfTicket ?? 1
+            ticketQty.text = String(numberofTicket)
             
         }
     }
@@ -66,9 +68,10 @@ class SellTicketViewController: UIViewController {
         ticketPrice = Int(raffleselling!.ticketPrice)
         customerID = Int(customer!.ID)
         customerName = customer!.customerName
-        purchaseDate = "20/Mar/2020"//TODO current time
+        let dateformatter = DateFormatter() //因为数据库存的购买日类型是string
+        dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        purchaseDate = dateformatter.string(from: Date()) //TODO 取当前时间 Fixed
         ticketNumber = 1
-        
         
         
         
@@ -96,23 +99,46 @@ class SellTicketViewController: UIViewController {
         performSegue(withIdentifier: "FindCustomer", sender: self)
     }
     
+//    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
+//       {
+//           super.prepare(for: segue, sender: sender)
+//           if segue.identifier == "FindCustomer"
+//           {         guard let   detailViewController = segue.destination as? CustomerCusTableViewController else
+//           {
+//               fatalError("Unexpected destination: \(segue.destination)")
+//
+//               }
+//
+//               let  selectedRaffle = raffleselling
+//               detailViewController.raffleTemp = selectedRaffle
+//
+//
+//           }
+//
+//           }
+    
     override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
-       {
-           super.prepare(for: segue, sender: sender)
-           if segue.identifier == "FindCustomer"
-           {         guard let   detailViewController = segue.destination as? CustomerCusTableViewController else
-           {
-               fatalError("Unexpected destination: \(segue.destination)")
-               
-               }
-               
-               let  selectedRaffle = raffleselling
-               detailViewController.raffleTemp = selectedRaffle
-         
-               
-           }
-           
-           }
+    {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "FindCustomer"
+        {
+             let detailViewController = segue.destination as! CustomerCusTableViewController
+             let selectedRaffle = raffleselling
+         detailViewController.raffleTemp = selectedRaffle
+            detailViewController.ticketQty = numberOfTicket
+            print(numberOfTicket)
+        }
+        else if segue.identifier == "GoTicketList"
+        {
+             let ticketListViewController = segue.destination as! TicketCusTableViewController
+         ticketListViewController.raffleID = raffleID
+        }
+         else
+        {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        
+        }
  
 
 }

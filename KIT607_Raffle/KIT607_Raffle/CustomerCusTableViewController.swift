@@ -13,6 +13,7 @@ class CustomerCusTableViewController: UIViewController {
      var searchResult = [Customer]()
      var raffleTemp : Raffle?
     var searching = false
+    var ticketQty : Int!
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var customerTable: UITableView!
@@ -21,7 +22,7 @@ class CustomerCusTableViewController: UIViewController {
         customerTable.dataSource = self
         var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
         customers1 = database.selectAllCustomers()
-
+        print(ticketQty!)
         // Do any additional setup after loading the view.
     }
     
@@ -138,8 +139,9 @@ var cell = tableView.dequeueReusableCell(withIdentifier: "CustomerCell", for: in
             let  selectedCustomer = customers1[indexPath.row]
             sellViewController.customer = selectedCustomer
             let  selectedRaffle = raffleTemp
-                          sellViewController.raffleselling = selectedRaffle
-            
+            sellViewController.raffleselling = selectedRaffle
+            print(ticketQty)
+            sellViewController.numberOfTicket = ticketQty
         }
         
         }

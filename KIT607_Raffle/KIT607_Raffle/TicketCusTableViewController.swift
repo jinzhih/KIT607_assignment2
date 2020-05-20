@@ -12,6 +12,7 @@ class TicketCusTableViewController: UIViewController {
     @IBOutlet weak var ticketTable: UITableView!
     
     var customerName=""
+    var raffleID = 0
      var ticketNumber = 0
     
     override func viewDidLoad() {
@@ -19,7 +20,7 @@ class TicketCusTableViewController: UIViewController {
 
         ticketTable.dataSource = self
        var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
-         tickets1 = database.selectTicketBy(id: 1)
+         tickets1 = database.selectTicketBy(id: Int32(raffleID))
         //TODO raffleID from sell ticket
         print(tickets1)
     }
