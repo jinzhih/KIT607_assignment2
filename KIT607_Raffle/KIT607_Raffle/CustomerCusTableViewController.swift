@@ -67,12 +67,11 @@ extension CustomerCusTableViewController:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
             searching = false
-            DispatchQueue.main.async {
-                searchBar.resignFirstResponder()
+            customerTable.reloadData()
             }
         }
     }
-}
+
 
 
 extension CustomerCusTableViewController: UITableViewDataSource, UITableViewDelegate{
