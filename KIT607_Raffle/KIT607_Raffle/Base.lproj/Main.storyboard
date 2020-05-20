@@ -2112,6 +2112,9 @@
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8d-Ft-All">
                                                                 <rect key="frame" x="192" y="29" width="30" height="70"/>
+                                                                <connections>
+                                                                    <action selector="drawRaffleBtn:" destination="JO6-Ai-2bh" eventType="touchUpInside" id="zCd-4n-chl"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -2259,22 +2262,23 @@
                         <outlet property="nameRaffle" destination="qyM-NW-8fP" id="oIn-oT-nuk"/>
                         <segue destination="Od4-qE-f2R" kind="show" identifier="SellingTicket" id="hbe-7k-8a8"/>
                         <segue destination="q4z-gI-INz" kind="show" identifier="ShowTicketList" id="7hi-dA-LJE"/>
+                        <segue destination="i0G-1f-09E" kind="show" identifier="DrawWinner" id="RS0-Pc-XH1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8F-4F-GBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2264" y="-60"/>
         </scene>
-        <!--View Controller-->
+        <!--Draw Winner View Controller-->
         <scene sceneID="bfS-UW-zjR">
             <objects>
-                <viewController id="i0G-1f-09E" sceneMemberID="viewController">
+                <viewController id="i0G-1f-09E" customClass="DrawWinnerViewController" customModule="KIT607_Raffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0sO-m6-CnZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Fz-nM-n7R">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meN-FH-2be" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -2307,7 +2311,7 @@
                                         </constraints>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMZ-9G-xTC">
-                                        <rect key="frame" x="0.0" y="30" width="414" height="704"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="694"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FaV-OR-kTm">
                                                 <rect key="frame" x="0.0" y="50" width="414" height="645"/>
@@ -2408,11 +2412,23 @@
                                                                     <constraint firstAttribute="height" constant="70" id="xxy-Pc-bI1"/>
                                                                 </constraints>
                                                             </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9o1-WO-VTC">
+                                                                <rect key="frame" x="117" y="4" width="180" height="70"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="180" id="9Lh-yR-AWu"/>
+                                                                    <constraint firstAttribute="height" constant="70" id="c1e-ng-YSI"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <action selector="drawWinnerBtn:" destination="i0G-1f-09E" eventType="touchUpInside" id="LXl-Xw-82h"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
+                                                            <constraint firstItem="9o1-WO-VTC" firstAttribute="top" secondItem="GdM-bF-MwE" secondAttribute="top" constant="4" id="Dni-3f-f4m"/>
                                                             <constraint firstItem="l8u-iZ-p35" firstAttribute="centerX" secondItem="GdM-bF-MwE" secondAttribute="centerX" id="ltn-vm-GLK"/>
                                                             <constraint firstItem="l8u-iZ-p35" firstAttribute="top" secondItem="GdM-bF-MwE" secondAttribute="top" constant="4" id="we9-BC-Pzd"/>
+                                                            <constraint firstItem="9o1-WO-VTC" firstAttribute="centerX" secondItem="GdM-bF-MwE" secondAttribute="centerX" id="y8K-ch-U11"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -2440,7 +2456,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="8y9-56-i4J"/>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEg-WR-Yg5" userLabel="BotomView">
-                                        <rect key="frame" x="0.0" y="734" width="414" height="84"/>
+                                        <rect key="frame" x="0.0" y="724" width="414" height="84"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="HSA-V5-mlc">
                                                 <rect key="frame" x="50" y="34" width="44" height="16"/>
@@ -2486,16 +2502,19 @@
                         <viewLayoutGuide key="safeArea" id="bjV-U1-oY8"/>
                     </view>
                     <navigationItem key="navigationItem" id="qxB-Ij-0mw"/>
+                    <connections>
+                        <outlet property="highScoreTextField" destination="m5I-18-6HU" id="wd6-Rg-S9w"/>
+                        <outlet property="lowScoreTextField" destination="Ift-ZI-Dqf" id="RUQ-hm-IFo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8OE-Bb-FPi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2686.9565217391305" y="-769.41964285714278"/>
+            <point key="canvasLocation" x="2923" y="-745"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kKw-Om-anO"/>
-        <segue reference="ALi-hF-VRu"/>
-        <segue reference="UmF-iA-o8z"/>
+        <segue reference="7hi-dA-LJE"/>
+        <segue reference="hbe-7k-8a8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1282410-ticket-png-clipart-ticket-png-400_320 copy" width="394" height="197"/>

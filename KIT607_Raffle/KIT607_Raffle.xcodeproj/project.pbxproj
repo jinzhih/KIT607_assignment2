@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		771378082467979400254EDE /* TicketCusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771378072467979400254EDE /* TicketCusTableViewController.swift */; };
 		7713780A24679D0F00254EDE /* TicketUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7713780924679D0F00254EDE /* TicketUITableViewCell.swift */; };
+		773830812475512B005BFA4F /* DrawWinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773830802475512B005BFA4F /* DrawWinnerViewController.swift */; };
 		773F26602459A7240009D5FB /* CreateRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F265F2459A7240009D5FB /* CreateRaffleViewController.swift */; };
 		77942293245562CE00B3CC24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77942292245562CE00B3CC24 /* AppDelegate.swift */; };
 		77942295245562CE00B3CC24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77942294245562CE00B3CC24 /* SceneDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		771378072467979400254EDE /* TicketCusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCusTableViewController.swift; sourceTree = "<group>"; };
 		7713780924679D0F00254EDE /* TicketUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketUITableViewCell.swift; sourceTree = "<group>"; };
+		773830802475512B005BFA4F /* DrawWinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawWinnerViewController.swift; sourceTree = "<group>"; };
 		773F265F2459A7240009D5FB /* CreateRaffleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRaffleViewController.swift; sourceTree = "<group>"; };
 		7794228F245562CE00B3CC24 /* KIT607_Raffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KIT607_Raffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77942292245562CE00B3CC24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				77942292245562CE00B3CC24 /* AppDelegate.swift */,
 				77942294245562CE00B3CC24 /* SceneDelegate.swift */,
 				77942298245562CE00B3CC24 /* Main.storyboard */,
+				773830802475512B005BFA4F /* DrawWinnerViewController.swift */,
 				77FE92832468498B00FDDFB4 /* CustomerTableViewCell.swift */,
 				77FE9281246846F900FDDFB4 /* CustomerCusTableViewController.swift */,
 				77FE927F24681B1800FDDFB4 /* SellTicketViewController.swift */,
@@ -195,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77942297245562CE00B3CC24 /* ViewController.swift in Sources */,
+				773830812475512B005BFA4F /* DrawWinnerViewController.swift in Sources */,
 				77FE92842468498B00FDDFB4 /* CustomerTableViewCell.swift in Sources */,
 				7713780A24679D0F00254EDE /* TicketUITableViewCell.swift in Sources */,
 				77FE927E2467F3BE00FDDFB4 /* TicketDetailViewController.swift in Sources */,

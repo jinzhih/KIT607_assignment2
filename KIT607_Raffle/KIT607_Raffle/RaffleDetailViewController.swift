@@ -11,7 +11,8 @@ import UIKit
 class RaffleDetailViewController: UIViewController {
     var raffle : Raffle?
     var displayDrawType=""
-    
+    var lowscore : Int!
+    var highscore : Int!
 
     @IBOutlet var nameRaffle: UILabel!
     
@@ -58,38 +59,19 @@ class RaffleDetailViewController: UIViewController {
         
     }
     
-//        super.prepare(for: segue, sender: self)
-//        if segue.identifier == "SellingTicket"
-//               {
-//                   guard let   detailViewController = segue.destination as? SellTicketViewController else
-//               {
-//                   fatalError("Unexpected destination: \(segue.destination)")
-//
-//                   }
-//
-//                   let  selectedRaffle = raffle
-//                   detailViewController.raffleselling = selectedRaffle
-//
-//               }
-//
-             
-//    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
-//    {
-//        super.prepare(for: segue, sender: sender)
-//        if segue.identifier == "SellingTicket"
-//        {         guard let   detailViewController = segue.destination as? SellTicketViewController else
-//        {
-//            fatalError("Unexpected destination: \(segue.destination)")
-//
-//            }
-//
-//            let  selectedRaffle = raffle
-//            detailViewController.raffleselling = selectedRaffle
-//
-//
-//        }
-//
-//        }
+    @IBAction func drawRaffleBtn(_ sender: UIButton) {
+        print(raffle!.type)
+        let identifier = Bool(raffle!.type as NSNumber)
+        if identifier {
+            performSegue(withIdentifier: "DrawWinner", sender: self)
+        } else{
+            print("this is normal raffle")
+        }
+         
+    }
+    
+
+    
     
     override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
        {
@@ -106,6 +88,11 @@ class RaffleDetailViewController: UIViewController {
                 let ticketListViewController = segue.destination as! TicketCusTableViewController
             ticketListViewController.raffleID = Int(raffle!.ID)
            }
+            else if segue.identifier == "DrawWinner"
+            {
+                 let DrawWinnerViewController = segue.destination as! DrawWinnerViewController
+             DrawWinnerViewController.raffleID = Int(raffle!.ID)
+            }
             else
            {
                fatalError("Unexpected destination: \(segue.destination)")

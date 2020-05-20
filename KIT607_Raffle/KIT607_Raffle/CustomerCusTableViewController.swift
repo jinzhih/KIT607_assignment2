@@ -22,7 +22,7 @@ class CustomerCusTableViewController: UIViewController {
         customerTable.dataSource = self
         var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
         customers1 = database.selectAllCustomers()
-        print(ticketQty!)
+//        print(ticketQty!)
         // Do any additional setup after loading the view.
     }
     
@@ -37,6 +37,8 @@ class CustomerCusTableViewController: UIViewController {
            var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
         
         database.insert(customer: Customer(customerName:textField.text!))
+        self.customerTable.reloadData()
+        
         }))
 
         

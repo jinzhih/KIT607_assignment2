@@ -43,3 +43,8 @@ struct RaffleNew {
     var raffleDate: String
     var img: String
 }
+
+struct TicketNOArrayForDraw {
+    var ID: Int32
+    var ticketNumber : Int32
+}

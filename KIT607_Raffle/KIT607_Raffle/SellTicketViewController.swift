@@ -71,7 +71,7 @@ class SellTicketViewController: UIViewController {
         let dateformatter = DateFormatter() //因为数据库存的购买日类型是string
         dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
         purchaseDate = dateformatter.string(from: Date()) //TODO 取当前时间 Fixed
-        ticketNumber = 1
+        ticketNumber = 2
         
         
         

@@ -639,9 +639,7 @@ class SQLiteDatabase
         eachRow: { (id) in
         //create a movie object from each result
         let maxTicketNumber = sqlite3_column_int(id, 0)
-           
-            
-        
+       
             result = maxTicketNumber
          },
         bindingFunction: {(selectSatement) in
@@ -651,7 +649,79 @@ class SQLiteDatabase
         
         return result
     }
+    //select winner
+    func selectWinnerNameByTicketID(id:Int32) -> String{
+        var result = String()
+       
+        let selectStatementQuery = "SELECT CustomerName FROM Ticket WHERE ID=?"
+        selectWithQuery(
+        selectStatementQuery,
+        eachRow: { (id) in
+        //create a movie object from each result
+        let winnerName = String(cString:sqlite3_column_text(id, 0))
+       
+            result = winnerName
+         },
+        bindingFunction: {(selectSatement) in
+       
+            sqlite3_bind_int(selectSatement, 1, id)
+           })
+        
+        return result
+    }
     
+    
+    //draw margin winner
+   //TicketNOArrayForDraw
+    func selectTicketNoAndIDByRaffleID(id:Int32) -> [TicketNOArrayForDraw]{
+        var result = [TicketNOArrayForDraw]()
+        
+       
+        let selectStatementQuery = "SELECT ID, TicketNumber FROM Ticket WHERE RaffleID=?"
+        selectWithQuery(
+        selectStatementQuery,
+        eachRow: { (id) in
+        //create a movie object from each result
+         let ticket = TicketNOArrayForDraw(
+               ID: sqlite3_column_int(id, 0),
+               ticketNumber: sqlite3_column_int(id, 1)
+               
+           )
+            
+                 result += [ticket]
+         },
+        bindingFunction: {(selectSatement) in
+       
+            sqlite3_bind_int(selectSatement, 1, id)
+            
+           })
+        
+        return result
+    }
+    //select ticketnumber
+    func selectAllTicketNoByRaffleID(raffleId:Int32) -> [Int32]?{
+           var result = [Int32]()
+           
+          
+           let selectStatementQuery = "SELECT TicketNumber FROM Ticket WHERE RaffleID=?"
+           selectWithQuery(
+           selectStatementQuery,
+           eachRow: { (id) in
+           //create a movie object from each result
+            let ticketnumber = sqlite3_column_int(id, 0)
+           
+               
+                     result += [ticketnumber]
+            },
+           bindingFunction: {(selectSatement) in
+          
+               sqlite3_bind_int(selectSatement, 1, raffleId)
+               
+              })
+           
+           return result
+       }
+       
     
     
     func deleteRaffleBy(id:Int32){
