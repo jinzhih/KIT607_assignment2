@@ -20,6 +20,7 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
     var rafflePrice = 5
     var launtchStatus = 0
     var drawStatus = 0
+    var winnerQty = 1
 
     @IBOutlet weak var raffleNameTextField: UITextField!
     
@@ -28,6 +29,7 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var createNewRaffleButton: UIButton!
     
+    @IBOutlet weak var winnerQtyTextField: UITextField!
     @IBOutlet weak var raffleDescriptionTextField: UITextField!
     
     @IBOutlet weak var rafflePriceTextField: UITextField!
@@ -74,7 +76,7 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
         maxTicketNumberTextField.delegate = self
         rafflePriceTextField.delegate = self
         raffleDescriptionTextField.delegate = self
-        
+        winnerQtyTextField.delegate = self
         
           
         
@@ -108,6 +110,10 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         raffleDescriptionTextField.endEditing(true)
+        winnerQtyTextField.endEditing(true)
+        raffleNameTextField.endEditing(true)
+        maxTicketNumberTextField.endEditing(true)
+        rafflePriceTextField.endEditing(true)
         return true
     }
     
@@ -120,9 +126,11 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
         rafflePrice = Int( rafflePriceTextField.text!) ?? 5
         launtchStatus = 0
         drawStatus = 0
-        
-        
-        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty:1))
+        winnerQty=Int(winnerQtyTextField.text!) ?? 1
+        //verify Int
+        let isInt = isStringAnInt(string: winnerQtyTextField.text!)
+        print(isInt)
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)))
         
         var refreshAlert=UIAlertController(title: "RaffleCreated", message: "", preferredStyle: .alert)
 
@@ -138,7 +146,10 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
 
         
     }
-    
+   
+    func isStringAnInt(string: String) -> Bool {
+        return Int(string) != nil
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "GoRaffleList" {
@@ -155,7 +166,7 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
            
         }
     }
-    
+   
     
     
     

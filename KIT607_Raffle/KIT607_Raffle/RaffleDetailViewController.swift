@@ -23,6 +23,7 @@ class RaffleDetailViewController: UIViewController {
     @IBOutlet weak var drawType: UILabel!
     @IBOutlet weak var drawLimit: UILabel!
     @IBOutlet weak var drawPrice: UILabel!
+    @IBOutlet weak var winnerQty: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +44,7 @@ class RaffleDetailViewController: UIViewController {
                 drawType.text = displayDrawType
                 drawLimit.text = String(displayRaffle.maxNumber)
                 drawPrice.text = String(displayRaffle.ticketPrice)
+                winnerQty.text = String( displayRaffle.winQty)
                 
                 
                    

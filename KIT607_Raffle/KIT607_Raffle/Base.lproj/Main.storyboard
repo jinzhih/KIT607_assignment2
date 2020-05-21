@@ -1253,7 +1253,7 @@
                                                                     <constraint firstAttribute="height" constant="34" id="VOy-w4-Szg"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xWg-mx-TcX">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xWg-mx-TcX" userLabel="Winner Qty">
                                                                 <rect key="frame" x="25" y="32.5" width="135" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="H6e-Gq-boX"/>
@@ -1397,6 +1397,7 @@
                         <outlet property="raffleDescriptionTextField" destination="TV6-5o-YnU" id="IQS-k0-SDz"/>
                         <outlet property="raffleNameTextField" destination="GHT-qB-aT1" id="RHo-4R-Vb0"/>
                         <outlet property="rafflePriceTextField" destination="KT0-FW-kFf" id="qx4-yr-kUm"/>
+                        <outlet property="winnerQtyTextField" destination="xWg-mx-TcX" id="COe-Jg-cCK"/>
                         <segue destination="JL3-8X-cP8" kind="show" identifier="GoRaffleList" id="mo3-ot-nOX"/>
                     </connections>
                 </viewController>
@@ -2038,7 +2039,7 @@
                                                         <rect key="frame" x="0.0" y="220" width="414" height="250"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="6Y2-mZ-FG2">
-                                                                <rect key="frame" x="20" y="14" width="159" height="177"/>
+                                                                <rect key="frame" x="20" y="14" width="159" height="208.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ij-cV-1fy">
                                                                         <rect key="frame" x="0.0" y="0.0" width="98.5" height="20.5"/>
@@ -2076,17 +2077,16 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner Qty:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGL-Nc-y2n">
+                                                                        <rect key="frame" x="0.0" y="188" width="91" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                             </stackView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98q-dl-C5y">
-                                                                <rect key="frame" x="20" y="203" width="0.0" height="0.0"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="BKs-Yt-veP">
-                                                                <rect key="frame" x="188" y="14" width="150" height="176"/>
+                                                                <rect key="frame" x="188" y="14" width="150" height="207.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyM-NW-8fP">
                                                                         <rect key="frame" x="0.0" y="0.0" width="93.5" height="19.5"/>
@@ -2120,6 +2120,12 @@
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxr-cP-AQf">
                                                                         <rect key="frame" x="0.0" y="155.5" width="42" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmC-4S-jrX" userLabel="Winner Qty">
+                                                                        <rect key="frame" x="0.0" y="187" width="42" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -2299,6 +2305,7 @@
                         <outlet property="drawPrice" destination="Mxr-cP-AQf" id="8Cv-MO-ZET"/>
                         <outlet property="drawType" destination="Bca-5j-Bha" id="3fj-WM-dqs"/>
                         <outlet property="nameRaffle" destination="qyM-NW-8fP" id="oIn-oT-nuk"/>
+                        <outlet property="winnerQty" destination="DmC-4S-jrX" id="d8r-3v-XN7"/>
                         <segue destination="Od4-qE-f2R" kind="show" identifier="SellingTicket" id="hbe-7k-8a8"/>
                         <segue destination="q4z-gI-INz" kind="show" identifier="ShowTicketList" id="7hi-dA-LJE"/>
                         <segue destination="i0G-1f-09E" kind="show" identifier="DrawWinner" id="RS0-Pc-XH1"/>
