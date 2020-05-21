@@ -49,3 +49,5 @@ struct TicketNOArrayForDraw {
     var ID: Int32
     var ticketNumber : Int32
 }
+
+

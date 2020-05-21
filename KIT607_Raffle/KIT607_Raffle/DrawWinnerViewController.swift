@@ -25,6 +25,11 @@ class DrawWinnerViewController: UIViewController {
     }
     
     @IBAction func drawWinnerBtn(_ sender: UIButton) {
+        let verifyFlag1 = validateTextField(value: lowScoreTextField)
+        let verifyFlag2 = validateTextField(value: highScoreTextField)
+        if(!verifyFlag1 || !verifyFlag2){
+            return
+        }
         
         lowScore = Int(lowScoreTextField.text!)!
         highScore = Int(highScoreTextField.text!)!
@@ -45,14 +50,21 @@ class DrawWinnerViewController: UIViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
+    //verify textfield
+  func validateTextField(value: UITextField)  -> Bool {
+        
+            if (value.text == "") {
+                let warningAlert=UIAlertController(title: "Verification", message: "Please enter in Text Box", preferredStyle: .alert)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
+                warningAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                         
+                         }))
+                present(warningAlert, animated: true, completion: nil)
+                return  false
+            }
+   
+            return true
+       
+        }
 }

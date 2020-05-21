@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y2u-aq-u1d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JL3-8X-cP8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -345,7 +345,7 @@
                                                         <rect key="frame" x="0.0" y="259" width="414" height="250"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="rPh-Ge-eJb">
-                                                                <rect key="frame" x="20" y="14" width="150" height="208.5"/>
+                                                                <rect key="frame" x="20" y="14" width="150" height="240"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-E5-HIq">
                                                                         <rect key="frame" x="0.0" y="0.0" width="98.5" height="20.5"/>
@@ -389,10 +389,16 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avaliable Qty:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rj1-7j-c00">
+                                                                        <rect key="frame" x="0.0" y="219.5" width="104" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="cJT-6M-Frq">
-                                                                <rect key="frame" x="179" y="14" width="150" height="207.5"/>
+                                                                <rect key="frame" x="179" y="14" width="150" height="268.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFu-Nw-Cid">
                                                                         <rect key="frame" x="0.0" y="0.0" width="47" height="19.5"/>
@@ -430,8 +436,14 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGv-J8-n7F">
-                                                                        <rect key="frame" x="0.0" y="187" width="124.5" height="20.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGv-J8-n7F">
+                                                                        <rect key="frame" x="0.0" y="187" width="50" height="50"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rest tickets qty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlI-dm-cSC">
+                                                                        <rect key="frame" x="0.0" y="248" width="113.5" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -441,7 +453,7 @@
                                                                     <constraint firstAttribute="width" constant="150" id="cHr-vd-NbO"/>
                                                                 </constraints>
                                                             </stackView>
-                                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dak-Ic-1Nt">
+                                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Dak-Ic-1Nt">
                                                                 <rect key="frame" x="329" y="163" width="80" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="CIq-mc-4f1"/>
@@ -570,6 +582,8 @@
                         <outlet property="raffleDes" destination="j6o-tx-hvS" id="uam-jT-kPj"/>
                         <outlet property="raffleNameLable" destination="vFu-Nw-Cid" id="d7H-Lm-h4E"/>
                         <outlet property="rafflePrice" destination="aLt-zI-lSa" id="vyA-VL-skl"/>
+                        <outlet property="restTicketQty" destination="zlI-dm-cSC" id="VVr-wB-8ac"/>
+                        <outlet property="stepperForticketQty" destination="Dak-Ic-1Nt" id="Zmf-Ka-Gwm"/>
                         <outlet property="ticketQty" destination="xco-X9-AGM" id="HPJ-Lo-r3u"/>
                         <segue destination="gC4-KE-C9p" kind="show" identifier="FindCustomer" id="kKw-Om-anO"/>
                         <segue destination="q4z-gI-INz" kind="show" identifier="GoTicketList" id="ALi-hF-VRu"/>
@@ -577,7 +591,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qt-0l-5fn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3064" y="-33"/>
+            <point key="canvasLocation" x="3146" y="403"/>
         </scene>
         <!--Ticket Detail View Controller-->
         <scene sceneID="0M7-vd-ZLZ">
@@ -1961,7 +1975,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pK-up-bqM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4140.579710144928" y="-60.267857142857139"/>
+            <point key="canvasLocation" x="3929" y="-60"/>
         </scene>
         <!--Raffle Detail View Controller-->
         <scene sceneID="noJ-K4-qTZ">
@@ -2559,7 +2573,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7hi-dA-LJE"/>
+        <segue reference="ALi-hF-VRu"/>
         <segue reference="hbe-7k-8a8"/>
     </inferredMetricsTieBreakers>
     <resources>

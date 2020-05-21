@@ -14,6 +14,7 @@ class CustomerCusTableViewController: UIViewController {
      var raffleTemp : Raffle?
     var searching = false
     var ticketQty : Int!
+    var restTicketQty : Int!
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var customerTable: UITableView!
@@ -142,8 +143,8 @@ var cell = tableView.dequeueReusableCell(withIdentifier: "CustomerCell", for: in
             sellViewController.customer = selectedCustomer
             let  selectedRaffle = raffleTemp
             sellViewController.raffleselling = selectedRaffle
-            print(ticketQty)
             sellViewController.numberOfTicket = ticketQty
+            sellViewController.restQtyOfTicket = restTicketQty
         }
         
         }

@@ -118,6 +118,7 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func newRaffleClicked(_ sender: UIButton) {
+        
         raffleName = raffleNameTextField.text ?? "Raffle"
         raffleDes = raffleDescriptionTextField.text ?? "null"
         
