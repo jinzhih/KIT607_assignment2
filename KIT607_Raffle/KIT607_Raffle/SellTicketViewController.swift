@@ -12,9 +12,8 @@ class SellTicketViewController: UIViewController {
     var raffle : Raffle?
     var customer : Customer?
     var raffleselling : Raffle?
-    
-
-   var raffleID = 1
+    var ticketsArray = [Int32]()
+    var raffleID = 1
     var raffleName = ""
     var ticketPrice = 1
     var customerID = 1
@@ -22,9 +21,9 @@ class SellTicketViewController: UIViewController {
     var purchaseDate = ""
     var winStatus = 0
     var ticketNumber = 1
-   
+    var raffleType = 0
+    var maxNumber = 0
     var numberOfTicket : Int!
-
     var displayDrawType=""
     @IBOutlet weak var raffleNameLable: UILabel!
     
@@ -63,31 +62,94 @@ class SellTicketViewController: UIViewController {
     }
     
     @IBAction func createNewTicket(_ sender: UIButton) {
-        raffleID = Int(raffleselling!.ID)
-        raffleName = raffleselling!.name
-        ticketPrice = Int(raffleselling!.ticketPrice)
-        customerID = Int(customer!.ID)
-        customerName = customer!.customerName
-        let dateformatter = DateFormatter() //因为数据库存的购买日类型是string
-        dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
-        purchaseDate = dateformatter.string(from: Date()) //TODO 取当前时间 Fixed
-        ticketNumber = 2
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+         raffleID = Int(raffleselling!.ID)
+         raffleName = raffleselling!.name
+         raffleType = Int(raffleselling!.type)
+         ticketPrice = Int(raffleselling!.ticketPrice)
+         customerID = Int(customer!.ID)
+         customerName = customer!.customerName
+         maxNumber = Int(raffleselling!.maxNumber)
+         
+         let dateformatter = DateFormatter()
+         dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+         purchaseDate = dateformatter.string(from: Date())
+         // Assign a ticket number
+         if raffleType == 0 {
+             //For normal raffle
+             let currentMaxNumber = database.selectMaxTicketBy(id: Int32(raffleID)) ?? 0
+             ticketNumber = Int(currentMaxNumber + 1)
+             // Insert number of ticket
+             var a = 0
+             while a < numberOfTicket {
+                 database.insert(ticket: Ticket(raffleID:Int32(raffleID),  raffleName:raffleName, ticketPrice:Int32(ticketPrice),customerID:Int32(customerID), customerName: customerName, purchaseDate: purchaseDate, winStatus: Int32(winStatus), ticketNumber: Int32(ticketNumber)))
+                 ticketNumber += 1
+                 a+=1
+             }
+         } else if raffleType == 1 {
+             //for margin raffle
+             ticketsArray = database.selectAllTicketNumberByRaffleID(raffleId: Int32(raffleID)) ?? [Int32]()
+             let saledTicketNumber = ticketsArray.count
+             if saledTicketNumber == 0 {
+                 // No ticket have been saled before
+                 var generatedNumberArray = [Int]()
+                 var a = 0
+                 while a < numberOfTicket {
+                     ticketNumber = Int.random(in: 1...maxNumber)
+                     generatedNumberArray.append(ticketNumber)
+                     database.insert(ticket: Ticket(raffleID:Int32(raffleID),  raffleName:raffleName, ticketPrice:Int32(ticketPrice),customerID:Int32(customerID), customerName: customerName, purchaseDate: purchaseDate, winStatus: Int32(winStatus), ticketNumber: Int32(ticketNumber)))
+                     var flag = true
+                     while flag {
+                         var nextTicketNumber = Int.random(in: 1...maxNumber)
+                         if  (generatedNumberArray.contains(nextTicketNumber)) {
+                             continue
+                         } else {
+                             ticketNumber = nextTicketNumber
+                             flag = false
+                         }
+                     }
+                     a+=1
+                 }
+                 ticketNumber = Int.random(in: 1...maxNumber)
+                 
+             } else {
+                 let totalTicketArray = [Int32](1...Int32(maxNumber))
+                 let restTicketNumberSet = Set(ticketsArray).symmetricDifference(totalTicketArray)
+                 let restTicketNumberArray = [Int32](restTicketNumberSet)
+                 let restTicketArrayLength = restTicketNumberArray.count
+                 
+                 var generatedIndexArray = [Int]()
+                 var a = 0
+                 while a < numberOfTicket {
+                     let randomIndex = Int.random(in: 1...restTicketArrayLength)
+                     ticketNumber = Int(restTicketNumberArray[randomIndex])//TODO crash
+                     
+                     generatedIndexArray.append(ticketNumber)
+                     database.insert(ticket: Ticket(raffleID:Int32(raffleID),  raffleName:raffleName, ticketPrice:Int32(ticketPrice),customerID:Int32(customerID), customerName: customerName, purchaseDate: purchaseDate, winStatus: Int32(winStatus), ticketNumber: Int32(ticketNumber)))
+                     
+                     var flag = true
+                     while flag {
+                         var nextRandomIndex = Int.random(in: 1...restTicketArrayLength)
+                         if  (generatedIndexArray.contains(nextRandomIndex)) {
+                             continue
+                         } else {
+                             ticketNumber = Int(restTicketNumberArray[nextRandomIndex])
+                             flag = false
+                         }
+                     }
+                     a+=1
+                 }
+             }
+         }
         
-        
-        
-        
-        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
-       database.insert(ticket: Ticket(raffleID:Int32(raffleID),  raffleName:raffleName, ticketPrice:Int32(ticketPrice),customerID:Int32(customerID), customerName: customerName, purchaseDate: purchaseDate, winStatus: Int32(winStatus), ticketNumber: Int32(ticketNumber)))
-        
-//        database.insert(ticket: Ticket(raffleID:3,  raffleName:"raffle6666", ticketPrice:0,customerID:30, customerName: "hello", purchaseDate: "89/987/99", winStatus:0, ticketNumber: 1003))
-        
-       
-        let refreshAlert=UIAlertController(title: "TicketCreated", message: "", preferredStyle: .alert)
+         let refreshAlert=UIAlertController(title: "TicketCreated", message: "", preferredStyle: .alert)
 
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-                 self.performSegue(withIdentifier: "GoTicketList", sender: self)
-                 }))
-        present(refreshAlert, animated: true, completion: nil)
+
+         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                  self.performSegue(withIdentifier: "GoTicketList", sender: self)
+                  }))
+         present(refreshAlert, animated: true, completion: nil)
+
         
     }
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
@@ -99,23 +161,7 @@ class SellTicketViewController: UIViewController {
         performSegue(withIdentifier: "FindCustomer", sender: self)
     }
     
-//    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
-//       {
-//           super.prepare(for: segue, sender: sender)
-//           if segue.identifier == "FindCustomer"
-//           {         guard let   detailViewController = segue.destination as? CustomerCusTableViewController else
-//           {
-//               fatalError("Unexpected destination: \(segue.destination)")
-//
-//               }
-//
-//               let  selectedRaffle = raffleselling
-//               detailViewController.raffleTemp = selectedRaffle
-//
-//
-//           }
-//
-//           }
+
     
     override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
     {

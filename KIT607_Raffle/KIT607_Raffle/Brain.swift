@@ -13,6 +13,7 @@ public struct Raffle {
     var launchStatus: Int32
     var drawStatus: Int32
     var drawTime: String
+    var winQty: Int32
     
     
   

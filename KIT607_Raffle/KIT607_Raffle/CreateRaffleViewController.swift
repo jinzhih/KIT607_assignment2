@@ -122,7 +122,7 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
         drawStatus = 0
         
         
-        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate))
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty:1))
         
         var refreshAlert=UIAlertController(title: "RaffleCreated", message: "", preferredStyle: .alert)
 
