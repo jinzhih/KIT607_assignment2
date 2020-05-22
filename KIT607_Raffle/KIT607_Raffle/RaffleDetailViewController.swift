@@ -62,7 +62,7 @@ class RaffleDetailViewController: UIViewController {
         //justify if sold tickets
         if(soldTicketsYes(id: raffle!.ID)){
             let deleteSuccessAlert=UIAlertController(title: "CANNOT delete", message: "There are sold tickets", preferredStyle: .alert)
-            deleteSuccessAlert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: nil))
+            deleteSuccessAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                   
                
             present(deleteSuccessAlert, animated: true, completion: nil)

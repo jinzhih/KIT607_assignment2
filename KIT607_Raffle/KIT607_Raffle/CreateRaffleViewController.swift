@@ -27,6 +27,7 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var drawDateTextField: UITextField!
     @IBOutlet weak var maxTicketNumberTextField: UITextField!
     
+    @IBOutlet weak var winnerQtyLable: UILabel!
     @IBOutlet weak var createNewRaffleButton: UIButton!
     
     @IBOutlet weak var winnerQtyTextField: UITextField!
@@ -44,30 +45,22 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
             normalRaffleBtn.isSelected = true
             marginRaffleBtn.isSelected = false
             raffleType = 0
-            print("normal")
-            print(raffleType)
+            
+            winnerQtyLable.isHidden = false
+              winnerQtyTextField.isHidden = false
         } else if sender.tag == 2 {
             marginRaffleBtn.isSelected = true
             normalRaffleBtn.isSelected = false
             raffleType = 1
-            print("margin")
-            print(raffleType)
+            winnerQtyLable.isHidden = true
+            winnerQtyTextField.isHidden = true
         }
     }
     
   
 
  let datePicker = UIDatePicker()
-  //  datePciker.minimumDate = Date()
-    
-    
-//        let dateFormatter = DateFormatter()
-//
-//        dateFormatter.dateStyle = DateFormatter.Style.short
-//        dateFormatter.timeStyle = DateFormatter.Style.short
-//
-//        let strDate = dateFormatter.string(from: raffleDataPicker.date)
-//        raffleDatePick.text = strDate
+
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,8 +109,32 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
         rafflePriceTextField.endEditing(true)
         return true
     }
-    
+    //raffleDescriptionTextField
     @IBAction func newRaffleClicked(_ sender: UIButton) {
+        let validator = isAllFieldFilled(name: ((raffleNameTextField?.text) ?? ""), description: ((raffleDescriptionTextField?.text) ?? ""), maxTicketNumber: maxTicketNumberTextField.text!, price: rafflePriceTextField.text!, winnerQty: winnerQtyTextField.text!,date:((drawDateTextField?.text) ?? "") )
+        let validatorForMargin = isAllFieldFilledForMargin(name: ((raffleNameTextField?.text) ?? ""), description: ((raffleDescriptionTextField?.text) ?? ""), maxTicketNumber: maxTicketNumberTextField.text!, price: rafflePriceTextField.text!,date:((drawDateTextField?.text) ?? ""))
+       
+        if(raffleType == 0){
+             
+            if (!validator){
+                       alertSomeTextFieldNull()
+                
+                       return
+                   }
+            else if (!isWinnerQtySetRight()){
+                alertWinnerSetProblem()
+                return
+            }
+           
+        }else if(raffleType == 1){
+            if (!validatorForMargin){
+                       alertSomeTextFieldNull()
+                       return
+                   }
+        
+        }
+        
+        
         
         raffleName = raffleNameTextField.text ?? "Raffle"
         raffleDes = raffleDescriptionTextField.text ?? "null"
@@ -128,9 +145,9 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
         launtchStatus = 0
         drawStatus = 0
         winnerQty=Int(winnerQtyTextField.text!) ?? 1
-        //verify Int
-        let isInt = isStringAnInt(string: winnerQtyTextField.text!)
-        print(isInt)
+        //verify
+        
+        
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)))
         
         var refreshAlert=UIAlertController(title: "RaffleCreated", message: "", preferredStyle: .alert)
@@ -147,10 +164,82 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
 
         
     }
-   
-    func isStringAnInt(string: String) -> Bool {
-        return Int(string) != nil
+   //validate textfield if no input or string return false
+     
+    func isAnInt(string: String) -> Bool {
+        if( Int(string) != nil)
+        {
+            return true
+            
+        }
+            return false
     }
+    // validate textfield if no input
+    
+      func isAnString(string: String) -> Bool {
+          if( string != "")
+          {
+              return true
+              
+          }
+              return false
+      }
+    
+    //validate all the field
+    func isAllFieldFilled(name: String, description: String, maxTicketNumber: String, price: String, winnerQty: String, date: String) -> Bool{
+        let isNameNull = isAnString(string: name)
+        let isDesNull = isAnString(string: description)
+        let isMaxTicketNumberInt = isAnInt(string: maxTicketNumber)
+        let isPriceInt = isAnInt(string: price)
+        let isWinnerQtyInt = isAnInt(string: winnerQty)
+        let isDateNull = isAnString(string: date)
+        
+        if(isNameNull && isDesNull&&isMaxTicketNumberInt&&isPriceInt&&isWinnerQtyInt&&isDateNull){
+            return true
+        }
+        return false
+    }
+    
+    
+    func isAllFieldFilledForMargin(name: String, description: String, maxTicketNumber: String, price: String, date: String) -> Bool{
+        let isNameNull = isAnString(string: name)
+        let isDesNull = isAnString(string: description)
+        let isMaxTicketNumberInt = isAnInt(string: maxTicketNumber)
+        let isPriceInt = isAnInt(string: price)
+        let isDateNull = isAnString(string: date)
+        if(isNameNull && isDesNull&&isMaxTicketNumberInt&&isPriceInt&&isDateNull){
+            return true
+        }
+        return false
+    }
+    // if Winner Qty should be less than max ticket number
+    func isWinnerQtySetRight()-> Bool{
+        let difference = Int(winnerQtyTextField.text!)! - Int( maxTicketNumberTextField.text!)!
+        if (difference <= 0){
+            
+            return true
+        }
+        return false
+    }
+    
+    
+    //Alert Function
+    func alertSomeTextFieldNull(){
+        let inputAlert=UIAlertController(title: "Alert", message: "Plesase input raffle information", preferredStyle: .alert)
+                inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                      
+                   
+                present(inputAlert, animated: true, completion: nil)
+    }
+    
+    func alertWinnerSetProblem(){
+        let inputAlert=UIAlertController(title: "Alert", message: "Winner Qty should be less than max ticket number", preferredStyle: .alert)
+        inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+              
+           
+        present(inputAlert, animated: true, completion: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "GoRaffleList" {
