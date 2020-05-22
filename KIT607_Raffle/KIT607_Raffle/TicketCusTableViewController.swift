@@ -21,10 +21,12 @@ class TicketCusTableViewController: UIViewController {
         ticketTable.dataSource = self
        var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
          tickets1 = database.selectTicketBy(id: Int32(raffleID))
-        //TODO raffleID from sell ticket
-        print(tickets1)
+    
     }
-   }
+    @IBAction func returnRaffleDetial(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+}
 extension TicketCusTableViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tickets1.count

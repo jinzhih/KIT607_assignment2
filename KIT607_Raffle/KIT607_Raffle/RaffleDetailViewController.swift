@@ -13,6 +13,7 @@ class RaffleDetailViewController: UIViewController {
     var displayDrawType=""
     var lowscore : Int!
     var highscore : Int!
+    var ticketsArray = [Int32]()
 
     @IBOutlet var nameRaffle: UILabel!
     
@@ -56,6 +57,21 @@ class RaffleDetailViewController: UIViewController {
         performSegue(withIdentifier: "SellingTicket", sender: self)
     }
     
+    //delte raffle
+    @IBAction func deleteRaffleBtn(_ sender: UIButton) {
+        //justify if sold tickets
+        if(soldTicketsYes(id: raffle!.ID)){
+            let deleteSuccessAlert=UIAlertController(title: "CANNOT delete", message: "There are sold tickets", preferredStyle: .alert)
+            deleteSuccessAlert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: nil))
+                  
+               
+            present(deleteSuccessAlert, animated: true, completion: nil)
+            return
+        }
+        alertDelete(id: raffle!.ID)
+      
+    }
+    
     @IBAction func ticketListShowBtn(_ sender: UIButton) {
               performSegue(withIdentifier: "ShowTicketList", sender: self)
         
@@ -95,6 +111,10 @@ class RaffleDetailViewController: UIViewController {
                  let DrawWinnerViewController = segue.destination as! DrawWinnerViewController
              DrawWinnerViewController.raffleID = Int(raffle!.ID)
             }
+           else if segue.identifier == "returnRaffleList"
+           {
+            print("delet successed")
+           }
             else
            {
                fatalError("Unexpected destination: \(segue.destination)")
@@ -102,9 +122,50 @@ class RaffleDetailViewController: UIViewController {
            
            }
     
+    //Alert Function
+    func alertDelete(id: Int32){
+        let warningAlert=UIAlertController(title: "Delete", message: "Are you want to delete raffle", preferredStyle: .alert)
+        
+        
+        warningAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            
+            let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
+            database.deleteRaffleBy(id: id)
+            self.deleteSuccessAlert()
+            
+        }))
+        warningAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+            //returnRaffleList
+            
+            // self.dismiss(animated: true, completion: nil)
+        }))
+        present(warningAlert, animated: true, completion: nil)
+        
+    }
+    
+    //Delet success function
+    func deleteSuccessAlert(){
+        let deleteSuccessAlert=UIAlertController(title: "Delete", message: "Succesfully delete", preferredStyle: .alert)
+        deleteSuccessAlert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: {(action: UIAlertAction!) in
+            self.performSegue(withIdentifier: "returnRaffleList", sender: self)        }))
+              
+           
+               present(deleteSuccessAlert, animated: true, completion: nil)
+    }
 
-
-       
+    // delete vertification if have sold tickets no delete
+    func soldTicketsYes(id: Int32)  -> Bool {
+             let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
+           ticketsArray = database.selectAllTicketNumberByRaffleID(raffleId: id) ?? [Int32]();
+           let existingTicketArrayLength = ticketsArray.count
+             if (existingTicketArrayLength > 0) {
+                 
+                 return  true
+             }
+    
+             return false
+        
+         }
         
  
     

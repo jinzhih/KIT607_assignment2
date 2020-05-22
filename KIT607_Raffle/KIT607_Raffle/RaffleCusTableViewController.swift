@@ -33,6 +33,16 @@ class RaffleCusTableViewController: UIViewController {
         print(raffles1)
         
     }
+  //Go to create raffle view
+    @IBAction func newRaffleBtn(_ sender: UIButton) {
+          performSegue(withIdentifier: "newRaffleSegue", sender: self)
+    }
+    
+    //Go to customer
+    
+    @IBAction func goCustomerBtn(_ sender: UIButton) {
+            performSegue(withIdentifier: "goCustomerSegue", sender: self)
+    }
     
 }
     extension RaffleCusTableViewController: UITableViewDataSource{

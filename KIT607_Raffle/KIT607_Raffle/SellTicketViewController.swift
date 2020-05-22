@@ -40,7 +40,7 @@ class SellTicketViewController: UIViewController {
     @IBOutlet weak var customerNameTextField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(customerNameTextField.text)
+        
  let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
         ticketsArray = database.selectAllTicketNumberByRaffleID(raffleId: raffleselling!.ID) ?? [Int32]();
   let existingTicketArrayLength = ticketsArray.count
