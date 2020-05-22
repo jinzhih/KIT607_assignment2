@@ -12,6 +12,7 @@
 		773830812475512B005BFA4F /* DrawWinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773830802475512B005BFA4F /* DrawWinnerViewController.swift */; };
 		7738308324777EBA005BFA4F /* validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738308224777EBA005BFA4F /* validation.swift */; };
 		773830852477A240005BFA4F /* RaffleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773830842477A240005BFA4F /* RaffleEditViewController.swift */; };
+		773830872477E8EB005BFA4F /* EditTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773830862477E8EB005BFA4F /* EditTicketViewController.swift */; };
 		773F26602459A7240009D5FB /* CreateRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F265F2459A7240009D5FB /* CreateRaffleViewController.swift */; };
 		77942293245562CE00B3CC24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77942292245562CE00B3CC24 /* AppDelegate.swift */; };
 		77942295245562CE00B3CC24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77942294245562CE00B3CC24 /* SceneDelegate.swift */; };
@@ -42,6 +43,7 @@
 		773830802475512B005BFA4F /* DrawWinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawWinnerViewController.swift; sourceTree = "<group>"; };
 		7738308224777EBA005BFA4F /* validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validation.swift; sourceTree = "<group>"; };
 		773830842477A240005BFA4F /* RaffleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleEditViewController.swift; sourceTree = "<group>"; };
+		773830862477E8EB005BFA4F /* EditTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTicketViewController.swift; sourceTree = "<group>"; };
 		773F265F2459A7240009D5FB /* CreateRaffleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRaffleViewController.swift; sourceTree = "<group>"; };
 		7794228F245562CE00B3CC24 /* KIT607_Raffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KIT607_Raffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77942292245562CE00B3CC24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				77942292245562CE00B3CC24 /* AppDelegate.swift */,
 				77942294245562CE00B3CC24 /* SceneDelegate.swift */,
 				77942298245562CE00B3CC24 /* Main.storyboard */,
+				773830862477E8EB005BFA4F /* EditTicketViewController.swift */,
 				773830842477A240005BFA4F /* RaffleEditViewController.swift */,
 				773830802475512B005BFA4F /* DrawWinnerViewController.swift */,
 				77FE92832468498B00FDDFB4 /* CustomerTableViewCell.swift */,
@@ -216,6 +219,7 @@
 				773F26602459A7240009D5FB /* CreateRaffleViewController.swift in Sources */,
 				779422A724556C5000B3CC24 /* SQliteDatabase.swift in Sources */,
 				773830852477A240005BFA4F /* RaffleEditViewController.swift in Sources */,
+				773830872477E8EB005BFA4F /* EditTicketViewController.swift in Sources */,
 				779422AB2455845400B3CC24 /* RaffleUITableViewCell.swift in Sources */,
 				77BC401024639B920025CB80 /* RaffleCusTableViewCell.swift in Sources */,
 				77FE9282246846F900FDDFB4 /* CustomerCusTableViewController.swift in Sources */,

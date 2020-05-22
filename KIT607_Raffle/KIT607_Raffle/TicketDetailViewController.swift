@@ -11,8 +11,9 @@ import UIKit
 class TicketDetailViewController: UIViewController {
 var ticket : Ticket?
     var raffle: Raffle?
-   
+    var isRaffleClose = true
     var drawDateFlag = Date()
+    var newcustomerName = ""
     @IBOutlet weak var raffleName: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var drawDate: UILabel!
@@ -53,14 +54,18 @@ var ticket : Ticket?
                        if(drawDateFlag >
                            Date()){
                            winStatusShow.image = imgArray[2]
+                        isRaffleClose = false
+                        
                       //     viewDidLoad()
                         return
                        }else if(winStatus.text == "0"){
                            winStatusShow.image = imgArray[1]
+                       
                         return
                          //  viewDidLoad()
                        }else if(winStatus.text == "1"){
                            winStatusShow.image = imgArray[0]
+                  
                           // viewDidLoad()
                        }
                       
@@ -89,14 +94,40 @@ var ticket : Ticket?
           dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func editTicketBtn(_ sender: UIButton) {
+        //goToEditTicketSegue
+           if(!isRaffleClose){
+                     performSegue(withIdentifier: "goToEditTicketSegue", sender: self)
+                      return
+                  }
+                  editImpossibleAlert()
+        
     }
-    */
+    func editImpossibleAlert(){
+           let editAlert=UIAlertController(title: "CANNOT EDIT", message: "Raffle has already drawn", preferredStyle: .alert)
+           editAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action: UIAlertAction!) in
+                 }))
+                 
+                  present(editAlert, animated: true, completion: nil)
+       }
+   
+    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
+       {
+           super.prepare(for: segue, sender: sender)
+           if segue.identifier == "goToEditTicketSegue"
+           {
+             
+            let   editViewController = segue.destination as! EditTicketViewController
+               let  selectedRaffle = ticket
+           editViewController.ticket = selectedRaffle
+           }
+           
+            else
+           {
+               fatalError("Unexpected destination: \(segue.destination)")
+           }
+           
+           }
+    
 
 }

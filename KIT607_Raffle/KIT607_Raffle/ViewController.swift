@@ -41,8 +41,14 @@ var ticketID : [Int32]?
        // ticketID=database.selectWinnerBy(raffleId: 1, difference: 1)
         //ticketID = database.selectAllTicketNoByRaffleID(raffleId: 1)
        // print(ticketID!)
-        tickets2=database.selectTicketNoAndIDByRaffleID(id: 1)
-        print(tickets2)
+       
+        raffles = database.selectAllRaffles()
+        print(raffles)
+     
+       
+             database.deleteTicketBy(id: 30)
+          tickets2=database.selectTicketNoAndIDByRaffleID(id: 2)
+         print(tickets2)
     }
 
 }
