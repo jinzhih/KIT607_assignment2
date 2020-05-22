@@ -88,7 +88,10 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func donePressed(){
-        drawDateTextField.text = "\(datePicker.date)"
+        let dateformatter = DateFormatter()
+         dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+       let  drawDate = dateformatter.string(from: datePicker.date)
+        drawDateTextField.text = drawDate
         self.view.endEditing(true)
     }
     
@@ -146,9 +149,10 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
         drawStatus = 0
         winnerQty=Int(winnerQtyTextField.text!) ?? 1
         //verify
-        
-        
-        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)))
+          let dateformatter = DateFormatter()
+               dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        let  drawDate = dateformatter.string(from: datePicker.date)
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: drawDate, winQty: Int32(winnerQty)))
         
         var refreshAlert=UIAlertController(title: "RaffleCreated", message: "", preferredStyle: .alert)
 

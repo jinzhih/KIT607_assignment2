@@ -10,7 +10,9 @@ import UIKit
 
 class TicketDetailViewController: UIViewController {
 var ticket : Ticket?
-    
+    var raffle: Raffle?
+   
+    var drawDateFlag = Date()
     @IBOutlet weak var raffleName: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var drawDate: UILabel!
@@ -20,12 +22,20 @@ var ticket : Ticket?
     @IBOutlet weak var purchaseDate: UILabel!
     @IBOutlet weak var winStatus: UILabel!
     
+    @IBOutlet weak var winStatusShow: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let  displayTicket = ticket
-        {
+        {//raffle draw time show
+            var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
+            raffle=database.selectRaffleBy(id: Int32(ticket!.raffleID))
+            drawDate.text = raffle?.drawTime
+            
+         
+           
+            
             raffleName.text = displayTicket.raffleName
             price.text = String(displayTicket.ticketPrice)
             ticketNO.text = String(displayTicket.ticketNumber)
@@ -34,10 +44,45 @@ var ticket : Ticket?
             purchaseDate.text = displayTicket.purchaseDate
             winStatus.text = String(displayTicket.winStatus)
             
+                       let imgArray = [#imageLiteral(resourceName: "Won"), #imageLiteral(resourceName: "Lose"), #imageLiteral(resourceName: "NotStart")]
+                       //if draw date over not show not started
+                       //yes show winstatus
+                      
+                       
+                       let drawDateFlag = convertDateFormat(inputDate: drawDate.text!)
+                       if(drawDateFlag >
+                           Date()){
+                           winStatusShow.image = imgArray[2]
+                      //     viewDidLoad()
+                        return
+                       }else if(winStatus.text == "0"){
+                           winStatusShow.image = imgArray[1]
+                        return
+                         //  viewDidLoad()
+                       }else if(winStatus.text == "1"){
+                           winStatusShow.image = imgArray[0]
+                          // viewDidLoad()
+                       }
+                      
+            
+            
+            
     //TODO search DrawDate according to Raffle ID
-                        
+        
+            
+            
         }
                       
+    }
+    
+    func convertDateFormat(inputDate: String) -> Date {
+
+         let olDateFormatter = DateFormatter()
+         olDateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+         let convertDateFormatter = DateFormatter()
+         convertDateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+         let newDate = convertDateFormatter.date(from: inputDate)
+        return newDate!
     }
     
     @IBAction func goToTicketTable(_ sender: UIButton) {

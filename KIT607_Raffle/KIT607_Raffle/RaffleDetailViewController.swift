@@ -46,9 +46,7 @@ class RaffleDetailViewController: UIViewController {
                 drawLimit.text = String(displayRaffle.maxNumber)
                 drawPrice.text = String(displayRaffle.ticketPrice)
                 winnerQty.text = String( displayRaffle.winQty)
-                
-                
-                   
+                 
                    
                }
     }
@@ -89,7 +87,7 @@ class RaffleDetailViewController: UIViewController {
     }
     
 
-    
+    //goToEditRaffleSegue
     
     override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
        {
@@ -106,6 +104,11 @@ class RaffleDetailViewController: UIViewController {
                 let ticketListViewController = segue.destination as! TicketCusTableViewController
             ticketListViewController.raffleID = Int(raffle!.ID)
            }
+            else if segue.identifier == "goToEditRaffleSegue"
+                      {
+                           let editRaffleViewController = segue.destination as! RaffleEditViewController
+                        editRaffleViewController.raffle = raffle
+                      }
             else if segue.identifier == "DrawWinner"
             {
                  let DrawWinnerViewController = segue.destination as! DrawWinnerViewController
@@ -146,12 +149,21 @@ class RaffleDetailViewController: UIViewController {
     //Delet success function
     func deleteSuccessAlert(){
         let deleteSuccessAlert=UIAlertController(title: "Delete", message: "Succesfully delete", preferredStyle: .alert)
-        deleteSuccessAlert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: {(action: UIAlertAction!) in
+        deleteSuccessAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action: UIAlertAction!) in
             self.performSegue(withIdentifier: "returnRaffleList", sender: self)        }))
               
            
                present(deleteSuccessAlert, animated: true, completion: nil)
     }
+    //update cnnot alert
+    func editImpossibleAlert(){
+        let editAlert=UIAlertController(title: "CANNOT EDIT", message: "There are sold tickets", preferredStyle: .alert)
+        editAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(action: UIAlertAction!) in
+              }))
+              
+               present(editAlert, animated: true, completion: nil)
+    }
+    
 
     // delete vertification if have sold tickets no delete
     func soldTicketsYes(id: Int32)  -> Bool {
@@ -167,7 +179,15 @@ class RaffleDetailViewController: UIViewController {
         
          }
         
- 
+    @IBAction func editRaffleBtn(_ sender: UIButton) {
+        if(!soldTicketsYes(id: raffle!.ID)){
+           performSegue(withIdentifier: "goToEditRaffleSegue", sender: self)
+            return
+        }
+        editImpossibleAlert()
+        
+    }
+    
     
     @IBAction func backToRaffle(_ sender: Any) {
          dismiss(animated: true, completion: nil)

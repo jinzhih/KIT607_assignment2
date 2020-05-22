@@ -66,8 +66,8 @@ class SellTicketViewController: UIViewController {
             drawType.text = displayDrawType
             drawDate.text = displayRaffle.drawTime
             restTicketQty.text = String(restQtyOfTicket)
-            let numberofTicket = numberOfTicket ?? 1
-            ticketQty.text = String(numberofTicket)
+             numberOfTicket = Int(stepperForticketQty.value)
+            ticketQty.text = String(numberOfTicket)
             
         }
     }
@@ -94,6 +94,7 @@ class SellTicketViewController: UIViewController {
          customerName = customer!.customerName
          maxNumber = Int(raffleselling!.maxNumber)
          
+            
          let dateformatter = DateFormatter()
          dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
          purchaseDate = dateformatter.string(from: Date())
