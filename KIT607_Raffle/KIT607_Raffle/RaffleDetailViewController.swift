@@ -15,8 +15,8 @@ class RaffleDetailViewController: UIViewController {
     var highscore : Int!
     var ticketsArray = [Int32]()
     var timepassed = 0
-    var ticket = [TicketNOArrayForDraw]()
-    var ticketwinneraray = [TicketNOArrayForDraw]()
+    var ticket = [Ticket]()
+    var ticketwinneraray = [Ticket]()
    
     @IBOutlet var nameRaffle: UILabel!
     
@@ -116,7 +116,7 @@ class RaffleDetailViewController: UIViewController {
         } else{
             
                  let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
-                                   ticket = database.selectTicketNoAndIDByRaffleID(id: raffle!.ID)
+                                   ticket = database.selectTicketBy(id: raffle!.ID)
                                    print(ticket)
                                    //let soldTicketLength = ticket.count
                                    //reorder ticket by ID

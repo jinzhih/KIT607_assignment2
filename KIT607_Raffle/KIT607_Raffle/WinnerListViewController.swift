@@ -9,7 +9,7 @@
 import UIKit
 
 class WinnerListViewController: UIViewController {
-var tickets1 = [TicketNOArrayForDraw]()
+var tickets1 = [Ticket]()
     @IBOutlet weak var ticketTable: UITableView!
     
     var customerName=""
@@ -40,10 +40,10 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     if   let  ticketCell = cell as? WonTicketTableViewCell
     {
         ticketCell.ticketNo.text = String(ticket.ticketNumber)
-//        ticketCell.customerName.text = ticket.customerName
-//        ticketCell.price.text = String(ticket.ticketPrice)
-//        ticketCell.purchaseDate.text = String(ticket.ticketPrice)
-//        ticketCell.raffleName.text = ticket.raffleName
+        ticketCell.customerName.text = ticket.customerName
+        ticketCell.price.text = String(ticket.ticketPrice)
+        ticketCell.purchaseDate.text = String(ticket.ticketPrice)
+        ticketCell.raffleName.text = ticket.raffleName
         
     }
     return cell
