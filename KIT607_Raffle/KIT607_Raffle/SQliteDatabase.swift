@@ -476,6 +476,21 @@ class SQLiteDatabase
          })
      
     }
+    //update if draw
+    //update winstatus
+    func updateDrawStatusbyID(drawStatus:Int32,id:Int32){
+        
+        let updateStatementQuery = "UPDATE Raffle SET Drawstatus=? WHERE ID=?"
+        updateWithQuery(
+        updateStatementQuery, bindingFunction: { (updateSatement) in
+            
+            sqlite3_bind_int(updateSatement, 1, drawStatus)
+        
+          
+             sqlite3_bind_int(updateSatement, 2, id)
+         })
+     
+    }
 
     func updateTicket(customerName:String,id:Int32){
            
@@ -732,6 +747,27 @@ class SQLiteDatabase
         
         return result
     }
+    //select Draw Status
+    func selectDrawStatusByRaffleID(id:Int32) -> Int32?{
+        var result : Int32?
+       
+        let selectStatementQuery = "SELECT Drawstatus FROM Raffle WHERE ID=?"
+        selectWithQuery(
+        selectStatementQuery,
+        eachRow: { (id) in
+        //create a movie object from each result
+        let drawStatus = sqlite3_column_int(id, 0)
+       
+            result = drawStatus
+         },
+        bindingFunction: {(selectSatement) in
+       
+            sqlite3_bind_int(selectSatement, 1, id)
+           })
+        
+        return result
+    }
+    
     //select winner
     func selectWinnerNameByTicketID(id:Int32) -> String{
         var result = String()

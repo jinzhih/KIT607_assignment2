@@ -600,7 +600,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qt-0l-5fn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2859" y="409"/>
+            <point key="canvasLocation" x="3104" y="240"/>
         </scene>
         <!--Ticket Detail View Controller-->
         <scene sceneID="0M7-vd-ZLZ">
@@ -2045,13 +2045,13 @@
         <!--Raffle Detail View Controller-->
         <scene sceneID="noJ-K4-qTZ">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="JO6-Ai-2bh" customClass="RaffleDetailViewController" customModule="KIT607_Raffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JO6-Ai-2bh" customClass="RaffleDetailViewController" customModule="KIT607_Raffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zBw-sV-Nbt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eBa-Ky-OXm">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBB-pj-UVO" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -2097,7 +2097,7 @@
                                         </constraints>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMM-lA-7Ni">
-                                        <rect key="frame" x="0.0" y="30" width="414" height="704"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="694"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="F8u-O4-jAU">
                                                 <rect key="frame" x="0.0" y="50" width="414" height="598"/>
@@ -2293,7 +2293,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="hzx-i6-tkh"/>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4u-mP-8k8" userLabel="BotomView">
-                                        <rect key="frame" x="0.0" y="734" width="414" height="84"/>
+                                        <rect key="frame" x="0.0" y="724" width="414" height="84"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="n4M-Sh-pHX">
                                                 <rect key="frame" x="50" y="5" width="52" height="74"/>
@@ -2417,7 +2417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8F-4F-GBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1642" y="-854"/>
+            <point key="canvasLocation" x="277" y="-1359"/>
         </scene>
         <!--Winner List View Controller-->
         <scene sceneID="ugb-eK-6Qg">
@@ -2774,11 +2774,12 @@
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="896"/>
                     <connections>
                         <outlet property="ticketTable" destination="B2r-u9-g35" id="CRH-k9-QIp"/>
+                        <segue destination="JO6-Ai-2bh" kind="show" identifier="backToRaffleDetailSegue" id="wuO-uS-KHA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3f3-KX-bRB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2419" y="-1387"/>
+            <point key="canvasLocation" x="2262" y="-2070"/>
         </scene>
         <!--Draw Winner View Controller-->
         <scene sceneID="bfS-UW-zjR">
@@ -3017,11 +3018,12 @@
                         <outlet property="highScoreTextField" destination="m5I-18-6HU" id="wd6-Rg-S9w"/>
                         <outlet property="lowScoreTextField" destination="Ift-ZI-Dqf" id="RUQ-hm-IFo"/>
                         <segue destination="nwc-Ze-0yq" kind="show" identifier="goToWonTicketFromMargin" id="ttG-cj-eDL"/>
+                        <segue destination="JO6-Ai-2bh" kind="show" identifier="backToRaffleDetailFromMargin" id="PFf-Ue-gaR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8OE-Bb-FPi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2317" y="-1031"/>
+            <point key="canvasLocation" x="1819" y="-1053"/>
         </scene>
         <!--Raffle Edit View Controller-->
         <scene sceneID="eyM-5O-iWv">
@@ -3807,7 +3809,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="RS0-Pc-XH1"/>
         <segue reference="a3n-7Y-dQp"/>
+        <segue reference="PFf-Ue-gaR"/>
         <segue reference="kKw-Om-anO"/>
         <segue reference="7hi-dA-LJE"/>
         <segue reference="hsb-3V-YPk"/>

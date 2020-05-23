@@ -15,6 +15,7 @@ class RaffleDetailViewController: UIViewController {
     var highscore : Int!
     var ticketsArray = [Int32]()
     var timepassed = 0
+    var drawStatus = 0
     var ticket = [Ticket]()
     var ticketwinneraray = [Ticket]()
    
@@ -109,7 +110,15 @@ class RaffleDetailViewController: UIViewController {
     }
     
     @IBAction func drawRaffleBtn(_ sender: UIButton) {
-        print(raffle!.type)
+       // print(raffle!.type)
+         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
+     //   drawStatus = Int(raffle!.drawStatus)
+        print(database.selectDrawStatusByRaffleID(id: raffle!.ID))
+      //  print(drawStatus)
+        if database.selectDrawStatusByRaffleID(id: raffle!.ID) == 1{
+            alertAlreadyDraw()
+            return
+        }
         let identifier = Bool(raffle!.type as NSNumber)
         if identifier {
             performSegue(withIdentifier: "DrawWinner", sender: self)
@@ -117,7 +126,7 @@ class RaffleDetailViewController: UIViewController {
             
                  let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
                                    ticket = database.selectTicketBy(id: raffle!.ID)
-                                   print(ticket)
+                                  // print(ticket)
                                    //let soldTicketLength = ticket.count
                                    //reorder ticket by ID
             var drawnumber = 1
@@ -126,7 +135,7 @@ class RaffleDetailViewController: UIViewController {
                 let newticket = ticket.shuffled().prefix(drawnumber)
                 
                ticketwinneraray = Array(newticket)
-                print(newticket)
+            //    print(newticket)
                 
                 var a = 0
                 while a<drawnumber{
@@ -134,7 +143,7 @@ class RaffleDetailViewController: UIViewController {
                     database.updateWinStatusbyID(winStatus: 1, id: ID)
                     a+=1
                 }
-                
+                 database.updateDrawStatusbyID(drawStatus: 1, id: raffle!.ID)
                 performSegue(withIdentifier: "showWonTicketsSegue", sender: self);
                 return
             }
@@ -148,6 +157,7 @@ class RaffleDetailViewController: UIViewController {
                               database.updateWinStatusbyID(winStatus: 1, id: ID)
                             a+=1
                           }
+            database.updateDrawStatusbyID(drawStatus: 1, id: raffle!.ID)
             performSegue(withIdentifier: "showWonTicketsSegue", sender: self)
         }
         
@@ -161,6 +171,15 @@ class RaffleDetailViewController: UIViewController {
                          
                       present(inputAlert, animated: true, completion: nil)
           }
+    //alert
+    func alertAlreadyDraw(){
+              let inputAlert=UIAlertController(title: "Alert", message: "You have already draw", preferredStyle: .alert)
+                      inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            
+                         
+                      present(inputAlert, animated: true, completion: nil)
+          }
+
 
     //goToEditRaffleSegue
     
@@ -188,12 +207,14 @@ class RaffleDetailViewController: UIViewController {
             {
                  let DrawWinnerViewController = segue.destination as! DrawWinnerViewController
              DrawWinnerViewController.raffleID = Int(raffle!.ID)
+                DrawWinnerViewController.raffle = raffle
             }
             //showWonTicketsSegue
             else if segue.identifier == "showWonTicketsSegue"
                        {
                             let DrawWinnerViewController = segue.destination as! WinnerListViewController
                         DrawWinnerViewController.tickets1 = ticketwinneraray
+                        DrawWinnerViewController.raffle = raffle
                        }
            else if segue.identifier == "returnRaffleList"
            {

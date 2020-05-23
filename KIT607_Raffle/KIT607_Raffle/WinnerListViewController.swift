@@ -10,6 +10,7 @@ import UIKit
 
 class WinnerListViewController: UIViewController {
 var tickets1 = [Ticket]()
+    var raffle : Raffle?
     @IBOutlet weak var ticketTable: UITableView!
     
     var customerName=""
@@ -23,7 +24,7 @@ var tickets1 = [Ticket]()
     }
     
     @IBAction func returnRaffleDetial(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "backToRaffleDetailSegue", sender: self)
     }
 }
 
@@ -50,4 +51,31 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
    
     
 }
+    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "backToRaffleDetailSegue"
+        {
+          
+         let   detailViewController = segue.destination as! RaffleDetailViewController
+            let  selectedRaffle = raffle
+         detailViewController.raffle = selectedRaffle
+        }
+       
+         //showWonTicketsSegue
+//         else if segue.identifier == "showWonTicketsSegue"
+//                    {
+//                         let DrawWinnerViewController = segue.destination as! WinnerListViewController
+//                     DrawWinnerViewController.tickets1 = ticketwinneraray
+//                    }
+//        else if segue.identifier == "returnRaffleList"
+//        {
+//         print("delet successed")
+//        }
+         else
+        {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        
+        }
 }

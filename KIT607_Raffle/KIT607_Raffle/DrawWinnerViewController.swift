@@ -12,6 +12,7 @@ class DrawWinnerViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lowScoreTextField: UITextField!
     @IBOutlet weak var highScoreTextField: UITextField!
     var raffleID = 0
+     var raffle : Raffle?
     var lowScore = 1
     var highScore = 2
     var difference = 1
@@ -46,19 +47,22 @@ class DrawWinnerViewController: UIViewController, UITextFieldDelegate {
              let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
             winnerName = database.selectWinnerNameByTicketID(id: ID)
               database.updateWinStatusbyID(winStatus: 1, id: ID)
+             database
             //goToWonTicketFromMargin
             performSegue(withIdentifier: "goToWonTicketFromMargin", sender: self)
                    
             
            // print(winnerName)
         } else{
+            let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
+             database.updateDrawStatusbyID(drawStatus: 1, id: raffle!.ID)
             alertNoWinner()
         }
         
     }
     
     @IBAction func backToRaffleDetail(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "backToRaffleDetailFromMargin", sender: self)
         
     }
     //Alert Function
@@ -111,7 +115,16 @@ class DrawWinnerViewController: UIViewController, UITextFieldDelegate {
          let   detailViewController = segue.destination as! WinnerListViewController
             let  selectedWinner = ticketwinneraray
          detailViewController.tickets1 = selectedWinner
+            detailViewController.raffle = raffle
         }
+           else if segue.identifier == "backToRaffleDetailFromMargin"
+            {
+              
+             let   detailViewController = segue.destination as! RaffleDetailViewController
+                let  selectedWinner = raffle
+            
+                detailViewController.raffle = raffle
+            }
        
          else
         {

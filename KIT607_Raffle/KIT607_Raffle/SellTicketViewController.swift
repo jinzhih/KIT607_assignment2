@@ -26,7 +26,7 @@ class SellTicketViewController: UIViewController {
     var numberOfTicket : Int!
     var restQtyOfTicket : Int!
     var displayDrawType=""
-
+    
     @IBOutlet weak var raffleNameLable: UILabel!
     @IBOutlet weak var stepperForticketQty: UIStepper!
     
@@ -66,7 +66,10 @@ class SellTicketViewController: UIViewController {
             drawType.text = displayDrawType
             drawDate.text = displayRaffle.drawTime
             restTicketQty.text = String(restQtyOfTicket)
-             numberOfTicket = Int(stepperForticketQty.value)
+            if numberOfTicket == nil{
+                 numberOfTicket = 1
+            }
+            
             ticketQty.text = String(numberOfTicket)
             
         }
