@@ -9,7 +9,7 @@
 import UIKit
 
 class WinnerListViewController: UIViewController {
-var tickets1 = [Ticket]()
+var tickets1 = [TicketNOArrayForDraw]()
     @IBOutlet weak var ticketTable: UITableView!
     
     var customerName=""
@@ -18,19 +18,33 @@ var tickets1 = [Ticket]()
       
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       ticketTable.dataSource = self
         // Do any additional setup after loading the view.
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension WinnerListViewController: UITableViewDataSource{
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return tickets1.count
+}
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: "WonTicketCell", for: indexPath)
+    
+    // Configure the cell...
+    let ticket = tickets1[indexPath.row]
+    if   let  ticketCell = cell as? WonTicketTableViewCell
+    {
+        ticketCell.ticketNo.text = String(ticket.ticketNumber)
+//        ticketCell.customerName.text = ticket.customerName
+//        ticketCell.price.text = String(ticket.ticketPrice)
+//        ticketCell.purchaseDate.text = String(ticket.ticketPrice)
+//        ticketCell.raffleName.text = ticket.raffleName
+        
     }
-    */
-
+    return cell
+   
+    
+}
 }

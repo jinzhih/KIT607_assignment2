@@ -41,6 +41,9 @@ extension TicketCusTableViewController: UITableViewDataSource{
         {
             ticketCell.ticketNO.text = String(ticket.ticketNumber)
             ticketCell.customerName.text = ticket.customerName
+            ticketCell.purchaseDate.text = ticket.purchaseDate
+            ticketCell.price.text = String(ticket.ticketPrice)
+            ticketCell.raffleName.text = ticket.raffleName
             
             
         }

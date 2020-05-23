@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mKi-d6-ZOf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JL3-8X-cP8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -1702,7 +1702,10 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="customerName" destination="3Xq-g5-QVc" id="26k-OO-ZU2"/>
+                                                    <outlet property="customerName" destination="lpg-tn-XQW" id="k0j-Zh-yM8"/>
+                                                    <outlet property="price" destination="kiX-ds-RId" id="pCb-yP-oSe"/>
+                                                    <outlet property="purchaseDate" destination="3Xq-g5-QVc" id="NOy-sv-Jyr"/>
+                                                    <outlet property="raffleName" destination="0EB-iY-9Fg" id="ejW-br-8XE"/>
                                                     <outlet property="ticketNO" destination="azc-A0-U5p" id="uWL-mx-hvm"/>
                                                     <segue destination="SLU-Az-D77" kind="show" identifier="goToTicketDetail" id="hsb-3V-YPk"/>
                                                 </connections>
@@ -1825,7 +1828,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er2-rV-SeU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="509" y="682"/>
+            <point key="canvasLocation" x="1717" y="408"/>
         </scene>
         <!--Customer Cus Table View Controller-->
         <scene sceneID="YXG-vc-T5O">
@@ -2409,6 +2412,7 @@
                         <segue destination="i0G-1f-09E" kind="show" identifier="DrawWinner" id="RS0-Pc-XH1"/>
                         <segue destination="JL3-8X-cP8" kind="show" identifier="returnRaffleList" id="QKX-YE-RhC"/>
                         <segue destination="T0N-ei-9Jb" kind="show" identifier="goToEditRaffleSegue" id="YWs-1J-MDb"/>
+                        <segue destination="nwc-Ze-0yq" kind="show" identifier="showWonTicketsSegue" id="a3n-7Y-dQp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8F-4F-GBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2420,11 +2424,11 @@
             <objects>
                 <viewController id="nwc-Ze-0yq" customClass="WinnerListViewController" customModule="KIT607_Raffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xat-QQ-Z1D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="u7p-Ic-LHU">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywd-pJ-3Ja">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
@@ -2458,10 +2462,10 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B2r-u9-g35">
-                                        <rect key="frame" x="0.0" y="37" width="414" height="681"/>
+                                        <rect key="frame" x="0.0" y="37" width="414" height="671"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketCell" rowHeight="142" id="yYR-cf-osU" customClass="TicketUITableViewCell" customModule="KIT607_Raffle" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WonTicketCell" rowHeight="142" id="yYR-cf-osU" customClass="WonTicketTableViewCell" customModule="KIT607_Raffle" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="142"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yYR-cf-osU" id="sbj-9e-xld">
@@ -2649,11 +2653,18 @@
                                                         <constraint firstAttribute="trailing" secondItem="y16-Bn-00N" secondAttribute="trailing" id="p5N-yn-8dr"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="customerName" destination="u51-KN-dCf" id="J1y-bo-n1w"/>
+                                                    <outlet property="price" destination="Ybi-g9-vZZ" id="2iG-bF-gYh"/>
+                                                    <outlet property="purchaseDate" destination="ZFk-z3-LKf" id="V96-Mn-GBi"/>
+                                                    <outlet property="raffleName" destination="JDY-sZ-S4T" id="TWf-W6-HsT"/>
+                                                    <outlet property="ticketNo" destination="SgN-b6-1re" id="Sun-UB-H2e"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="fuR-Lh-QID">
-                                        <rect key="frame" x="0.0" y="718" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="708" width="414" height="100"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7MS-eI-EQF">
                                                 <rect key="frame" x="0.0" y="0.0" width="86.5" height="100"/>
@@ -3793,7 +3804,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="L4R-22-gjm"/>
+        <segue reference="kKw-Om-anO"/>
         <segue reference="7hi-dA-LJE"/>
         <segue reference="hsb-3V-YPk"/>
         <segue reference="hbe-7k-8a8"/>

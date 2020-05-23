@@ -130,17 +130,26 @@ class RaffleDetailViewController: UIViewController {
                 
                 var a = 0
                 while a<drawnumber{
-                    let ID = newticket[0].ID
-                    
+                    let ID = newticket[a].ID
+                    database.updateWinStatusbyID(winStatus: 1, id: ID)
+                    a+=1
                 }
                 
-                
+                performSegue(withIdentifier: "showWonTicketsSegue", sender: self);
                 return
             }
             drawnumber = Int(raffle!.winQty)
                                    let newticket = ticket.shuffled().prefix(drawnumber)
                                    print(newticket)
+            var a = 0
+                          while a<drawnumber{
+                              let ID = newticket[a].ID
+                              database.updateWinStatusbyID(winStatus: 1, id: ID)
+                            a+=1
+                          }
+            performSegue(withIdentifier: "showWonTicketsSegue", sender: self)
         }
+        
          
     }
     //alert
@@ -179,6 +188,12 @@ class RaffleDetailViewController: UIViewController {
                  let DrawWinnerViewController = segue.destination as! DrawWinnerViewController
              DrawWinnerViewController.raffleID = Int(raffle!.ID)
             }
+            //showWonTicketsSegue
+            else if segue.identifier == "showWonTicketsSegue"
+                       {
+                            let DrawWinnerViewController = segue.destination as! WinnerListViewController
+                        DrawWinnerViewController.tickets1 = ticket
+                       }
            else if segue.identifier == "returnRaffleList"
            {
             print("delet successed")
