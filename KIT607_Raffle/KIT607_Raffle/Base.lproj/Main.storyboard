@@ -276,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6O-tE-wlF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="-1053"/>
+            <point key="canvasLocation" x="-1045" y="-908"/>
         </scene>
         <!--Sell Ticket View Controller-->
         <scene sceneID="x1h-Kj-zuq">
@@ -407,7 +407,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="cJT-6M-Frq">
-                                                                <rect key="frame" x="179" y="14" width="150" height="268.5"/>
+                                                                <rect key="frame" x="179" y="14" width="150" height="239"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFu-Nw-Cid">
                                                                         <rect key="frame" x="0.0" y="0.0" width="47" height="19.5"/>
@@ -446,19 +446,26 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGv-J8-n7F">
-                                                                        <rect key="frame" x="0.0" y="187" width="50" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="187" width="50" height="20.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="20.5" id="skc-Ml-Hji"/>
+                                                                        </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rest tickets qty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlI-dm-cSC">
-                                                                        <rect key="frame" x="0.0" y="248" width="113.5" height="20.5"/>
+                                                                        <rect key="frame" x="0.0" y="218.5" width="113.5" height="20.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="20.5" id="QU2-fL-ku4"/>
+                                                                        </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                                 <constraints>
+                                                                    <constraint firstItem="zlI-dm-cSC" firstAttribute="top" secondItem="GGv-J8-n7F" secondAttribute="bottom" constant="11" id="Sza-4K-sff"/>
                                                                     <constraint firstAttribute="width" constant="150" id="cHr-vd-NbO"/>
                                                                 </constraints>
                                                             </stackView>
@@ -600,7 +607,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qt-0l-5fn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3104" y="240"/>
+            <point key="canvasLocation" x="3204" y="238"/>
         </scene>
         <!--Ticket Detail View Controller-->
         <scene sceneID="0M7-vd-ZLZ">
@@ -1824,11 +1831,13 @@
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="896"/>
                     <connections>
                         <outlet property="ticketTable" destination="THI-As-eMs" id="FKL-H1-XEO"/>
+                        <segue destination="Od4-qE-f2R" kind="show" identifier="backSelllingPortalSegue" id="Ack-cW-t02"/>
+                        <segue destination="JO6-Ai-2bh" kind="show" identifier="backToRaffleDetailFromExistingTicketList" id="VDJ-lI-k9o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er2-rV-SeU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1717" y="408"/>
+            <point key="canvasLocation" x="2971" y="1437"/>
         </scene>
         <!--Customer Cus Table View Controller-->
         <scene sceneID="YXG-vc-T5O">
@@ -2040,7 +2049,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pK-up-bqM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3929" y="-60"/>
+            <point key="canvasLocation" x="6816" y="-308"/>
         </scene>
         <!--Raffle Detail View Controller-->
         <scene sceneID="noJ-K4-qTZ">
@@ -2417,7 +2426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8F-4F-GBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="277" y="-1359"/>
+            <point key="canvasLocation" x="-54" y="1166"/>
         </scene>
         <!--Winner List View Controller-->
         <scene sceneID="ugb-eK-6Qg">
@@ -3809,13 +3818,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RS0-Pc-XH1"/>
         <segue reference="a3n-7Y-dQp"/>
-        <segue reference="PFf-Ue-gaR"/>
+        <segue reference="VDJ-lI-k9o"/>
         <segue reference="kKw-Om-anO"/>
-        <segue reference="7hi-dA-LJE"/>
+        <segue reference="ALi-hF-VRu"/>
         <segue reference="hsb-3V-YPk"/>
-        <segue reference="hbe-7k-8a8"/>
+        <segue reference="Ack-cW-t02"/>
         <segue reference="QKX-YE-RhC"/>
     </inferredMetricsTieBreakers>
     <resources>

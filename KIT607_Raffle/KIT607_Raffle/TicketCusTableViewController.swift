@@ -8,9 +8,12 @@
 
 import UIKit
 var tickets1 = [Ticket]()
-class TicketCusTableViewController: UIViewController {
+
+class TicketCusTableViewController:
+UIViewController {
     @IBOutlet weak var ticketTable: UITableView!
-    
+     var raffle : Raffle?
+     var isNewTicket = Int()
     var customerName=""
     var raffleID = 0
      var ticketNumber = 0
@@ -24,7 +27,13 @@ class TicketCusTableViewController: UIViewController {
     
     }
     @IBAction func returnRaffleDetial(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+       //backSelllingPortalSegue
+        if(isNewTicket == 1){
+ performSegue(withIdentifier: "backSelllingPortalSegue", sender: self)
+            return
+        }
+        
+       performSegue(withIdentifier: "backToRaffleDetailFromExistingTicketList", sender: self)
     }
 }
 extension TicketCusTableViewController: UITableViewDataSource{
@@ -52,32 +61,77 @@ extension TicketCusTableViewController: UITableViewDataSource{
         
     }
     
-
     override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        super.prepare(for: segue, sender: sender)
-        if segue.identifier == "goToTicketDetail"
-        {
-            guard let   detailViewController = segue.destination as? TicketDetailViewController else
-        {
-            fatalError("Unexpected destination: \(segue.destination)")
+      {
+          super.prepare(for: segue, sender: sender)
+          if segue.identifier == "backSelllingPortalSegue"
+          {
             
-            }
-            guard let   selectedTicketCell = sender as? TicketUITableViewCell else
-            {            fatalError("Unexpected sender: \( String(describing: sender))")
-                
-            }
-            guard let   indexPath = ticketTable.indexPath(for: selectedTicketCell) else
-            {
-                fatalError("The selected cell is not being displayed by the table")
-                
-            }
-            let  selectedTicket = tickets1[indexPath.row]
-            detailViewController.ticket = selectedTicket
-            
-        }
-        
-        }
+           let   detailViewController = segue.destination as! SellTicketViewController
+              let  selectedRaffle = raffle
+           
+              detailViewController.raffleselling = selectedRaffle
+          }
+             else if segue.identifier == "goToTicketDetail"
+              {
+             guard let   detailViewController = segue.destination as? TicketDetailViewController else
+                {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                    
+                    }
+                    guard let   selectedTicketCell = sender as? TicketUITableViewCell else
+                    {            fatalError("Unexpected sender: \( String(describing: sender))")
+                        
+                    }
+                    guard let   indexPath = ticketTable.indexPath(for: selectedTicketCell) else
+                    {
+                        fatalError("The selected cell is not being displayed by the table")
+                        
+                    }
+                    let  selectedTicket = tickets1[indexPath.row]
+                    detailViewController.ticket = selectedTicket
+                    
+                }
+        else if segue.identifier == "backToRaffleDetailFromExistingTicketList"
+                  {
+                    
+                   let   detailViewController = segue.destination as! RaffleDetailViewController
+                      let  selectedRaffle = raffle
+                   
+                      detailViewController.raffle = selectedRaffle
+                  }
+         
+           else
+          {
+              fatalError("Unexpected destination: \(segue.destination)")
+          }
+          
+          }
+//    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
+//    {
+//        super.prepare(for: segue, sender: sender)
+//        if segue.identifier == "goToTicketDetail"
+//        {
+//            guard let   detailViewController = segue.destination as? TicketDetailViewController else
+//        {
+//            fatalError("Unexpected destination: \(segue.destination)")
+//            
+//            }
+//            guard let   selectedTicketCell = sender as? TicketUITableViewCell else
+//            {            fatalError("Unexpected sender: \( String(describing: sender))")
+//                
+//            }
+//            guard let   indexPath = ticketTable.indexPath(for: selectedTicketCell) else
+//            {
+//                fatalError("The selected cell is not being displayed by the table")
+//                
+//            }
+//            let  selectedTicket = tickets1[indexPath.row]
+//            detailViewController.ticket = selectedTicket
+//            
+//        }
+//        
+//        }
 
     
 }

@@ -197,6 +197,7 @@ class RaffleDetailViewController: UIViewController {
            {
                 let ticketListViewController = segue.destination as! TicketCusTableViewController
             ticketListViewController.raffleID = Int(raffle!.ID)
+            ticketListViewController.raffle = raffle
            }
             else if segue.identifier == "goToEditRaffleSegue"
                       {

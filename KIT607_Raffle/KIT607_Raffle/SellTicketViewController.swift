@@ -9,9 +9,10 @@
 import UIKit
 
 class SellTicketViewController: UIViewController {
-    var raffle : Raffle?
+   // var raffle : Raffle?
     var customer : Customer?
     var raffleselling : Raffle?
+    var ticket = [Ticket]()
     var ticketsArray = [Int32]()
     var raffleID = 1
     var raffleName = ""
@@ -42,8 +43,13 @@ class SellTicketViewController: UIViewController {
         super.viewDidLoad()
         
  let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        print(raffleselling?.ID)
+        if(raffleselling?.ID == nil){
+           // ticketQty.text = raffleselling?.maxNumber
+        }
         ticketsArray = database.selectAllTicketNumberByRaffleID(raffleId: raffleselling!.ID) ?? [Int32]();
-  let existingTicketArrayLength = ticketsArray.count
+ 
+        let existingTicketArrayLength = ticketsArray.count
         restQtyOfTicket = Int(raffleselling!.maxNumber) - existingTicketArrayLength
         stepperForticketQty.maximumValue = Double(restQtyOfTicket)
         
@@ -119,6 +125,8 @@ class SellTicketViewController: UIViewController {
              while a < numberOfTicket
              {
                  database.insert(ticket: Ticket(raffleID:Int32(raffleID),  raffleName:raffleName, ticketPrice:Int32(ticketPrice),customerID:Int32(customerID), customerName: customerName, purchaseDate: purchaseDate, winStatus: Int32(winStatus), ticketNumber: Int32(ticketNumber)))
+                ticket = database.selectTicketBy(id: Int32(raffleID))
+                print(ticket.count)
                  ticketNumber += 1
                  a+=1
              }
@@ -149,6 +157,7 @@ class SellTicketViewController: UIViewController {
                         ticketNumber = Int(restTicketNumberArray[randomIndex])
                         generatedIndexArray.append(randomIndex)
                         database.insert(ticket: Ticket(raffleID:Int32(raffleID),  raffleName:raffleName, ticketPrice:Int32(ticketPrice),customerID:Int32(customerID), customerName: customerName, purchaseDate: purchaseDate, winStatus: Int32(winStatus), ticketNumber: Int32(ticketNumber)))
+                        print(tickets1.count)
                         a+=1
                     }
                 }
@@ -208,6 +217,9 @@ class SellTicketViewController: UIViewController {
         {
              let ticketListViewController = segue.destination as! TicketCusTableViewController
          ticketListViewController.raffleID = raffleID
+            ticketListViewController.raffle = raffleselling
+            ticketListViewController.isNewTicket = 1
+            print(raffleselling?.ID)
         }
          else
         {
