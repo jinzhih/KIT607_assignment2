@@ -115,9 +115,11 @@ class RaffleDetailViewController: UIViewController {
     @IBAction func drawRaffleBtn(_ sender: UIButton) {
        // print(raffle!.type)
          let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
-     //   drawStatus = Int(raffle!.drawStatus)
-        print(database.selectDrawStatusByRaffleID(id: raffle!.ID))
-      //  print(drawStatus)
+        ticketsArray = database.selectAllTicketNumberByRaffleID(raffleId: raffle!.ID) ?? [Int32]();
+        if ticketsArray.count == 0 {
+            alertNoBuyer()
+            return
+        }
         if database.selectDrawStatusByRaffleID(id: raffle!.ID) == 1{
             alertAlreadyDraw()
             return
@@ -182,6 +184,11 @@ class RaffleDetailViewController: UIViewController {
                          
                       present(inputAlert, animated: true, completion: nil)
           }
+    func alertNoBuyer(){
+        let inputAlert=UIAlertController(title: "Alert", message: "You have not sold any tickets!", preferredStyle: .alert)
+                inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))    
+                present(inputAlert, animated: true, completion: nil)
+    }
 
 
     //goToEditRaffleSegue

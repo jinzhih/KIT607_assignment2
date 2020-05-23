@@ -26,6 +26,9 @@ UIViewController {
          tickets1 = database.selectTicketBy(id: Int32(raffleID))
     
     }
+    @IBAction func returnRaffleList(_ sender: UIButton) {
+        performSegue(withIdentifier: "backToRaffleList", sender: self)
+    }
     @IBAction func returnRaffleDetial(_ sender: UIButton) {
        //backSelllingPortalSegue
         if(isNewTicket == 1){
@@ -36,6 +39,7 @@ UIViewController {
        performSegue(withIdentifier: "backToRaffleDetailFromExistingTicketList", sender: self)
     }
 }
+
 extension TicketCusTableViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tickets1.count
@@ -101,10 +105,7 @@ extension TicketCusTableViewController: UITableViewDataSource{
                       detailViewController.raffle = selectedRaffle
                   }
          
-           else
-          {
-              fatalError("Unexpected destination: \(segue.destination)")
-          }
+
           
           }
 //    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)

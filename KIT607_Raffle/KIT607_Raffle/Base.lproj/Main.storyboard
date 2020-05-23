@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JL3-8X-cP8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -2123,6 +2123,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcK-31-8yF">
                                                         <rect key="frame" x="0.0" y="0.0" width="86.5" height="80"/>
                                                         <state key="normal" image="icons8-home-page-100"/>
+                                                        <connections>
+                                                            <action selector="returnRaffleList:" destination="q4z-gI-INz" eventType="touchUpInside" id="Ht5-i9-2Aw"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWl-wR-xZv">
                                                         <rect key="frame" x="0.0" y="84" width="86.5" height="16"/>
@@ -2228,11 +2231,12 @@
                         <outlet property="ticketTable" destination="THI-As-eMs" id="FKL-H1-XEO"/>
                         <segue destination="Od4-qE-f2R" kind="show" identifier="backSelllingPortalSegue" id="Ack-cW-t02"/>
                         <segue destination="JO6-Ai-2bh" kind="show" identifier="backToRaffleDetailFromExistingTicketList" id="VDJ-lI-k9o"/>
+                        <segue destination="JL3-8X-cP8" kind="show" identifier="backToRaffleList" id="QI0-DI-Q7P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er2-rV-SeU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2971" y="1437"/>
+            <point key="canvasLocation" x="-93" y="881"/>
         </scene>
         <!--Customer Cus Table View Controller-->
         <scene sceneID="YXG-vc-T5O">
@@ -4252,10 +4256,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0tM-fx-tct"/>
         <segue reference="a3n-7Y-dQp"/>
-        <segue reference="hf8-Ue-1Q4"/>
-        <segue reference="kKw-Om-anO"/>
+        <segue reference="VDJ-lI-k9o"/>
+        <segue reference="L4R-22-gjm"/>
         <segue reference="7hi-dA-LJE"/>
         <segue reference="hsb-3V-YPk"/>
         <segue reference="hbe-7k-8a8"/>
