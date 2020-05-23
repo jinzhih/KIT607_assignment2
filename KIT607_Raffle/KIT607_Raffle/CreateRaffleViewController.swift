@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 var raffles2 = [Raffle]()
-class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
+class CreateRaffleViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var raffleName = ""
     var raffleDes = ""
@@ -23,6 +23,7 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
     var winnerQty = 1
 
     @IBOutlet weak var raffleNameTextField: UITextField!
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var drawDateTextField: UITextField!
     @IBOutlet weak var maxTicketNumberTextField: UITextField!
@@ -75,6 +76,33 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate {
         
        
     }
+    
+    //choose cover
+    @IBAction func selectCoverBtn(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                   print("Gallery available")
+                   
+                   let imagePicker:UIImagePickerController = UIImagePickerController()
+                   imagePicker.delegate = self
+                   imagePicker.sourceType = .photoLibrary;
+                   imagePicker.allowsEditing = false
+                   
+                   self.present(imagePicker, animated: true, completion: nil)
+               }
+
+        
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        {
+            imageView.image = image
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
     //https://www.youtube.com/watch?v=8NngJrVFfUw
     func createDatePicker(){
         let toolbar = UIToolbar()

@@ -15,6 +15,8 @@
 		773830872477E8EB005BFA4F /* EditTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773830862477E8EB005BFA4F /* EditTicketViewController.swift */; };
 		773830892478CA82005BFA4F /* WinnerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773830882478CA82005BFA4F /* WinnerListViewController.swift */; };
 		7738308B2478D3A5005BFA4F /* WonTicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738308A2478D3A5005BFA4F /* WonTicketTableViewCell.swift */; };
+		7738309124796616005BFA4F /* showWinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738309024796616005BFA4F /* showWinnerViewController.swift */; };
+		77383093247966B1005BFA4F /* WinnersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77383092247966B1005BFA4F /* WinnersTableViewCell.swift */; };
 		773F26602459A7240009D5FB /* CreateRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F265F2459A7240009D5FB /* CreateRaffleViewController.swift */; };
 		77942293245562CE00B3CC24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77942292245562CE00B3CC24 /* AppDelegate.swift */; };
 		77942295245562CE00B3CC24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77942294245562CE00B3CC24 /* SceneDelegate.swift */; };
@@ -48,6 +50,8 @@
 		773830862477E8EB005BFA4F /* EditTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTicketViewController.swift; sourceTree = "<group>"; };
 		773830882478CA82005BFA4F /* WinnerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerListViewController.swift; sourceTree = "<group>"; };
 		7738308A2478D3A5005BFA4F /* WonTicketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WonTicketTableViewCell.swift; sourceTree = "<group>"; };
+		7738309024796616005BFA4F /* showWinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showWinnerViewController.swift; sourceTree = SOURCE_ROOT; };
+		77383092247966B1005BFA4F /* WinnersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersTableViewCell.swift; sourceTree = "<group>"; };
 		773F265F2459A7240009D5FB /* CreateRaffleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRaffleViewController.swift; sourceTree = "<group>"; };
 		7794228F245562CE00B3CC24 /* KIT607_Raffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KIT607_Raffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77942292245562CE00B3CC24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,9 +108,11 @@
 		77942291245562CE00B3CC24 /* KIT607_Raffle */ = {
 			isa = PBXGroup;
 			children = (
+				7738309024796616005BFA4F /* showWinnerViewController.swift */,
 				77942292245562CE00B3CC24 /* AppDelegate.swift */,
 				77942294245562CE00B3CC24 /* SceneDelegate.swift */,
 				77942298245562CE00B3CC24 /* Main.storyboard */,
+				77383092247966B1005BFA4F /* WinnersTableViewCell.swift */,
 				7738308A2478D3A5005BFA4F /* WonTicketTableViewCell.swift */,
 				773830882478CA82005BFA4F /* WinnerListViewController.swift */,
 				773830862477E8EB005BFA4F /* EditTicketViewController.swift */,
@@ -222,6 +228,7 @@
 				779422AD2455924F00B3CC24 /* TestViewController.swift in Sources */,
 				77BC401324639F770025CB80 /* RaffleCusTableViewController.swift in Sources */,
 				77BC40162463AFB50025CB80 /* Cell.swift in Sources */,
+				7738309124796616005BFA4F /* showWinnerViewController.swift in Sources */,
 				773F26602459A7240009D5FB /* CreateRaffleViewController.swift in Sources */,
 				779422A724556C5000B3CC24 /* SQliteDatabase.swift in Sources */,
 				773830852477A240005BFA4F /* RaffleEditViewController.swift in Sources */,
@@ -234,6 +241,7 @@
 				7738308324777EBA005BFA4F /* validation.swift in Sources */,
 				7738308B2478D3A5005BFA4F /* WonTicketTableViewCell.swift in Sources */,
 				77BC40192463C4D40025CB80 /* RaffleCell.swift in Sources */,
+				77383093247966B1005BFA4F /* WinnersTableViewCell.swift in Sources */,
 				771378082467979400254EDE /* TicketCusTableViewController.swift in Sources */,
 				77FE928024681B1800FDDFB4 /* SellTicketViewController.swift in Sources */,
 				773830892478CA82005BFA4F /* WinnerListViewController.swift in Sources */,

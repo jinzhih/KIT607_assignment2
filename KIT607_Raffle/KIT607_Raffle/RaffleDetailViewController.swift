@@ -74,6 +74,9 @@ class RaffleDetailViewController: UIViewController {
         
     }
     
+    @IBAction func showWinnerSegue(_ sender: UIButton) {
+         performSegue(withIdentifier: "showWinnersSegue", sender: self)
+    }
     func convertDateFormat(inputDate: String) -> Date {
 
             let olDateFormatter = DateFormatter()
@@ -193,12 +196,19 @@ class RaffleDetailViewController: UIViewController {
                let  selectedRaffle = raffle
             detailViewController.raffleselling = selectedRaffle
            }
-           else if segue.identifier == "ShowTicketList"
+            //showWinnersSegue
+           else if segue.identifier == "showWinnersSegue"
            {
-                let ticketListViewController = segue.destination as! TicketCusTableViewController
-            ticketListViewController.raffleID = Int(raffle!.ID)
+                let ticketListViewController = segue.destination as! showWinnerViewController
+         
             ticketListViewController.raffle = raffle
            }
+            else if segue.identifier == "ShowTicketList"
+            {
+                 let ticketListViewController = segue.destination as! TicketCusTableViewController
+             ticketListViewController.raffleID = Int(raffle!.ID)
+             ticketListViewController.raffle = raffle
+            }
             else if segue.identifier == "goToEditRaffleSegue"
                       {
                            let editRaffleViewController = segue.destination as! RaffleEditViewController

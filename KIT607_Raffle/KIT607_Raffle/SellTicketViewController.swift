@@ -37,6 +37,7 @@ class SellTicketViewController: UIViewController {
     @IBOutlet weak var ticketQty: UILabel!
     @IBOutlet weak var drawDate: UILabel!
     
+    @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var restTicketQty: UILabel!
     @IBOutlet weak var customerNameTextField: UILabel!
     override func viewDidLoad() {
@@ -72,11 +73,14 @@ class SellTicketViewController: UIViewController {
             drawType.text = displayDrawType
             drawDate.text = displayRaffle.drawTime
             restTicketQty.text = String(restQtyOfTicket)
+           
             if numberOfTicket == nil{
                  numberOfTicket = 1
+                totalPrice.text = String(raffleselling!.ticketPrice)
             }
             
             ticketQty.text = String(numberOfTicket)
+            totalPrice.text = String((raffleselling!.ticketPrice)*Int32(numberOfTicket))
             
         }
     }
@@ -184,6 +188,7 @@ class SellTicketViewController: UIViewController {
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         ticketQty.text = String(format: "%.0f", sender.value)
         numberOfTicket = Int(sender.value)
+        totalPrice.text = String((raffleselling!.ticketPrice)*Int32(numberOfTicket))
         if(numberOfTicket == restQtyOfTicket){
             let ticketLimitAlert=UIAlertController(title: "Warning", message: "Max ticket limit is \(String(restQtyOfTicket))", preferredStyle: .alert)
 

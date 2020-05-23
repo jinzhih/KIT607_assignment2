@@ -726,6 +726,69 @@ class SQLiteDatabase
         
         return result
     }
+    //select all winner tickets
+    func selectWonTicket(id:Int32) -> Ticket?{
+        var result : Ticket?
+        let selectStatementQuery = "SELECT ID, RaffleID, RaffleName, Ticketprice, CustomerID, CustomerName, PurchaseDate, Winstatus, TicketNumber FROM Ticket WHERE ID=?"
+        selectWithQuery(
+        selectStatementQuery,
+        eachRow: { (id) in
+        //create a movie object from each result
+        let ticket = Ticket(
+            ID: sqlite3_column_int(id, 0),
+            raffleID: sqlite3_column_int(id, 1),
+            raffleName: String(cString:sqlite3_column_text(id, 2)),
+      
+            ticketPrice: sqlite3_column_int(id, 3),
+            customerID: sqlite3_column_int(id, 4),
+            customerName: String(cString:sqlite3_column_text(id, 5)),
+            purchaseDate: String(cString:sqlite3_column_text(id, 6)),
+            winStatus: sqlite3_column_int(id, 7),
+            ticketNumber: sqlite3_column_int(id, 8)
+           
+            
+        )
+            result = ticket
+         },
+        bindingFunction: {(selectSatement) in
+       
+            sqlite3_bind_int(selectSatement, 1, id)
+           })
+        
+        return result
+    }
+    //select won tickets by raffleID
+    func selectWonTicketByRaffleID(id:Int32) -> [Ticket]{
+         var result = [Ticket]()
+        let selectStatementQuery = "SELECT ID, RaffleID, RaffleName, Ticketprice, CustomerID, CustomerName, PurchaseDate, Winstatus, TicketNumber FROM Ticket WHERE RaffleID=?"
+        selectWithQuery(
+        selectStatementQuery,
+        eachRow: { (id) in
+        //create a movie object from each result
+        let ticket = Ticket(
+            ID: sqlite3_column_int(id, 0),
+            raffleID: sqlite3_column_int(id, 1),
+            raffleName: String(cString:sqlite3_column_text(id, 2)),
+      
+            ticketPrice: sqlite3_column_int(id, 3),
+            customerID: sqlite3_column_int(id, 4),
+            customerName: String(cString:sqlite3_column_text(id, 5)),
+            purchaseDate: String(cString:sqlite3_column_text(id, 6)),
+            winStatus: sqlite3_column_int(id, 7),
+            ticketNumber: sqlite3_column_int(id, 8)
+           
+            
+        )
+             result += [ticket]
+         },
+        bindingFunction: {(selectSatement) in
+       
+            sqlite3_bind_int(selectSatement, 1, id)
+           })
+        
+        return result
+    }
+    
   ///find max ticket
 
     func selectMaxTicketBy(id:Int32) -> Int32?{
@@ -853,6 +916,8 @@ class SQLiteDatabase
         
         
     }
+    
+   
     
     func deleteTicketBy(id:Int32){
           
