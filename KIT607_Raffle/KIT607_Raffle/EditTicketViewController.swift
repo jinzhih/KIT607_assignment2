@@ -56,7 +56,7 @@ class EditTicketViewController: UIViewController,UITextFieldDelegate {
         let customerIDNumber = ticket?.customerID
         let newCustomerName = customerName.text!
         database.updateCustomer(customerName: newCustomerName, id: customerIDNumber!)
-        database.updateTicket(customerName: newCustomerName, id: customerIDNumber!)
+        database.updateTicket(customerName: newCustomerName, id: ticket!.ID)
        alertSuccessfulUpdateCustomer()
     }
     

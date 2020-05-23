@@ -91,8 +91,9 @@ var ticket : Ticket?
     }
     
     @IBAction func goToTicketTable(_ sender: UIButton) {
-          dismiss(animated: true, completion: nil)
-    }
+        //  dismiss(animated: true, completion: nil)
+        //backToTicketListSegue
+        performSegue(withIdentifier: "backToTicketListSegue", sender: self)    }
     
     @IBAction func editTicketBtn(_ sender: UIButton) {
         //goToEditTicketSegue
@@ -120,7 +121,12 @@ var ticket : Ticket?
             let   editViewController = segue.destination as! EditTicketViewController
                let  selectedRaffle = ticket
            editViewController.ticket = selectedRaffle
-           }
+           } else if
+            segue.identifier == "backToTicketListSegue"
+                  {
+                       let ticketListViewController = segue.destination as! TicketCusTableViewController
+                    ticketListViewController.raffleID = Int(ticket!.raffleID)
+                  }
            
             else
            {

@@ -14,19 +14,26 @@ class RaffleDetailViewController: UIViewController {
     var lowscore : Int!
     var highscore : Int!
     var ticketsArray = [Int32]()
-
+    var timepassed = 0
+    var ticket = [TicketNOArrayForDraw]()
+    var ticketwinneraray = [TicketNOArrayForDraw]()
+   
     @IBOutlet var nameRaffle: UILabel!
     
     @IBOutlet var desRaffle: UILabel!
     
     @IBOutlet weak var drawDate: UILabel!
+    var winnerName = String()
     
+    @IBOutlet weak var drawButton: UIButton!
     @IBOutlet weak var drawType: UILabel!
     @IBOutlet weak var drawLimit: UILabel!
     @IBOutlet weak var drawPrice: UILabel!
     @IBOutlet weak var winnerQty: UILabel!
+    @IBOutlet weak var drawImg: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
         // Do any additional setup after loading the view.
         if let  displayRaffle = raffle
@@ -46,10 +53,35 @@ class RaffleDetailViewController: UIViewController {
                 drawLimit.text = String(displayRaffle.maxNumber)
                 drawPrice.text = String(displayRaffle.ticketPrice)
                 winnerQty.text = String( displayRaffle.winQty)
-                 
+              //set time
+
+                let imgArray = [#imageLiteral(resourceName: "671590154412_.pic"), #imageLiteral(resourceName: "Draw Time is not up!")]
+                     
+                     let drawDateFlag = convertDateFormat(inputDate: drawDate.text!)
+                     if(drawDateFlag >
+                         Date()){
+                         drawImg.image = imgArray[1]
+                       drawButton.isEnabled = false
+                      
+                    //     viewDidLoad()
+                      return
+                     }
+                drawImg.image = imgArray[0]
+                  drawButton.isEnabled = true
                    
-               }
+        }
+        
     }
+    
+    func convertDateFormat(inputDate: String) -> Date {
+
+            let olDateFormatter = DateFormatter()
+            olDateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+            let convertDateFormatter = DateFormatter()
+            convertDateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+            let newDate = convertDateFormatter.date(from: inputDate)
+           return newDate!
+       }
 //    let segue: UIStoryboardSegue
     @IBAction func sellTicket(_ sender: UIButton) {
         performSegue(withIdentifier: "SellingTicket", sender: self)
@@ -69,6 +101,7 @@ class RaffleDetailViewController: UIViewController {
         alertDelete(id: raffle!.ID)
       
     }
+
     
     @IBAction func ticketListShowBtn(_ sender: UIButton) {
               performSegue(withIdentifier: "ShowTicketList", sender: self)
@@ -81,11 +114,43 @@ class RaffleDetailViewController: UIViewController {
         if identifier {
             performSegue(withIdentifier: "DrawWinner", sender: self)
         } else{
-            print("this is normal raffle")
+            
+                 let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
+                                   ticket = database.selectTicketNoAndIDByRaffleID(id: raffle!.ID)
+                                   print(ticket)
+                                   //let soldTicketLength = ticket.count
+                                   //reorder ticket by ID
+            var drawnumber = 1
+            if ticket.count < raffle!.winQty{
+                 drawnumber = ticket.count
+                let newticket = ticket.shuffled().prefix(drawnumber)
+                
+               
+                print(newticket)
+                
+                var a = 0
+                while a<drawnumber{
+                    let ID = newticket[0].ID
+                    
+                }
+                
+                
+                return
+            }
+            drawnumber = Int(raffle!.winQty)
+                                   let newticket = ticket.shuffled().prefix(drawnumber)
+                                   print(newticket)
         }
          
     }
-    
+    //alert
+    func alertSomeTextFieldNull(name: String){
+              let inputAlert=UIAlertController(title: "Congratulation", message: "The winners are \(name)", preferredStyle: .alert)
+                      inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            
+                         
+                      present(inputAlert, animated: true, completion: nil)
+          }
 
     //goToEditRaffleSegue
     
@@ -124,7 +189,8 @@ class RaffleDetailViewController: UIViewController {
            }
            
            }
-    
+    // normal raffle select winner
+  
     //Alert Function
     func alertDelete(id: Int32){
         let warningAlert=UIAlertController(title: "Delete", message: "Are you want to delete raffle", preferredStyle: .alert)
@@ -194,3 +260,5 @@ class RaffleDetailViewController: UIViewController {
     }
     
 }
+
+

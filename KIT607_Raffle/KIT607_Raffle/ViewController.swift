@@ -11,7 +11,7 @@ var tickets = [Ticket]()
 var raffles = [Raffle]()
 var customers = [Customer]()
 var ticketNumber = Int32()
-var tickets2 = [TicketNOArrayForDraw]()
+var tickets2 : Ticket?
 class ViewController: UIViewController {
 var ticketID : [Int32]?
     // a handle to the database itself
@@ -42,13 +42,15 @@ var ticketID : [Int32]?
         //ticketID = database.selectAllTicketNoByRaffleID(raffleId: 1)
        // print(ticketID!)
        
-        raffles = database.selectAllRaffles()
-        print(raffles)
+      //  raffles = database.selectAllRaffles()
+      //  print(raffles)
      
-       
-             database.deleteTicketBy(id: 30)
-          tickets2=database.selectTicketNoAndIDByRaffleID(id: 2)
+        database.updateWinStatusbyID(winStatus: 1, id: 49)
+           
+         // tickets2=database.selectTicketNoAndIDByRaffleID(id: 6)
+        tickets2=database.selectTicketByTicketID(id: 49)
          print(tickets2)
+      //  database.updateTicket(customerName: <#T##String#>, id: <#T##Int32#>)
     }
 
 }

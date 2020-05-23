@@ -462,7 +462,20 @@ class SQLiteDatabase
           })
       
      }
-    
+    //update winstatus
+    func updateWinStatusbyID(winStatus:Int32,id:Int32){
+        
+        let updateStatementQuery = "UPDATE Ticket SET Winstatus=? WHERE ID=?"
+        updateWithQuery(
+        updateStatementQuery, bindingFunction: { (updateSatement) in
+            
+            sqlite3_bind_int(updateSatement, 1, winStatus)
+         // sqlite3_bind_text(updateSatement, 1, NSString(string: customerName).utf8String, -1, nil)
+          
+             sqlite3_bind_int(updateSatement, 2, id)
+         })
+     
+    }
 
     func updateTicket(customerName:String,id:Int32){
            
