@@ -125,7 +125,7 @@ class RaffleDetailViewController: UIViewController {
                  drawnumber = ticket.count
                 let newticket = ticket.shuffled().prefix(drawnumber)
                 
-               
+               ticketwinneraray = Array(newticket)
                 print(newticket)
                 
                 var a = 0
@@ -141,6 +141,7 @@ class RaffleDetailViewController: UIViewController {
             drawnumber = Int(raffle!.winQty)
                                    let newticket = ticket.shuffled().prefix(drawnumber)
                                    print(newticket)
+            ticketwinneraray = Array(newticket)
             var a = 0
                           while a<drawnumber{
                               let ID = newticket[a].ID
@@ -192,7 +193,7 @@ class RaffleDetailViewController: UIViewController {
             else if segue.identifier == "showWonTicketsSegue"
                        {
                             let DrawWinnerViewController = segue.destination as! WinnerListViewController
-                        DrawWinnerViewController.tickets1 = ticket
+                        DrawWinnerViewController.tickets1 = ticketwinneraray
                        }
            else if segue.identifier == "returnRaffleList"
            {

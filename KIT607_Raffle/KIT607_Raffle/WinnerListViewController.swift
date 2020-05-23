@@ -22,6 +22,9 @@ var tickets1 = [TicketNOArrayForDraw]()
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func returnRaffleDetial(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension WinnerListViewController: UITableViewDataSource{

@@ -2417,7 +2417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8F-4F-GBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1989.8550724637682" y="-966.29464285714278"/>
+            <point key="canvasLocation" x="2052" y="-1294"/>
         </scene>
         <!--Winner List View Controller-->
         <scene sceneID="ugb-eK-6Qg">
@@ -2441,8 +2441,7 @@
                                                 </constraints>
                                                 <state key="normal" image="arrowiosback_111116"/>
                                                 <connections>
-                                                    <action selector="goToTicketTable:" destination="SLU-Az-D77" eventType="touchUpInside" id="kEG-8V-fzw"/>
-                                                    <action selector="returnRaffleDetial:" destination="nwc-Ze-0yq" eventType="touchUpInside" id="cex-Gi-hAg"/>
+                                                    <action selector="returnRaffleDetial:" destination="nwc-Ze-0yq" eventType="touchUpInside" id="LL0-0D-SrV"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvF-9T-9mg">
