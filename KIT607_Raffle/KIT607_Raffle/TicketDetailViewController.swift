@@ -14,6 +14,10 @@ var ticket : Ticket?
     var isRaffleClose = true
     var drawDateFlag = Date()
     var newcustomerName = ""
+    var showCustomerName = ""
+    var showTicketNO = ""
+    var showPrice = ""
+    var showPurchaseDate = ""
     @IBOutlet weak var raffleName: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var drawDate: UILabel!
@@ -31,6 +35,11 @@ var ticket : Ticket?
         if let  displayTicket = ticket
         {//raffle draw time show
             var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
+            showCustomerName = displayTicket.customerName
+            showTicketNO = String(displayTicket.ticketNumber)
+            showPrice = String(displayTicket.ticketPrice)
+            showPurchaseDate = displayTicket.purchaseDate
+            
             raffle=database.selectRaffleBy(id: Int32(ticket!.raffleID))
             drawDate.text = raffle?.drawTime
             
@@ -80,6 +89,14 @@ var ticket : Ticket?
                       
     }
     
+    @IBAction func shareButtonTapped(_ sender: UIButton) {
+        
+        let shareViewController = UIActivityViewController(activityItems: ["Name: \(showCustomerName), Ticket Number: \(showTicketNO), Price:  $\(showPrice), purchase at : \(showPurchaseDate)"], applicationActivities: [])
+        shareViewController.excludedActivityTypes = [UIActivity.ActivityType.postToFacebook]
+        present(shareViewController, animated: true, completion: nil)
+
+        
+    }
     func convertDateFormat(inputDate: String) -> Date {
 
          let olDateFormatter = DateFormatter()

@@ -1234,6 +1234,9 @@
                                                             <constraint firstAttribute="height" constant="52" id="dIV-at-FPE"/>
                                                         </constraints>
                                                         <state key="normal" image="icons8-share-100"/>
+                                                        <connections>
+                                                            <action selector="shareButtonTapped:" destination="SLU-Az-D77" eventType="touchUpInside" id="uxd-S9-wgK"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJk-2R-Ghu">
                                                         <rect key="frame" x="0.0" y="58" width="52" height="16"/>
@@ -2667,7 +2670,7 @@
                                                                     <action selector="showWinnerSegue:" destination="JO6-Ai-2bh" eventType="touchUpInside" id="kid-hK-yf2"/>
                                                                 </connections>
                                                             </button>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="41431589895175_.pic_hd" translatesAutoresizingMaskIntoConstraints="NO" id="7RU-5z-1DS">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="46641590248870_.pic" translatesAutoresizingMaskIntoConstraints="NO" id="7RU-5z-1DS">
                                                                 <rect key="frame" x="113" y="8" width="188" height="100"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="188" id="J4l-v5-wtD"/>
@@ -4249,7 +4252,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ttG-cj-eDL"/>
+        <segue reference="0tM-fx-tct"/>
+        <segue reference="a3n-7Y-dQp"/>
         <segue reference="hf8-Ue-1Q4"/>
         <segue reference="kKw-Om-anO"/>
         <segue reference="7hi-dA-LJE"/>
@@ -4262,6 +4266,7 @@
         <image name="40721589881070_.pic" width="1218" height="444"/>
         <image name="41431589895175_.pic_hd" width="742" height="284"/>
         <image name="41731589896131_.pic" width="400" height="400"/>
+        <image name="46641590248870_.pic" width="1200" height="1200"/>
         <image name="671590154412_.pic" width="1200" height="1200"/>
         <image name="Grey" width="1060" height="292"/>
         <image name="NotStart" width="2208" height="1026"/>
