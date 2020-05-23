@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawWinnerViewController: UIViewController {
+class DrawWinnerViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lowScoreTextField: UITextField!
     @IBOutlet weak var highScoreTextField: UITextField!
     var raffleID = 0
@@ -16,12 +16,15 @@ class DrawWinnerViewController: UIViewController {
     var highScore = 2
     var difference = 1
     var winnerName = String()
-    var ticket = [TicketNOArrayForDraw]()
+    var ticket = [Ticket]()
+    var ticketwinneraray = [Ticket]()
     override func viewDidLoad() {
         super.viewDidLoad()
         //get ticketlist by raffleID
+           lowScoreTextField.delegate = self
+           highScoreTextField.delegate = self
           let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
-        ticket = database.selectTicketNoAndIDByRaffleID(id: Int32(raffleID))
+        ticket = database.selectTicketBy(id: Int32(raffleID))
     }
     
     @IBAction func drawWinnerBtn(_ sender: UIButton) {
@@ -36,20 +39,52 @@ class DrawWinnerViewController: UIViewController {
         difference = highScore - lowScore
         print (ticket)
         
-      var WinnerFiltered = ticket.filter{$0.ticketNumber == difference}
-        if WinnerFiltered.count > 0{
-            let ID = WinnerFiltered[0].ID
+      ticketwinneraray = ticket.filter{$0.ticketNumber == difference}
+        if ticketwinneraray.count > 0{
+            let ID = ticketwinneraray[0].ID
         
              let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
             winnerName = database.selectWinnerNameByTicketID(id: ID)
+              database.updateWinStatusbyID(winStatus: 1, id: ID)
+            //goToWonTicketFromMargin
+            performSegue(withIdentifier: "goToWonTicketFromMargin", sender: self)
+                   
             
-            print(winnerName)
+           // print(winnerName)
         } else{
-            print("no winner")
+            alertNoWinner()
         }
         
     }
     
+    @IBAction func backToRaffleDetail(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+        
+    }
+    //Alert Function
+    func alertNoWinner(){
+        let inputAlert=UIAlertController(title: "Alert", message: "No Winner", preferredStyle: .alert)
+                inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                      
+                   
+                present(inputAlert, animated: true, completion: nil)
+    }
+    //
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+           if textField.text != ""{
+               return true
+           }else {
+               textField.placeholder = "Type something"
+               return false
+           }
+       }
+       
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           lowScoreTextField.endEditing(true)
+           highScoreTextField.endEditing(true)
+          
+           return true
+       }
     //verify textfield
   func validateTextField(value: UITextField)  -> Bool {
         
@@ -66,5 +101,22 @@ class DrawWinnerViewController: UIViewController {
    
             return true
        
+        }
+    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "goToWonTicketFromMargin"
+        {
+          
+         let   detailViewController = segue.destination as! WinnerListViewController
+            let  selectedWinner = ticketwinneraray
+         detailViewController.tickets1 = selectedWinner
+        }
+       
+         else
+        {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        
         }
 }

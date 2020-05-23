@@ -2417,7 +2417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8F-4F-GBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2052" y="-1294"/>
+            <point key="canvasLocation" x="1642" y="-854"/>
         </scene>
         <!--Winner List View Controller-->
         <scene sceneID="ugb-eK-6Qg">
@@ -2801,6 +2801,9 @@
                                                     <constraint firstAttribute="width" constant="36" id="LIO-dE-e63"/>
                                                 </constraints>
                                                 <state key="normal" image="arrowiosback_111116"/>
+                                                <connections>
+                                                    <action selector="backToRaffleDetail:" destination="i0G-1f-09E" eventType="touchUpInside" id="GrW-i3-I6z"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Margin Draw" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFE-cR-WvV">
                                                 <rect key="frame" x="147" y="2" width="120" height="26.5"/>
@@ -2825,22 +2828,22 @@
                                                 <rect key="frame" x="0.0" y="50" width="414" height="645"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tEk-W0-oC1" userLabel="View2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="259"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="raffle" translatesAutoresizingMaskIntoConstraints="NO" id="Qz0-IK-IYw">
-                                                                <rect key="frame" x="6" y="31" width="402" height="197"/>
+                                                                <rect key="frame" x="6" y="31" width="402" height="138"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstItem="Qz0-IK-IYw" firstAttribute="centerX" secondItem="tEk-W0-oC1" secondAttribute="centerX" id="03V-pO-6fo"/>
-                                                            <constraint firstAttribute="height" constant="259" id="GyE-Mu-VEg"/>
+                                                            <constraint firstAttribute="height" constant="200" id="GyE-Mu-VEg"/>
                                                             <constraint firstItem="Qz0-IK-IYw" firstAttribute="centerY" secondItem="tEk-W0-oC1" secondAttribute="centerY" id="NUh-Xp-0DE"/>
                                                             <constraint firstItem="Qz0-IK-IYw" firstAttribute="top" secondItem="tEk-W0-oC1" secondAttribute="top" constant="31" id="acm-Zt-CaS"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnC-Ai-ob8" userLabel="View3">
-                                                        <rect key="frame" x="0.0" y="259" width="414" height="250"/>
+                                                        <rect key="frame" x="0.0" y="200" width="414" height="250"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRY-VA-wia">
                                                                 <rect key="frame" x="20" y="203" width="0.0" height="0.0"/>
@@ -2911,7 +2914,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GdM-bF-MwE" userLabel="View4">
-                                                        <rect key="frame" x="0.0" y="509" width="414" height="136"/>
+                                                        <rect key="frame" x="0.0" y="450" width="414" height="195"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="41431589895175_.pic_hd" translatesAutoresizingMaskIntoConstraints="NO" id="l8u-iZ-p35">
                                                                 <rect key="frame" x="117" y="4" width="180" height="70"/>
@@ -3013,11 +3016,12 @@
                     <connections>
                         <outlet property="highScoreTextField" destination="m5I-18-6HU" id="wd6-Rg-S9w"/>
                         <outlet property="lowScoreTextField" destination="Ift-ZI-Dqf" id="RUQ-hm-IFo"/>
+                        <segue destination="nwc-Ze-0yq" kind="show" identifier="goToWonTicketFromMargin" id="ttG-cj-eDL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8OE-Bb-FPi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2923" y="-745"/>
+            <point key="canvasLocation" x="2317" y="-1031"/>
         </scene>
         <!--Raffle Edit View Controller-->
         <scene sceneID="eyM-5O-iWv">
@@ -3803,6 +3807,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="a3n-7Y-dQp"/>
         <segue reference="kKw-Om-anO"/>
         <segue reference="7hi-dA-LJE"/>
         <segue reference="hsb-3V-YPk"/>
