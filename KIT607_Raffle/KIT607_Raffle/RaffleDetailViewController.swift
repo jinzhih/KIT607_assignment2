@@ -75,6 +75,16 @@ class RaffleDetailViewController: UIViewController {
     }
     
     @IBAction func showWinnerSegue(_ sender: UIButton) {
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
+        ticketsArray = database.selectAllTicketNumberByRaffleID(raffleId: raffle!.ID) ?? [Int32]();
+        if ticketsArray.count == 0 {
+            alertNoBuyer()
+            return
+        }
+        if database.selectDrawStatusByRaffleID(id: raffle!.ID) == 0{
+            alertHaveNotDraw()
+            return
+        }
          performSegue(withIdentifier: "showWinnersSegue", sender: self)
     }
     func convertDateFormat(inputDate: String) -> Date {
@@ -184,6 +194,13 @@ class RaffleDetailViewController: UIViewController {
                          
                       present(inputAlert, animated: true, completion: nil)
           }
+    func alertHaveNotDraw(){
+        let inputAlert=UIAlertController(title: "Alert", message: "You have not draw yet!", preferredStyle: .alert)
+                inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                      
+                   
+                present(inputAlert, animated: true, completion: nil)
+    }
     func alertNoBuyer(){
         let inputAlert=UIAlertController(title: "Alert", message: "You have not sold any tickets!", preferredStyle: .alert)
                 inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))    
