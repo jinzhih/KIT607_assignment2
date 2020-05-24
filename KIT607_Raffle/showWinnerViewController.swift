@@ -55,4 +55,21 @@ extension showWinnerViewController: UITableViewDataSource{
       
        
    }
+     override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
+        {
+            super.prepare(for: segue, sender: sender)
+            if segue.identifier == "returnRaffleDetailFromWinner"
+            {
+              
+             let   detailViewController = segue.destination as! RaffleDetailViewController
+                let  selectedRaffle = raffle
+             detailViewController.raffle = selectedRaffle
+            }
+         
+             else
+            {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            }
 }
