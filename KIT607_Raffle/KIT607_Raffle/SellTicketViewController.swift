@@ -78,13 +78,17 @@ class SellTicketViewController: UIViewController {
                  numberOfTicket = 1
                 totalPrice.text = String(raffleselling!.ticketPrice)
             }
-            
+            stepperForticketQty.value = Double(numberOfTicket)
             ticketQty.text = String(numberOfTicket)
             totalPrice.text = String((raffleselling!.ticketPrice)*Int32(numberOfTicket))
             
         }
     }
     
+    @IBAction func backToRaffleDetailBtn(_ sender: UIButton) {
+        performSegue(withIdentifier: "backToRaffleDetailFromSelling", sender: self)
+        
+    }
     @IBAction func createNewTicket(_ sender: UIButton) {
         
           //verify if customer chosen
@@ -218,6 +222,14 @@ class SellTicketViewController: UIViewController {
             detailViewController.restTicketQty = restQtyOfTicket
             
         }
+            //backToRaffleDetailFromSelling
+            else if segue.identifier == "backToRaffleDetailFromSelling"
+                   {
+                        let RaffleDetailViewController = segue.destination as! RaffleDetailViewController
+                   
+                       RaffleDetailViewController.raffle = raffleselling
+                 
+                   }
         else if segue.identifier == "GoTicketList"
         {
              let ticketListViewController = segue.destination as! TicketCusTableViewController

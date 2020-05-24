@@ -299,6 +299,9 @@
                                                     <constraint firstAttribute="width" constant="36" id="caX-db-nkx"/>
                                                 </constraints>
                                                 <state key="normal" image="arrowiosback_111116"/>
+                                                <connections>
+                                                    <action selector="backToRaffleDetailBtn:" destination="Od4-qE-f2R" eventType="touchUpInside" id="eFf-st-nzE"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nk-Jx-ckz">
                                                 <rect key="frame" x="358" y="-3.5" width="36" height="37"/>
@@ -619,6 +622,7 @@
                         <outlet property="totalPrice" destination="Twk-UP-qKa" id="ctD-F2-h3v"/>
                         <segue destination="gC4-KE-C9p" kind="show" identifier="FindCustomer" id="kKw-Om-anO"/>
                         <segue destination="q4z-gI-INz" kind="show" identifier="GoTicketList" id="ALi-hF-VRu"/>
+                        <segue destination="JO6-Ai-2bh" kind="show" identifier="backToRaffleDetailFromSelling" id="o4p-S0-9QO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qt-0l-5fn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2849,7 +2853,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8F-4F-GBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="352" y="-2746"/>
+            <point key="canvasLocation" x="2888" y="-1194"/>
         </scene>
         <!--Winner List View Controller-->
         <scene sceneID="ugb-eK-6Qg">
@@ -4257,9 +4261,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="a3n-7Y-dQp"/>
-        <segue reference="hf8-Ue-1Q4"/>
-        <segue reference="L4R-22-gjm"/>
-        <segue reference="7hi-dA-LJE"/>
+        <segue reference="o4p-S0-9QO"/>
+        <segue reference="kKw-Om-anO"/>
+        <segue reference="ALi-hF-VRu"/>
         <segue reference="hsb-3V-YPk"/>
         <segue reference="hbe-7k-8a8"/>
         <segue reference="QKX-YE-RhC"/>
