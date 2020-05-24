@@ -77,6 +77,9 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate, UIImage
        
     }
     
+    @IBAction func returnRaffleList(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     //choose cover
     @IBAction func selectCoverBtn(_ sender: UIButton) {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){

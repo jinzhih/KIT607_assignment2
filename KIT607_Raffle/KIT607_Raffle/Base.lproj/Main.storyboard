@@ -1343,6 +1343,9 @@
                                                     <constraint firstAttribute="height" constant="37" id="HQh-gr-dKd"/>
                                                 </constraints>
                                                 <state key="normal" image="arrowiosback_111116"/>
+                                                <connections>
+                                                    <action selector="returnRaffleList:" destination="Y2u-aq-u1d" eventType="touchUpInside" id="PLt-mT-qgO"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMx-9L-uVj">
                                                 <rect key="frame" x="358" y="3" width="36" height="37"/>
@@ -2186,41 +2189,9 @@
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Lab-cN-PNo">
                                                 <rect key="frame" x="109.5" y="0.0" width="86" height="100"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4iY-nz-dWT">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86" height="80"/>
-                                                        <state key="normal" image="icons8-add-100"/>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gu-BE-sIU">
-                                                        <rect key="frame" x="0.0" y="84" width="86" height="16"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="4gu-BE-sIU" firstAttribute="centerX" secondItem="Lab-cN-PNo" secondAttribute="centerX" id="Kbn-VH-h4u"/>
-                                                    <constraint firstItem="4iY-nz-dWT" firstAttribute="centerX" secondItem="Lab-cN-PNo" secondAttribute="centerX" id="rPN-dB-F0n"/>
-                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="6GS-2h-ADM">
                                                 <rect key="frame" x="218.5" y="0.0" width="86.5" height="100"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r4-77-dfa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="80"/>
-                                                        <state key="normal" image="icons8-favorite-cart-100"/>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eis-ma-mcv">
-                                                        <rect key="frame" x="30" y="84" width="26.5" height="16"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="7r4-77-dfa" firstAttribute="centerX" secondItem="6GS-2h-ADM" secondAttribute="centerX" id="aiC-vV-wq7"/>
-                                                    <constraint firstItem="Eis-ma-mcv" firstAttribute="centerX" secondItem="6GS-2h-ADM" secondAttribute="centerX" id="kyN-JU-6jw"/>
-                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="SHy-IM-DaL">
                                                 <rect key="frame" x="328" y="0.0" width="86" height="100"/>
@@ -2228,9 +2199,12 @@
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6R8-eq-S4a">
                                                         <rect key="frame" x="0.0" y="0.0" width="86" height="80"/>
                                                         <state key="normal" image="icons8-male-user-100"/>
+                                                        <connections>
+                                                            <action selector="goToCustomerList:" destination="q4z-gI-INz" eventType="touchUpInside" id="zXP-K9-DC1"/>
+                                                        </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmX-hY-p4A">
-                                                        <rect key="frame" x="33.5" y="84" width="19" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmX-hY-p4A">
+                                                        <rect key="frame" x="13" y="84" width="59.5" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -2277,11 +2251,12 @@
                         <segue destination="Od4-qE-f2R" kind="show" identifier="backSelllingPortalSegue" id="Ack-cW-t02"/>
                         <segue destination="JO6-Ai-2bh" kind="show" identifier="backToRaffleDetailFromExistingTicketList" id="VDJ-lI-k9o"/>
                         <segue destination="JL3-8X-cP8" kind="show" identifier="backToRaffleList" id="QI0-DI-Q7P"/>
+                        <segue destination="gC4-KE-C9p" kind="show" identifier="goToCustomerListFromTicketList" id="YpR-HT-Mcd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er2-rV-SeU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-239" y="548"/>
+            <point key="canvasLocation" x="475" y="304"/>
         </scene>
         <!--Customer Cus Table View Controller-->
         <scene sceneID="YXG-vc-T5O">
@@ -2325,10 +2300,13 @@
                                                     <constraint firstAttribute="height" constant="37" id="ob8-AF-yOv"/>
                                                 </constraints>
                                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <state key="normal" image="magnifyingglass" catalog="system">
+                                                <state key="normal" image="arrowiosback_111116">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="returnAny:" destination="gC4-KE-C9p" eventType="touchUpInside" id="knd-ga-05h"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -2493,7 +2471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pK-up-bqM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-946" y="548"/>
+            <point key="canvasLocation" x="-264" y="768"/>
         </scene>
         <!--Raffle Detail View Controller-->
         <scene sceneID="noJ-K4-qTZ">
@@ -4301,10 +4279,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ttG-cj-eDL"/>
+        <segue reference="a3n-7Y-dQp"/>
         <segue reference="0yy-u8-IgD"/>
         <segue reference="L4R-22-gjm"/>
-        <segue reference="7hi-dA-LJE"/>
+        <segue reference="ALi-hF-VRu"/>
         <segue reference="hsb-3V-YPk"/>
         <segue reference="Ack-cW-t02"/>
         <segue reference="QI0-DI-Q7P"/>
@@ -4331,7 +4309,6 @@
         <image name="icons8-share-100" width="100" height="100"/>
         <image name="icons8-unchecked-radio-button-24" width="24" height="24"/>
         <image name="icons8-unchecked-radio-button-24 (1)" width="24" height="24"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.badge.plus.fill" catalog="system" width="128" height="116"/>
         <image name="person.crop.square" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>

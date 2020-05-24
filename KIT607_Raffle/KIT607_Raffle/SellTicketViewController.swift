@@ -27,6 +27,7 @@ class SellTicketViewController: UIViewController {
     var numberOfTicket : Int!
     var restQtyOfTicket : Int!
     var displayDrawType=""
+   
     
     @IBOutlet weak var raffleNameLable: UILabel!
     @IBOutlet weak var stepperForticketQty: UIStepper!

@@ -15,6 +15,7 @@ class CustomerCusTableViewController: UIViewController {
     var searching = false
     var ticketQty : Int!
     var restTicketQty : Int!
+     var isChooseCustomer = 1
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var customerTable: UITableView!
@@ -27,6 +28,9 @@ class CustomerCusTableViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func returnAny(_ sender: UIButton) {
+         dismiss(animated: true, completion: nil)
+    }
     @IBAction func newCustomer(_ sender: UIButton) {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New Customer", message: "", preferredStyle: .alert)
@@ -43,9 +47,9 @@ class CustomerCusTableViewController: UIViewController {
         customers1 = database.selectAllCustomers()
             self.customerTable.reloadData()
         }))
-
-       // present(alert,animated: true,completion:
-       //)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(action: UIAlertAction!) in
+        }))
+       
             present(alert, animated:true, completion:nil)
       
         
@@ -86,6 +90,33 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
 }
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 var cell = tableView.dequeueReusableCell(withIdentifier: "CustomerCell", for: indexPath)
+    if isChooseCustomer == 0{
+        cell.isUserInteractionEnabled = false
+          if searching {
+              
+          var customer = searchResult[indexPath.row]
+              if   let  customerCell = cell as? CustomerTableViewCell
+              {
+                  customerCell.customerID.text = String(customer.ID)
+                  customerCell.customerName.text = customer.customerName
+                  
+                  
+              }
+          } else{
+              
+              // Configure the cell...
+              let customer = customers1[indexPath.row]
+              if   let  customerCell = cell as? CustomerTableViewCell
+              {
+                  customerCell.customerID.text = String(customer.ID)
+                  customerCell.customerName.text = customer.customerName
+                  
+                  
+              }
+
+          }
+                  return  cell
+    }
     if searching {
         
     var customer = searchResult[indexPath.row]
@@ -117,6 +148,9 @@ var cell = tableView.dequeueReusableCell(withIdentifier: "CustomerCell", for: in
     override func   prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         super.prepare(for: segue, sender: sender)
+//        if isChooseCustomer == 0{
+//            return
+//        }
         if segue.identifier == "chooseCustomer"
         {
             guard let   sellViewController = segue.destination as? SellTicketViewController else

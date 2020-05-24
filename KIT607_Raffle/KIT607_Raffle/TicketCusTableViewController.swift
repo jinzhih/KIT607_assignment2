@@ -32,6 +32,14 @@ UIViewController {
     @IBAction func returnRaffleList(_ sender: UIButton) {
         performSegue(withIdentifier: "backToRaffleList", sender: self)
     }
+    
+  
+    @IBAction func goToCustomerList(_ sender: UIButton) {
+        //goToCustomerListFromTicketList
+        performSegue(withIdentifier: "goToCustomerListFromTicketList", sender: self)
+    }
+    
+    
     @IBAction func returnRaffleDetial(_ sender: UIButton) {
        //backSelllingPortalSegue
         if(isNewTicket == 1){
@@ -103,7 +111,11 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
                     ticketCell.purchaseDate.text = ticket.purchaseDate
                        ticketCell.raffleName.text = ticket.raffleName
                }
-           } else{
+           }
+   
+        
+        
+        else{
                
                // Configure the cell...
                let ticket = tickets1[indexPath.row]
@@ -164,8 +176,12 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
                    
                       detailViewController.raffle = selectedRaffle
                   }
-         
-
+          else if segue.identifier == "goToCustomerListFromTicketList"
+                           {
+                                let CustomerListViewController = segue.destination as! CustomerCusTableViewController
+                           
+                               CustomerListViewController.isChooseCustomer = 0
+                           }
           
           }
 //    override func   prepare(for segue: UIStoryboardSegue, sender: Any?)

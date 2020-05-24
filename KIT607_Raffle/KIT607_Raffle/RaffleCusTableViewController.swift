@@ -121,7 +121,11 @@ if searching {
         {
             super.prepare(for: segue, sender: sender)
             if segue.identifier == "ShowRaffleDetailSegue"
-            {         guard let   detailViewController = segue.destination as? RaffleDetailViewController else
+            {
+                guard let   detailViewController = segue.destination as? RaffleDetailViewController
+                
+          
+            else
             {
                 fatalError("Unexpected destination: \(segue.destination)")
                 
@@ -139,6 +143,12 @@ if searching {
                 detailViewController.raffle = selectedRaffle
                 
             }
+            else if segue.identifier == "goCustomerSegue"
+                                     {
+                                          let CustomerListViewController = segue.destination as! CustomerCusTableViewController
+                                     
+                                         CustomerListViewController.isChooseCustomer = 0
+                                     }
             
             }
 
