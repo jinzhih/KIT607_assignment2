@@ -21,7 +21,7 @@ class CustomerCusTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customerTable.dataSource = self
-        var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
+       let database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
         customers1 = database.selectAllCustomers()
 //        print(ticketQty!)
         // Do any additional setup after loading the view.
@@ -38,12 +38,17 @@ class CustomerCusTableViewController: UIViewController {
            var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
         
         database.insert(customer: Customer(customerName:textField.text!))
-        self.customerTable.reloadData()
-        
+        self.customerTable.dataSource = self
+       let database1 : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
+        customers1 = database.selectAllCustomers()
+            self.customerTable.reloadData()
         }))
 
-        
+       // present(alert,animated: true,completion:
+       //)
             present(alert, animated:true, completion:nil)
+      
+        
     }
     
 }

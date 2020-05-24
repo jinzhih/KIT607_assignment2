@@ -216,6 +216,8 @@ class RaffleDetailViewController: UIViewController {
              ticketListViewController.raffleID = Int(raffle!.ID)
              ticketListViewController.raffle = raffle
             }
+         
+            
             else if segue.identifier == "goToEditRaffleSegue"
                       {
                            let editRaffleViewController = segue.destination as! RaffleEditViewController
@@ -227,6 +229,8 @@ class RaffleDetailViewController: UIViewController {
              DrawWinnerViewController.raffleID = Int(raffle!.ID)
                 DrawWinnerViewController.raffle = raffle
             }
+            //back to raffle
+         
             //showWonTicketsSegue
             else if segue.identifier == "showWonTicketsSegue"
                        {
@@ -311,7 +315,9 @@ class RaffleDetailViewController: UIViewController {
     
     
     @IBAction func backToRaffle(_ sender: Any) {
-         dismiss(animated: true, completion: nil)
+        // dismiss(animated: true, completion: nil)
+        //backToRaffleListSegue
+         performSegue(withIdentifier: "returnRaffleList", sender: self)
     }
     
 }
