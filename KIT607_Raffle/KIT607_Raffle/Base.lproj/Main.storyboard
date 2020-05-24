@@ -18,7 +18,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SOa-Ph-4kL">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5v7-Jz-EMt">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5v7-Jz-EMt" userLabel="View1">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNi-9c-e3f">
@@ -35,8 +35,28 @@
                                             <constraint firstAttribute="height" constant="20" id="l8g-xG-hsP"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjm-WM-1AR" userLabel="View2">
+                                        <rect key="frame" x="0.0" y="20" width="414" height="50"/>
+                                        <subviews>
+                                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search Customer Name" translatesAutoresizingMaskIntoConstraints="NO" id="8a3-fB-LEd">
+                                                <rect key="frame" x="0.0" y="8" width="414" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="barTintColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="JL3-8X-cP8" id="WqM-ND-ghJ"/>
+                                                </connections>
+                                            </searchBar>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="kT9-sa-CMw"/>
+                                        </constraints>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ni8-cs-AMs">
-                                        <rect key="frame" x="0.0" y="20" width="414" height="688"/>
+                                        <rect key="frame" x="0.0" y="70" width="414" height="638"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="142" id="gRx-w0-M7r" customClass="RaffleUITableViewCell" customModule="KIT607_Raffle" customModuleProvider="target">
@@ -232,7 +252,6 @@
                                     <constraint firstItem="wIp-oJ-yqV" firstAttribute="top" secondItem="ni8-cs-AMs" secondAttribute="bottom" id="ScC-4e-fVK"/>
                                     <constraint firstAttribute="trailing" secondItem="ni8-cs-AMs" secondAttribute="trailing" id="UlN-IZ-k17"/>
                                     <constraint firstItem="5v7-Jz-EMt" firstAttribute="top" secondItem="SOa-Ph-4kL" secondAttribute="top" id="b9L-VS-8Q2"/>
-                                    <constraint firstItem="ni8-cs-AMs" firstAttribute="top" secondItem="5v7-Jz-EMt" secondAttribute="bottom" id="dP5-Uy-kIy"/>
                                     <constraint firstItem="wIp-oJ-yqV" firstAttribute="leading" secondItem="SOa-Ph-4kL" secondAttribute="leading" id="dgI-zP-Vj2"/>
                                     <constraint firstItem="5v7-Jz-EMt" firstAttribute="leading" secondItem="SOa-Ph-4kL" secondAttribute="leading" id="eKL-mz-Aq6"/>
                                     <constraint firstAttribute="trailing" secondItem="wIp-oJ-yqV" secondAttribute="trailing" id="k8D-iH-3Ee"/>
@@ -254,13 +273,14 @@
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="896"/>
                     <connections>
                         <outlet property="raffleTable" destination="ni8-cs-AMs" id="qyz-pb-aOb"/>
+                        <outlet property="searchBar" destination="8a3-fB-LEd" id="oQY-tB-618"/>
                         <segue destination="Y2u-aq-u1d" kind="show" identifier="newRaffleSegue" id="6hL-4g-yO9"/>
                         <segue destination="gC4-KE-C9p" kind="show" identifier="goCustomerSegue" id="L4R-22-gjm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3F-QJ-dXD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1257" y="505"/>
+            <point key="canvasLocation" x="-1575" y="549"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="96n-3V-Y26">
@@ -276,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6O-tE-wlF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1045" y="-908"/>
+            <point key="canvasLocation" x="-1022" y="-908"/>
         </scene>
         <!--Sell Ticket View Controller-->
         <scene sceneID="x1h-Kj-zuq">
@@ -1884,7 +1904,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="V3Z-OT-x4V">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6w-nR-iKZ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6w-nR-iKZ" userLabel="View1">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfa-Vr-0qe">
@@ -1915,8 +1935,29 @@
                                             <constraint firstItem="gfa-Vr-0qe" firstAttribute="centerY" secondItem="D6w-nR-iKZ" secondAttribute="centerY" id="tSK-tv-Qj3"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ls3-Eq-QZR" userLabel="View2">
+                                        <rect key="frame" x="0.0" y="37" width="414" height="50"/>
+                                        <subviews>
+                                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search Customer Name" translatesAutoresizingMaskIntoConstraints="NO" id="Wef-qH-ruC">
+                                                <rect key="frame" x="0.0" y="8" width="414" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="barTintColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="gC4-KE-C9p" id="fpA-wZ-yIn"/>
+                                                </connections>
+                                            </searchBar>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="D2k-ho-t7n"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="safeArea" id="4k7-B7-WTq"/>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="THI-As-eMs">
-                                        <rect key="frame" x="0.0" y="37" width="414" height="671"/>
+                                        <rect key="frame" x="0.0" y="87" width="414" height="621"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketCell" rowHeight="142" id="dt3-4d-4B8" customClass="TicketUITableViewCell" customModule="KIT607_Raffle" customModuleProvider="target">
@@ -2216,7 +2257,6 @@
                                     <constraint firstItem="D6w-nR-iKZ" firstAttribute="leading" secondItem="V3Z-OT-x4V" secondAttribute="leading" id="cTT-wb-ahx"/>
                                     <constraint firstItem="D6w-nR-iKZ" firstAttribute="top" secondItem="V3Z-OT-x4V" secondAttribute="top" id="doO-7J-XFm"/>
                                     <constraint firstAttribute="trailing" secondItem="D6w-nR-iKZ" secondAttribute="trailing" id="flf-Wd-gRm"/>
-                                    <constraint firstItem="THI-As-eMs" firstAttribute="top" secondItem="D6w-nR-iKZ" secondAttribute="bottom" id="hA5-Xi-sgu"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -2240,7 +2280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er2-rV-SeU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4983" y="-820"/>
+            <point key="canvasLocation" x="-239" y="548"/>
         </scene>
         <!--Customer Cus Table View Controller-->
         <scene sceneID="YXG-vc-T5O">
@@ -2452,7 +2492,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pK-up-bqM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6816" y="-308"/>
+            <point key="canvasLocation" x="-946" y="548"/>
         </scene>
         <!--Raffle Detail View Controller-->
         <scene sceneID="noJ-K4-qTZ">
@@ -4261,12 +4301,12 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="a3n-7Y-dQp"/>
-        <segue reference="o4p-S0-9QO"/>
-        <segue reference="kKw-Om-anO"/>
+        <segue reference="VDJ-lI-k9o"/>
+        <segue reference="L4R-22-gjm"/>
         <segue reference="ALi-hF-VRu"/>
         <segue reference="hsb-3V-YPk"/>
-        <segue reference="hbe-7k-8a8"/>
-        <segue reference="QKX-YE-RhC"/>
+        <segue reference="Ack-cW-t02"/>
+        <segue reference="QI0-DI-Q7P"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1282410-ticket-png-clipart-ticket-png-400_320 copy" width="394" height="197"/>

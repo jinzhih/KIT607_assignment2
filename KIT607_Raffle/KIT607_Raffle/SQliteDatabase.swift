@@ -630,6 +630,37 @@ class SQLiteDatabase
         
         return result
     }
+    //select raffle by name
+    func selectRaffleByName(raffleName:String) -> [Raffle]{
+           var result = [Raffle]()
+           let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty FROM Raffle WHERE Name LIKE ?"
+           selectWithQuery(
+           selectStatementQuery,
+           eachRow: { (id) in
+           //create a movie object from each result
+           let raffle = Raffle(
+                ID: sqlite3_column_int(id, 0),
+                name: String(cString:sqlite3_column_text(id, 1)),
+                description: String(cString:sqlite3_column_text(id, 2)),
+                type: sqlite3_column_int(id, 3),
+                maxNumber: sqlite3_column_int(id, 4),
+                ticketPrice: sqlite3_column_int(id, 5),
+                launchStatus: sqlite3_column_int(id, 6),
+                drawStatus: sqlite3_column_int(id, 7),
+                drawTime: String(cString:sqlite3_column_text(id, 8)),
+                winQty: sqlite3_column_int(id, 9)
+               
+           )
+                result += [raffle]
+            },
+           bindingFunction: {(selectSatement) in
+          
+               sqlite3_bind_text(selectSatement, 1, NSString(string: raffleName).utf8String, -1, nil)
+                 
+              })
+           
+           return result
+       }
         
     
      func selectTicketBy(id:Int32) -> [Ticket]{
@@ -662,6 +693,39 @@ class SQLiteDatabase
            
            return result
        }
+    //select ticket by name
+//       func selectTicketByName(ticketName:String) -> [Ticket]{
+//              var result = [Ticket]()
+//              let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty FROM Ticket WHERE Name LIKE ?"
+//              selectWithQuery(
+//              selectStatementQuery,
+//              eachRow: { (id) in
+//              //create a movie object from each result
+//              let raffle = Raffle(
+//                   ID: sqlite3_column_int(id, 0),
+//                   name: String(cString:sqlite3_column_text(id, 1)),
+//                   description: String(cString:sqlite3_column_text(id, 2)),
+//                   type: sqlite3_column_int(id, 3),
+//                   maxNumber: sqlite3_column_int(id, 4),
+//                   ticketPrice: sqlite3_column_int(id, 5),
+//                   launchStatus: sqlite3_column_int(id, 6),
+//                   drawStatus: sqlite3_column_int(id, 7),
+//                   drawTime: String(cString:sqlite3_column_text(id, 8)),
+//                   winQty: sqlite3_column_int(id, 9)
+//                  
+//              )
+//                   result += [raffle]
+//               },
+//              bindingFunction: {(selectSatement) in
+//             
+//                  sqlite3_bind_text(selectSatement, 1, NSString(string: ticketName).utf8String, -1, nil)
+//                    
+//                 })
+//              
+//              return result
+//          }
+           
+    
     //selet winner tickets
     func selectWonTicketByWinstatus(id:Int32) -> [Ticket]{
               var result = [Ticket]()

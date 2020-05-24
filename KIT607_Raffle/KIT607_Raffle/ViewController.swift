@@ -45,12 +45,13 @@ var ticketID : [Int32]?
       //  raffles = database.selectAllRaffles()
       //  print(raffles)
      
-        database.updateWinStatusbyID(winStatus: 1, id: 49)
-           
+       // database.updateWinStatusbyID(winStatus: 1, id: 49)
+       print(database.selectRaffleByName(raffleName: "test"))
          // tickets2=database.selectTicketNoAndIDByRaffleID(id: 6)
-        tickets2=database.selectTicketByTicketID(id: 49)
-         print(tickets2)
+      //  tickets2=database.selectTicketByTicketID(id: 49)
+      //   print(tickets2)
       //  database.updateTicket(customerName: <#T##String#>, id: <#T##Int32#>)
+        
     }
 
 }

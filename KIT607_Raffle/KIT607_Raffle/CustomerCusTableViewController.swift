@@ -54,15 +54,7 @@ class CustomerCusTableViewController: UIViewController {
 }
 //TOdosearch Bar
 extension CustomerCusTableViewController:UISearchBarDelegate{
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//         var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
-//       //let ids = array.map { $0.id }
-//        let customerList = customers1.map{$0.customerName}
-//        searchResult = database.selectCustomerByName(customerName: searchText)
-//        print("hello")
-//        searching = true
-//        customerTable.reloadData()
-//    }
+
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
          var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
@@ -118,10 +110,7 @@ var cell = tableView.dequeueReusableCell(withIdentifier: "CustomerCell", for: in
 
     }
     
-    
-    
     return cell
-   
     
 }
     

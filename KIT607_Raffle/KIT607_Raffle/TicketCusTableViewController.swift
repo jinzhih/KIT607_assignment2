@@ -12,6 +12,7 @@ var tickets1 = [Ticket]()
 class TicketCusTableViewController:
 UIViewController {
     @IBOutlet weak var ticketTable: UITableView!
+       var searchResult = [Customer]()
      var raffle : Raffle?
      var isNewTicket = Int()
     var customerName=""

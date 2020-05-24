@@ -17,9 +17,10 @@ class RaffleCusTableViewController: UIViewController {
     var rafflePrice = 5
     var launtchStatus = 0
     var drawStatus = 0
+    var searchResult = [Raffle]()
+    var searching = false
     
-
-    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var raffleTable: UITableView!
     
     override func viewDidLoad() {
@@ -33,6 +34,8 @@ class RaffleCusTableViewController: UIViewController {
         print(raffles1)
         
     }
+    
+ 
   //Go to create raffle view
     @IBAction func newRaffleBtn(_ sender: UIButton) {
           performSegue(withIdentifier: "newRaffleSegue", sender: self)
@@ -44,36 +47,73 @@ class RaffleCusTableViewController: UIViewController {
             performSegue(withIdentifier: "goCustomerSegue", sender: self)
     }
     
+
+    
+}
+
+extension RaffleCusTableViewController:UISearchBarDelegate{
+
+
+func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+     var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
+    print(searchBar.text!)
+    searchResult = //database.selectCustomerByName(customerName: searchBar.text!)
+    database.selectRaffleByName(raffleName: searchBar.text!)
+   // print("hello")
+    searching = true
+    raffleTable.reloadData()
+}
+
+func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchBar.text?.count == 0 {
+        searching = false
+        raffleTable.reloadData()
+        }
+    }
 }
     extension RaffleCusTableViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return raffles1.count
+        
+        if searching{
+            return searchResult.count
+        }else{
+            return raffles1.count
+        }
+       // return raffles1.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//         let raffle = raffles1[indexPath.row]
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        as! Cell
-//       cell.raffleName.text = raffle.name
-//        cell.raffleDrawDate.text = raffle.drawTime
-//
-//        return cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-                // Configure the cell...
-                let raffle = raffles1[indexPath.row]
-                if   let  raffleCell = cell as? RaffleUITableViewCell
-                {
-                    raffleCell.nameRaffle.text = raffle.name
-                   raffleCell.desRaffle.text = raffle.description
-                    
-                    
-                }
+if searching {
+       print(searching)
+    print(searchResult)
+   var raffle = searchResult[indexPath.row]
+    print()
+       if   let  raffleCell = cell as? RaffleUITableViewCell
+       {
+           raffleCell.nameRaffle.text = raffle.name
+           raffleCell.desRaffle.text = raffle.description
+           
+           
+       }
+    
+   } else{
+       
+       // Configure the cell...
+       let raffle = raffles1[indexPath.row]
+       if   let  raffleCell = cell as? RaffleUITableViewCell
+       {
+        raffleCell.nameRaffle.text = raffle.name
+           raffleCell.desRaffle.text = raffle.description
+           
+           
+       }
+        
+        }
                 return cell
-        
-        
-        
+         
         
     }
     
@@ -103,3 +143,4 @@ class RaffleCusTableViewController: UIViewController {
             }
 
 }
+
