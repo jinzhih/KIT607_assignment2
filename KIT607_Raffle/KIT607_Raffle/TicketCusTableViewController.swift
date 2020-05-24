@@ -12,12 +12,14 @@ var tickets1 = [Ticket]()
 class TicketCusTableViewController:
 UIViewController {
     @IBOutlet weak var ticketTable: UITableView!
-       var searchResult = [Customer]()
+       var searchResult = [Ticket]()
      var raffle : Raffle?
      var isNewTicket = Int()
     var customerName=""
     var raffleID = 0
      var ticketNumber = 0
+    var searching = false
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,27 +42,84 @@ UIViewController {
        performSegue(withIdentifier: "backToRaffleDetailFromExistingTicketList", sender: self)
     }
 }
+extension TicketCusTableViewController:UISearchBarDelegate{
 
-extension TicketCusTableViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tickets1.count
+
+func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+     var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
+    print(searchBar.text!)
+    searchResult = tickets1.filter{$0.ticketNumber == Int32(searchBar.text!)}
+    //ticketwinneraray = ticket.filter{$0.ticketNumber == difference}
+    print("hello")
+    searching = true
+    ticketTable.reloadData()
+}
+
+func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchBar.text?.count == 0 {
+        searching = false
+        ticketTable.reloadData()
+        }
     }
+}
+extension TicketCusTableViewController: UITableViewDataSource, UITableViewDelegate{
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if searching{
+        return searchResult.count
+    }else{
+         return tickets1.count
+    }
+    
+}
+
+
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TicketCell", for: indexPath)
         
         // Configure the cell...
-        let ticket = tickets1[indexPath.row]
-        if   let  ticketCell = cell as? TicketUITableViewCell
-        {
-            ticketCell.ticketNO.text = String(ticket.ticketNumber)
-            ticketCell.customerName.text = ticket.customerName
-            ticketCell.purchaseDate.text = ticket.purchaseDate
-            ticketCell.price.text = String(ticket.ticketPrice)
-            ticketCell.raffleName.text = ticket.raffleName
-            
-            
-        }
+        
+        
+//        let ticket = tickets1[indexPath.row]
+//        if   let  ticketCell = cell as? TicketUITableViewCell
+//        {
+//            ticketCell.ticketNO.text = String(ticket.ticketNumber)
+//            ticketCell.customerName.text = ticket.customerName
+//            ticketCell.purchaseDate.text = ticket.purchaseDate
+//            ticketCell.price.text = String(ticket.ticketPrice)
+//            ticketCell.raffleName.text = ticket.raffleName
+//
+//
+//        }
+        if searching {
+               
+           var ticket = searchResult[indexPath.row]
+               if   let  ticketCell = cell as? TicketUITableViewCell
+               {
+                   ticketCell.ticketNO.text = String(ticket.ticketNumber)
+                ticketCell.customerName.text = ticket.customerName
+                ticketCell.price.text = String(ticket.ticketPrice)
+                    ticketCell.purchaseDate.text = ticket.purchaseDate
+                       ticketCell.raffleName.text = ticket.raffleName
+               }
+           } else{
+               
+               // Configure the cell...
+               let ticket = tickets1[indexPath.row]
+               if   let  ticketCell = cell as? TicketUITableViewCell
+               {
+                  ticketCell.ticketNO.text = String(ticket.ticketNumber)
+                   ticketCell.customerName.text = ticket.customerName
+                ticketCell.purchaseDate.text = ticket.purchaseDate
+                   ticketCell.price.text = String(ticket.ticketPrice)
+                  ticketCell.raffleName.text = ticket.raffleName
+                
+                   
+                   
+               }
+
+           }
         return cell
        
         
