@@ -18,6 +18,7 @@ class RaffleDetailViewController: UIViewController {
     var drawStatus = 0
     var ticket = [Ticket]()
     var ticketwinneraray = [Ticket]()
+    var searchResult = [Ticket]()
    
     @IBOutlet var nameRaffle: UILabel!
     
@@ -26,6 +27,7 @@ class RaffleDetailViewController: UIViewController {
     @IBOutlet weak var drawDate: UILabel!
     var winnerName = String()
     
+    @IBOutlet weak var sellTicketBtn: UIButton!
     @IBOutlet weak var drawButton: UIButton!
     @IBOutlet weak var drawType: UILabel!
     @IBOutlet weak var drawLimit: UILabel!
@@ -63,12 +65,16 @@ class RaffleDetailViewController: UIViewController {
                          Date()){
                          drawImg.image = imgArray[1]
                        drawButton.isEnabled = false
+                       
                       
                     //     viewDidLoad()
                       return
                      }
                 drawImg.image = imgArray[0]
                   drawButton.isEnabled = true
+            //if drawdate is not up to and no draw can sell tickets
+              
+                
                    
         }
         
@@ -85,6 +91,16 @@ class RaffleDetailViewController: UIViewController {
             alertHaveNotDraw()
             return
         }
+        searchResult = database.selectWonTicketByRaffleID(id: raffle!.ID)
+         searchResult=searchResult.filter{$0.winStatus == 1}
+        print(searchResult)
+        if(searchResult.isEmpty == true){
+            alertNoWinner()
+            return
+        }
+        
+        
+        
          performSegue(withIdentifier: "showWinnersSegue", sender: self)
     }
     func convertDateFormat(inputDate: String) -> Date {
@@ -98,6 +114,14 @@ class RaffleDetailViewController: UIViewController {
        }
 //    let segue: UIStoryboardSegue
     @IBAction func sellTicket(_ sender: UIButton) {
+         let drawDateFlag = convertDateFormat(inputDate: drawDate.text!)
+        if(drawDateFlag <
+            Date()){
+            print(drawDateFlag)
+            print(Date())
+            alertCannotSell()
+            return
+        }
         performSegue(withIdentifier: "SellingTicket", sender: self)
     }
     
@@ -204,6 +228,18 @@ class RaffleDetailViewController: UIViewController {
     func alertNoBuyer(){
         let inputAlert=UIAlertController(title: "Alert", message: "You have not sold any tickets!", preferredStyle: .alert)
                 inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))    
+                present(inputAlert, animated: true, completion: nil)
+    }
+    
+    func alertNoWinner(){
+        let inputAlert=UIAlertController(title: "Alert", message: "This margin raffle no winner!", preferredStyle: .alert)
+                inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                present(inputAlert, animated: true, completion: nil)
+    }
+//
+    func alertCannotSell(){
+        let inputAlert=UIAlertController(title: "Alert", message: "This raffle is over!", preferredStyle: .alert)
+                inputAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 present(inputAlert, animated: true, completion: nil)
     }
 

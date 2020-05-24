@@ -377,7 +377,7 @@
                                                         <rect key="frame" x="0.0" y="259" width="414" height="280"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="rPh-Ge-eJb">
-                                                                <rect key="frame" x="20" y="14" width="150" height="271.5"/>
+                                                                <rect key="frame" x="20" y="14" width="151" height="271.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-E5-HIq">
                                                                         <rect key="frame" x="0.0" y="0.0" width="98.5" height="20.5"/>
@@ -436,7 +436,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="cJT-6M-Frq">
-                                                                <rect key="frame" x="179" y="14" width="150" height="270.5"/>
+                                                                <rect key="frame" x="171" y="14" width="158" height="270.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFu-Nw-Cid">
                                                                         <rect key="frame" x="0.0" y="0.0" width="47" height="19.5"/>
@@ -450,8 +450,11 @@
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5L-Ir-uP6">
-                                                                        <rect key="frame" x="0.0" y="61" width="42" height="20.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="v5L-Ir-uP6">
+                                                                        <rect key="frame" x="0.0" y="61" width="158" height="20.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="158" id="jBG-uh-chZ"/>
+                                                                        </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -504,7 +507,7 @@
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstItem="zlI-dm-cSC" firstAttribute="top" secondItem="GGv-J8-n7F" secondAttribute="bottom" constant="11" id="Sza-4K-sff"/>
-                                                                    <constraint firstAttribute="width" constant="150" id="cHr-vd-NbO"/>
+                                                                    <constraint firstAttribute="width" constant="158" id="cHr-vd-NbO"/>
                                                                 </constraints>
                                                             </stackView>
                                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Dak-Ic-1Nt">
@@ -544,7 +547,7 @@
                                                             <constraint firstAttribute="height" constant="280" id="NBj-9p-Y70"/>
                                                             <constraint firstItem="rPh-Ge-eJb" firstAttribute="top" secondItem="9yF-Df-81X" secondAttribute="top" constant="14" id="PyI-6j-tbQ"/>
                                                             <constraint firstItem="vOY-vf-YD7" firstAttribute="top" secondItem="Dak-Ic-1Nt" secondAttribute="bottom" constant="6.5" id="e6Z-nl-BbN"/>
-                                                            <constraint firstItem="cJT-6M-Frq" firstAttribute="leading" secondItem="rPh-Ge-eJb" secondAttribute="trailing" constant="9" id="jIl-FK-0kn"/>
+                                                            <constraint firstItem="cJT-6M-Frq" firstAttribute="leading" secondItem="rPh-Ge-eJb" secondAttribute="trailing" id="jIl-FK-0kn"/>
                                                             <constraint firstItem="vOY-vf-YD7" firstAttribute="leading" secondItem="cJT-6M-Frq" secondAttribute="trailing" constant="7.5" id="o9W-5l-HCh"/>
                                                             <constraint firstItem="WUh-0R-5Jo" firstAttribute="leading" secondItem="cJT-6M-Frq" secondAttribute="trailing" constant="7.5" id="oEg-wV-Me7"/>
                                                             <constraint firstItem="cJT-6M-Frq" firstAttribute="top" secondItem="9yF-Df-81X" secondAttribute="top" constant="14" id="qpe-vk-azA"/>
@@ -2860,6 +2863,7 @@
                         <outlet property="drawPrice" destination="Mxr-cP-AQf" id="8Cv-MO-ZET"/>
                         <outlet property="drawType" destination="Bca-5j-Bha" id="3fj-WM-dqs"/>
                         <outlet property="nameRaffle" destination="qyM-NW-8fP" id="oIn-oT-nuk"/>
+                        <outlet property="sellTicketBtn" destination="Qjy-GP-Xx2" id="pjL-ue-7Db"/>
                         <outlet property="winnerQty" destination="DmC-4S-jrX" id="d8r-3v-XN7"/>
                         <segue destination="Od4-qE-f2R" kind="show" identifier="SellingTicket" id="hbe-7k-8a8"/>
                         <segue destination="q4z-gI-INz" kind="show" identifier="ShowTicketList" id="7hi-dA-LJE"/>
@@ -4280,12 +4284,12 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="a3n-7Y-dQp"/>
-        <segue reference="0yy-u8-IgD"/>
-        <segue reference="L4R-22-gjm"/>
-        <segue reference="ALi-hF-VRu"/>
+        <segue reference="VDJ-lI-k9o"/>
+        <segue reference="YpR-HT-Mcd"/>
+        <segue reference="7hi-dA-LJE"/>
         <segue reference="hsb-3V-YPk"/>
-        <segue reference="Ack-cW-t02"/>
-        <segue reference="QI0-DI-Q7P"/>
+        <segue reference="hbe-7k-8a8"/>
+        <segue reference="QKX-YE-RhC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1282410-ticket-png-clipart-ticket-png-400_320 copy" width="394" height="197"/>
