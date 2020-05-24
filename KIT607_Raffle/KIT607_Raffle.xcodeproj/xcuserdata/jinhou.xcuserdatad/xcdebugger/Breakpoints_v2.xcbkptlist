@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
             endingLineNumber = "116"
-            landmarkName = "drawRaffleBtn(_:)"
+            landmarkName = "deleteRaffleBtn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
