@@ -296,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6O-tE-wlF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1022" y="-908"/>
+            <point key="canvasLocation" x="-265" y="-1118"/>
         </scene>
         <!--Sell Ticket View Controller-->
         <scene sceneID="x1h-Kj-zuq">
@@ -3828,9 +3828,9 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LAr-NE-hM4">
-                                                                <rect key="frame" x="25" y="20" width="50" height="50"/>
+                                                                <rect key="frame" x="25" y="20" width="100" height="50"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="50" id="fdx-qD-D7N"/>
+                                                                    <constraint firstAttribute="width" constant="100" id="fdx-qD-D7N"/>
                                                                     <constraint firstAttribute="height" constant="50" id="qJ8-oj-iSV"/>
                                                                 </constraints>
                                                             </imageView>
@@ -3846,6 +3846,9 @@
                                                                 <state key="normal" backgroundImage="671590154412_.pic">
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="selectCoverBtn:" destination="T0N-ei-9Jb" eventType="touchUpInside" id="Onl-0p-Z6m"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -3997,6 +4000,7 @@
                     <navigationItem key="navigationItem" id="Hke-Ze-DhD"/>
                     <connections>
                         <outlet property="drawDateTextField" destination="YrM-xG-u2w" id="o0g-ph-tG3"/>
+                        <outlet property="imageView" destination="LAr-NE-hM4" id="R6s-Lz-1yE"/>
                         <outlet property="marginRaffleBtn" destination="lHV-wg-t9z" id="NcW-vL-QsH"/>
                         <outlet property="maxTicketNumberTextField" destination="0Ol-i6-7Dv" id="mlZ-qn-ytB"/>
                         <outlet property="normalRaffleBtn" destination="uud-DT-h4e" id="3hS-7s-FJZ"/>
@@ -4292,7 +4296,7 @@
         <segue reference="7hi-dA-LJE"/>
         <segue reference="hsb-3V-YPk"/>
         <segue reference="Ack-cW-t02"/>
-        <segue reference="mo3-ot-nOX"/>
+        <segue reference="lA4-jP-awY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1282410-ticket-png-clipart-ticket-png-400_320 copy" width="394" height="197"/>

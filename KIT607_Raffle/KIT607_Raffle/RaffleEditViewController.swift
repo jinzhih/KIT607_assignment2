@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RaffleEditViewController: UIViewController, UITextFieldDelegate {
+class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     var raffles2 = [Raffle]()
     var raffle : Raffle?
     var raffleName = ""
@@ -24,6 +24,7 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var raffleNameTextField: UITextField!
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var winnerQtyLable: UILabel!
     @IBOutlet weak var normalRaffleBtn: UIButton!
     @IBOutlet weak var marginRaffleBtn: UIButton!
@@ -121,6 +122,27 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate {
                }
     }
     
+    @IBAction func selectCoverBtn(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            print("Gallery available")
+            
+            let imagePicker:UIImagePickerController = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary;
+            imagePicker.allowsEditing = false
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        {
+            imageView.image = image
+            dismiss(animated: true, completion: nil)
+        }
+    }
     @IBAction func backToRaffleDetailBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
