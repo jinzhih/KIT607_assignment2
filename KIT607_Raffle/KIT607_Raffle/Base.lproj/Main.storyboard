@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y2u-aq-u1d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JL3-8X-cP8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -151,6 +151,7 @@
                                                 <connections>
                                                     <outlet property="desRaffle" destination="AbA-Da-avJ" id="28c-Eq-IlK"/>
                                                     <outlet property="nameRaffle" destination="P7r-XB-21L" id="8fA-vX-WfS"/>
+                                                    <outlet property="raffleImage" destination="epn-lC-2kL" id="Ttp-5L-OE2"/>
                                                     <segue destination="JO6-Ai-2bh" kind="show" identifier="ShowRaffleDetailSegue" id="0yy-u8-IgD"/>
                                                 </connections>
                                             </tableViewCell>
@@ -296,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6O-tE-wlF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-265" y="-1118"/>
+            <point key="canvasLocation" x="-368" y="-1211"/>
         </scene>
         <!--Sell Ticket View Controller-->
         <scene sceneID="x1h-Kj-zuq">
@@ -3517,7 +3518,8 @@
                                                     <constraint firstAttribute="width" constant="36" id="bYS-U9-JOe"/>
                                                     <constraint firstAttribute="height" constant="37" id="bjB-b1-Gh3"/>
                                                 </constraints>
-                                                <state key="normal" image="41731589896131_.pic"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="pencil" catalog="system"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Raffle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYg-jN-N4Q">
                                                 <rect key="frame" x="127.5" y="8" width="159" height="27"/>
@@ -4013,7 +4015,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GwZ-hI-25y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620" y="-908"/>
+            <point key="canvasLocation" x="-265" y="-553"/>
         </scene>
         <!--Edit Ticket View Controller-->
         <scene sceneID="zYB-3u-gTX">
@@ -4321,6 +4323,7 @@
         <image name="icons8-unchecked-radio-button-24" width="24" height="24"/>
         <image name="icons8-unchecked-radio-button-24 (1)" width="24" height="24"/>
         <image name="icons8-添加图片-80" width="80" height="80"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.badge.plus.fill" catalog="system" width="128" height="116"/>
         <image name="person.crop.square" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>

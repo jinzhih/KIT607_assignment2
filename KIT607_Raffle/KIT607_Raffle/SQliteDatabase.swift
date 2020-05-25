@@ -20,7 +20,7 @@ class SQLiteDatabase
      
         WARNING: DOING THIS WILL WIPE YOUR DATA, unless you modify how updateDatabase() works.
      */
-    private let DATABASE_VERSION = 11
+    private let DATABASE_VERSION = 12
     
     
     
@@ -336,7 +336,8 @@ class SQLiteDatabase
                 Launchstatus INTEGER,
                 Drawstatus INTEGER,
                 Drawtime CHAR(255),
-                WinnerQty INTEGER
+                WinnerQty INTEGER,
+                ImageURL CHAR(255)
                 
 
  );
@@ -379,7 +380,7 @@ class SQLiteDatabase
     
     func insert(raffle:Raffle){
         let insertStatementQuery =
-        "INSERT INTO Raffle (Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
+        "INSERT INTO Raffle (Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty, ImageURL) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
         insertWithQuery(insertStatementQuery, bindingFunction: { (insertSatement) in
             sqlite3_bind_text(insertSatement, 1, NSString(string: raffle.name).utf8String, -1, nil)
             sqlite3_bind_text(insertSatement, 2, NSString(string: raffle.description).utf8String, -1, nil)
@@ -391,6 +392,7 @@ class SQLiteDatabase
             
             sqlite3_bind_text(insertSatement, 8, NSString(string: raffle.drawTime).utf8String, -1, nil)
             sqlite3_bind_int(insertSatement, 9, raffle.winQty)
+             sqlite3_bind_text(insertSatement, 10, NSString(string: raffle.imageURL).utf8String, -1, nil)
             
         })
     }
@@ -428,7 +430,7 @@ class SQLiteDatabase
     
    func updateRaffle(raffle:Raffle,id:Int32){
         
-        let updateStatementQuery = "UPDATE Raffle SET Name=?, Description=?, Raffletype=?, Maxnumber=?, Ticketprice=?, Launchstatus=?, Drawstatus=?, Drawtime=?, WinnerQty=?  WHERE ID=?"
+        let updateStatementQuery = "UPDATE Raffle SET Name=?, Description=?, Raffletype=?, Maxnumber=?, Ticketprice=?, Launchstatus=?, Drawstatus=?, Drawtime=?, WinnerQty=?, ImageURL=?  WHERE ID=?"
         updateWithQuery(
         updateStatementQuery, bindingFunction: { (updateSatement) in
             
@@ -443,7 +445,8 @@ class SQLiteDatabase
             
             sqlite3_bind_text(updateSatement, 8, NSString(string: raffle.drawTime).utf8String, -1, nil)
              sqlite3_bind_int(updateSatement, 9, raffle.winQty)
-             sqlite3_bind_int(updateSatement, 10, id)
+                   sqlite3_bind_text(updateSatement, 10, NSString(string: raffle.imageURL).utf8String, -1, nil)
+             sqlite3_bind_int(updateSatement, 11, id)
             
          })
      
@@ -513,7 +516,7 @@ class SQLiteDatabase
 
     func selectAllRaffles() -> [Raffle]{
         var result = [Raffle]()
-        let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty FROM Raffle"
+        let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty, ImageURL FROM Raffle"
         selectWithQuery(selectStatementQuery, eachRow: { (row) in
             //create a movie object from each result
             let raffle = Raffle(
@@ -526,7 +529,8 @@ class SQLiteDatabase
                 launchStatus: sqlite3_column_int(row, 6),
                 drawStatus: sqlite3_column_int(row, 7),
                 drawTime: String(cString:sqlite3_column_text(row, 8)),
-                winQty: sqlite3_column_int(row, 9)
+                winQty: sqlite3_column_int(row, 9),
+                imageURL: String(cString:sqlite3_column_text(row, 10))
                  
             )
             //add it to the result array
@@ -556,7 +560,7 @@ class SQLiteDatabase
    
     func selectRaffleBy(id:Int32) -> Raffle?{
         var result : Raffle?
-        let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty FROM Raffle WHERE ID=?"
+        let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty, ImageURL FROM Raffle WHERE ID=?"
         selectWithQuery(
         selectStatementQuery,
         eachRow: { (id) in
@@ -571,7 +575,8 @@ class SQLiteDatabase
             launchStatus: sqlite3_column_int(id, 6),
             drawStatus: sqlite3_column_int(id, 7),
             drawTime: String(cString:sqlite3_column_text(id, 8)),
-            winQty: sqlite3_column_int(id, 9)
+            winQty: sqlite3_column_int(id, 9),
+            imageURL: String(cString:sqlite3_column_text(id, 10))
             
         )
             result = raffle
@@ -633,7 +638,7 @@ class SQLiteDatabase
     //select raffle by name
     func selectRaffleByName(raffleName:String) -> [Raffle]{
            var result = [Raffle]()
-           let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty FROM Raffle WHERE Name LIKE ?"
+           let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty, ImageURL FROM Raffle WHERE Name LIKE ?"
            selectWithQuery(
            selectStatementQuery,
            eachRow: { (id) in
@@ -648,7 +653,8 @@ class SQLiteDatabase
                 launchStatus: sqlite3_column_int(id, 6),
                 drawStatus: sqlite3_column_int(id, 7),
                 drawTime: String(cString:sqlite3_column_text(id, 8)),
-                winQty: sqlite3_column_int(id, 9)
+                winQty: sqlite3_column_int(id, 9),
+                imageURL: String(cString:sqlite3_column_text(id, 10))
                
            )
                 result += [raffle]
@@ -693,38 +699,7 @@ class SQLiteDatabase
            
            return result
        }
-    //select ticket by name
-//       func selectTicketByName(ticketName:String) -> [Ticket]{
-//              var result = [Ticket]()
-//              let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty FROM Ticket WHERE Name LIKE ?"
-//              selectWithQuery(
-//              selectStatementQuery,
-//              eachRow: { (id) in
-//              //create a movie object from each result
-//              let raffle = Raffle(
-//                   ID: sqlite3_column_int(id, 0),
-//                   name: String(cString:sqlite3_column_text(id, 1)),
-//                   description: String(cString:sqlite3_column_text(id, 2)),
-//                   type: sqlite3_column_int(id, 3),
-//                   maxNumber: sqlite3_column_int(id, 4),
-//                   ticketPrice: sqlite3_column_int(id, 5),
-//                   launchStatus: sqlite3_column_int(id, 6),
-//                   drawStatus: sqlite3_column_int(id, 7),
-//                   drawTime: String(cString:sqlite3_column_text(id, 8)),
-//                   winQty: sqlite3_column_int(id, 9)
-//                  
-//              )
-//                   result += [raffle]
-//               },
-//              bindingFunction: {(selectSatement) in
-//             
-//                  sqlite3_bind_text(selectSatement, 1, NSString(string: ticketName).utf8String, -1, nil)
-//                    
-//                 })
-//              
-//              return result
-//          }
-           
+ 
     
     //selet winner tickets
     func selectWonTicketByWinstatus(id:Int32) -> [Ticket]{

@@ -51,6 +51,25 @@ class RaffleCusTableViewController: UIViewController {
     
 }
 
+func getDocumentsDirectory() -> URL {
+       let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+       let documentsDirectory = paths[0]
+       return documentsDirectory
+   }
+//retrieve image
+func loadImageFromName(name: String) -> UIImage? {
+    print("Loading image with name \(name)")
+    let path = //getDocumentsDirectory().appendingPathComponent(name).path
+        getDocumentsDirectory().appendingPathComponent("\(name).jpg").path
+
+    let image = UIImage(contentsOfFile: path)
+
+    if image == nil {
+
+        print("missing image at: \(path)")
+    }
+    return image
+}
 extension RaffleCusTableViewController:UISearchBarDelegate{
 
 
@@ -95,8 +114,11 @@ if searching {
        {
            raffleCell.nameRaffle.text = raffle.name
            raffleCell.desRaffle.text = raffle.description
-           
-           
+        if(raffle.imageURL != "1"){
+        
+             raffleCell.raffleImage.image = loadImageFromName(name: raffle.name)
+            
+        }
        }
     
    } else{
@@ -107,7 +129,12 @@ if searching {
        {
         raffleCell.nameRaffle.text = raffle.name
            raffleCell.desRaffle.text = raffle.description
-           
+          if(raffle.imageURL != "1"){
+                  
+                       raffleCell.raffleImage.image = loadImageFromName(name: raffle.name)
+                      
+                  }
+                    
            
        }
         

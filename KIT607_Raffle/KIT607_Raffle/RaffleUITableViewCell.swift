@@ -11,6 +11,7 @@ import UIKit
 class RaffleUITableViewCell: UITableViewCell {
     @IBOutlet var nameRaffle: UILabel!
     
+    @IBOutlet weak var raffleImage: UIImageView!
     @IBOutlet var desRaffle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

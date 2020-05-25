@@ -21,6 +21,9 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate, UIImage
     var launtchStatus = 0
     var drawStatus = 0
     var winnerQty = 1
+    var imageName = ""
+    var isSelectCover = false
+    var imageurl = ""
 
     @IBOutlet weak var raffleNameTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
@@ -97,13 +100,26 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate, UIImage
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        {
-            imageView.image = image
-            dismiss(animated: true, completion: nil)
-        }
+       imageName = raffleNameTextField.text!
+        isSelectCover = true
+                if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+                {
+                    imageView.image = image
+                   print(getDocumentsDirectory())
+                    dismiss(animated: true, completion: {
+                        self.saveImage(image: image, filename: "\(self.imageName).jpg")
+                    })
+                }
     }
+    
+    func saveImage (image: UIImage, filename: String ){
+           print("Saving image with name \(filename)")
+           if let data = image.pngData() {
+               let fullURL = getDocumentsDirectory().appendingPathComponent(filename)
+               try? data.write(to: fullURL)
+           }
+       }
+    
     
     //https://www.youtube.com/watch?v=8NngJrVFfUw
     func createDatePicker(){
@@ -179,11 +195,23 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate, UIImage
          launtchStatus = 0
          drawStatus = 0
          winnerQty=Int(winnerQtyTextField.text!) ?? 1
-         //verify
+        imageName = raffleNameTextField.text!
+         //verify  \(self.imageName).jpg
+        
+        if isSelectCover{
+            imageurl = getDocumentsDirectory().appendingPathComponent("\(imageName).jpg").path
+            print(imageurl)
+        }else{
+            imageurl = "1"
+        }
+      
            let dateformatter = DateFormatter()
                 dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
          let  drawDate = dateformatter.string(from: datePicker.date)
-         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: drawDate, winQty: Int32(winnerQty)))
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: drawDate, winQty: Int32(winnerQty), imageURL: imageurl))
+
+        
+        
          
          var refreshAlert=UIAlertController(title: "RaffleCreated", message: "", preferredStyle: .alert)
 
@@ -195,7 +223,13 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate, UIImage
 
          present(refreshAlert, animated: true, completion: nil)
     }
-
+//find path
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
    //validate textfield if no input or string return false
      
     func isAnInt(string: String) -> Bool {

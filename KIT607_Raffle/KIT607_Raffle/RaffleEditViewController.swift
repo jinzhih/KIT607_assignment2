@@ -20,6 +20,10 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
     var launtchStatus = 0
     var drawStatus = 0
     var winnerQty = 1
+    var imageName = ""
+       var isSelectCover = false
+       var imageurl = ""
+   
      let datePicker = UIDatePicker()
     
     @IBOutlet weak var raffleNameTextField: UITextField!
@@ -51,8 +55,10 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
                      maxTicketNumberTextField.text = String(displayRaffle.maxNumber)
                      rafflePriceTextField.text = String(displayRaffle.ticketPrice)
                   //   winnerQtyTextField.text = String( displayRaffle.winQty)
+            print(raffle!.type)
             if(raffle!.type == 0){
-                winnerQtyTextField.text = String( displayRaffle.winQty)
+                print(displayRaffle.winQty)
+                winnerQtyTextField.text = String(displayRaffle.winQty)
                 normalRaffleBtn.isSelected = true
                 marginRaffleBtn.isSelected = false
                 return
@@ -136,13 +142,25 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        {
-            imageView.image = image
-            dismiss(animated: true, completion: nil)
-        }
+        imageName = raffleNameTextField.text!
+         isSelectCover = true
+                 if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+                 {
+                     imageView.image = image
+                    print(getDocumentsDirectory())
+                     dismiss(animated: true, completion: {
+                         self.saveImage(image: image, filename: "\(self.imageName).jpg")
+                     })
+                 }
     }
+    
+    func saveImage (image: UIImage, filename: String ){
+              print("Saving image with name \(filename)")
+              if let data = image.pngData() {
+                  let fullURL = getDocumentsDirectory().appendingPathComponent(filename)
+                  try? data.write(to: fullURL)
+              }
+          }
     @IBAction func backToRaffleDetailBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -186,7 +204,7 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
                    
                    
                    let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        //database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)))
-            database.updateRaffle(raffle: Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)), id: raffle!.ID)
+            database.updateRaffle(raffle: Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty), imageURL: imageurl), id: raffle!.ID)
                    
                    var refreshAlert=UIAlertController(title: "RaffleUpdated", message: "", preferredStyle: .alert)
 

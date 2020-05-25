@@ -14,7 +14,7 @@ public struct Raffle {
     var drawStatus: Int32
     var drawTime: String
     var winQty: Int32
-    
+    var imageURL: String
     
   
 }
