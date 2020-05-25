@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JL3-8X-cP8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y2u-aq-u1d">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -72,7 +72,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QGZ-ME-JB9">
                                                                     <rect key="frame" x="33" y="21.5" width="90" height="90"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="raffle" translatesAutoresizingMaskIntoConstraints="NO" id="epn-lC-2kL">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="48841590396414_.pic" translatesAutoresizingMaskIntoConstraints="NO" id="epn-lC-2kL">
                                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="90" id="duj-Et-6z0"/>
@@ -131,7 +131,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.41176470590000003" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.82069705310880825" green="0.82069705310880825" blue="0.82069705310880825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="QGZ-ME-JB9" firstAttribute="leading" secondItem="WQ2-RE-Ri9" secondAttribute="leading" constant="33" id="142-dj-qgt"/>
                                                                 <constraint firstItem="QGZ-ME-JB9" firstAttribute="centerY" secondItem="WQ2-RE-Ri9" secondAttribute="centerY" id="FgL-Ds-ndK"/>
@@ -280,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3F-QJ-dXD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1575" y="549"/>
+            <point key="canvasLocation" x="-1317" y="530"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="96n-3V-Y26">
@@ -1357,9 +1357,6 @@
                                                     <constraint firstAttribute="height" constant="37" id="PrD-7F-Yew"/>
                                                 </constraints>
                                                 <state key="normal" image="icons8-ok-160"/>
-                                                <connections>
-                                                    <action selector="newRaffleClicked:" destination="Y2u-aq-u1d" eventType="touchUpInside" id="1gp-JJ-7Uj"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Raffle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZ1-BQ-ZuP">
                                                 <rect key="frame" x="127.5" y="8" width="159" height="27"/>
@@ -1712,13 +1709,13 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJZ-oz-jHw">
-                                                                <rect key="frame" x="149" y="0.0" width="65" height="35"/>
+                                                                <rect key="frame" x="149" y="0.0" width="35" height="35"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="65" id="stf-8v-2xK"/>
+                                                                    <constraint firstAttribute="width" constant="35" id="stf-8v-2xK"/>
                                                                     <constraint firstAttribute="height" constant="35" id="wAT-8p-nNg"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <state key="normal" backgroundImage="48481590377669_.pic">
+                                                                <state key="normal" backgroundImage="icons8-添加图片-80">
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
@@ -1839,6 +1836,9 @@
                                                                     <constraint firstAttribute="width" constant="64" id="fr4-SD-FHN"/>
                                                                 </constraints>
                                                                 <state key="normal" image="41731589896131_.pic"/>
+                                                                <connections>
+                                                                    <action selector="createRaffleBtn:" destination="Y2u-aq-u1d" eventType="touchUpInside" id="MlS-Je-oC1"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5G-gS-oCf">
                                                                 <rect key="frame" x="0.0" y="68" width="64" height="16"/>
@@ -1884,7 +1884,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="dbu-rl-b4S"/>
                     <connections>
-                        <outlet property="createNewRaffleButton" destination="UMx-9L-uVj" id="GFe-a8-a38"/>
                         <outlet property="drawDateTextField" destination="FqE-sd-JnP" id="FLO-ea-Mbe"/>
                         <outlet property="imageView" destination="2mo-Q4-yTc" id="wOh-MH-mz6"/>
                         <outlet property="marginRaffleBtn" destination="I3a-wm-hSH" id="xcD-V4-JDF"/>
@@ -2424,7 +2423,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.75669636017241715" green="0.7486248100240529" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.81951814889999997" green="0.81965965029999999" blue="0.81950914860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="Ta4-XW-RBT" firstAttribute="centerY" secondItem="23v-sW-PjU" secondAttribute="centerY" id="LHg-nG-TXz"/>
                                                                 <constraint firstItem="2nD-uO-H3U" firstAttribute="centerY" secondItem="23v-sW-PjU" secondAttribute="centerY" id="aSl-Ri-nLF"/>
@@ -3519,9 +3518,6 @@
                                                     <constraint firstAttribute="height" constant="37" id="bjB-b1-Gh3"/>
                                                 </constraints>
                                                 <state key="normal" image="41731589896131_.pic"/>
-                                                <connections>
-                                                    <action selector="editRaffleBtn:" destination="T0N-ei-9Jb" eventType="touchUpInside" id="N5S-q9-bOW"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Raffle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYg-jN-N4Q">
                                                 <rect key="frame" x="127.5" y="8" width="159" height="27"/>
@@ -3835,15 +3831,15 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqr-4d-RXr">
-                                                                <rect key="frame" x="160" y="-5" width="46" height="30"/>
+                                                                <rect key="frame" x="160" y="-5" width="35" height="35"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="46" id="D2a-Xu-AmS"/>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="FZU-3a-7uQ"/>
+                                                                    <constraint firstAttribute="width" constant="35" id="D2a-Xu-AmS"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="FZU-3a-7uQ"/>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="g0U-53-qdZ"/>
-                                                                    <constraint firstAttribute="height" constant="30" id="zdq-y6-Hjt"/>
+                                                                    <constraint firstAttribute="height" constant="35" id="zdq-y6-Hjt"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <state key="normal" backgroundImage="671590154412_.pic">
+                                                                <state key="normal" backgroundImage="icons8-添加图片-80">
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
@@ -3954,6 +3950,9 @@
                                                                     <constraint firstAttribute="height" constant="64" id="eWa-XH-Fn0"/>
                                                                 </constraints>
                                                                 <state key="normal" image="41731589896131_.pic"/>
+                                                                <connections>
+                                                                    <action selector="confirmEditRaffleBtn:" destination="T0N-ei-9Jb" eventType="touchUpInside" id="mas-q3-qXV"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLe-uA-wqT">
                                                                 <rect key="frame" x="0.0" y="68" width="64" height="16"/>
@@ -4291,8 +4290,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="a3n-7Y-dQp"/>
-        <segue reference="VDJ-lI-k9o"/>
-        <segue reference="YpR-HT-Mcd"/>
+        <segue reference="0yy-u8-IgD"/>
+        <segue reference="L4R-22-gjm"/>
         <segue reference="7hi-dA-LJE"/>
         <segue reference="hsb-3V-YPk"/>
         <segue reference="Ack-cW-t02"/>
@@ -4306,6 +4305,7 @@
         <image name="46641590248870_.pic" width="1200" height="1200"/>
         <image name="48481590377669_.pic" width="100" height="100"/>
         <image name="48521590378848_.pic" width="860" height="311"/>
+        <image name="48841590396414_.pic" width="388" height="344"/>
         <image name="671590154412_.pic" width="1200" height="1200"/>
         <image name="Grey" width="1060" height="292"/>
         <image name="NotStart" width="2208" height="1026"/>
@@ -4320,6 +4320,7 @@
         <image name="icons8-share-100" width="100" height="100"/>
         <image name="icons8-unchecked-radio-button-24" width="24" height="24"/>
         <image name="icons8-unchecked-radio-button-24 (1)" width="24" height="24"/>
+        <image name="icons8-添加图片-80" width="80" height="80"/>
         <image name="person.badge.plus.fill" catalog="system" width="128" height="116"/>
         <image name="person.crop.square" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>

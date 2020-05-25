@@ -29,7 +29,6 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate, UIImage
     @IBOutlet weak var maxTicketNumberTextField: UITextField!
     
     @IBOutlet weak var winnerQtyLable: UILabel!
-    @IBOutlet weak var createNewRaffleButton: UIButton!
     
     @IBOutlet weak var winnerQtyTextField: UITextField!
     @IBOutlet weak var raffleDescriptionTextField: UITextField!
@@ -143,62 +142,60 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate, UIImage
         rafflePriceTextField.endEditing(true)
         return true
     }
-    //raffleDescriptionTextField
-    @IBAction func newRaffleClicked(_ sender: UIButton) {
+    
+    
+    @IBAction func createRaffleBtn(_ sender: UIButton) {
         let validator = isAllFieldFilled(name: ((raffleNameTextField?.text) ?? ""), description: ((raffleDescriptionTextField?.text) ?? ""), maxTicketNumber: maxTicketNumberTextField.text!, price: rafflePriceTextField.text!, winnerQty: winnerQtyTextField.text!,date:((drawDateTextField?.text) ?? "") )
-        let validatorForMargin = isAllFieldFilledForMargin(name: ((raffleNameTextField?.text) ?? ""), description: ((raffleDescriptionTextField?.text) ?? ""), maxTicketNumber: maxTicketNumberTextField.text!, price: rafflePriceTextField.text!,date:((drawDateTextField?.text) ?? ""))
-       
-        if(raffleType == 0){
-             
-            if (!validator){
-                       alertSomeTextFieldNull()
-                
-                       return
-                   }
-            else if (!isWinnerQtySetRight()){
-                alertWinnerSetProblem()
-                return
-            }
-           
-        }else if(raffleType == 1){
-            if (!validatorForMargin){
-                       alertSomeTextFieldNull()
-                       return
-                   }
+         let validatorForMargin = isAllFieldFilledForMargin(name: ((raffleNameTextField?.text) ?? ""), description: ((raffleDescriptionTextField?.text) ?? ""), maxTicketNumber: maxTicketNumberTextField.text!, price: rafflePriceTextField.text!,date:((drawDateTextField?.text) ?? ""))
         
-        }
-        
-        
-        
-        raffleName = raffleNameTextField.text ?? "Raffle"
-        raffleDes = raffleDescriptionTextField.text ?? "null"
-        
-        raffleDrawDate = drawDateTextField.text ?? "null"
-        raffleLimit = Int( maxTicketNumberTextField.text!) ?? 10000
-        rafflePrice = Int( rafflePriceTextField.text!) ?? 5
-        launtchStatus = 0
-        drawStatus = 0
-        winnerQty=Int(winnerQtyTextField.text!) ?? 1
-        //verify
-          let dateformatter = DateFormatter()
-               dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
-        let  drawDate = dateformatter.string(from: datePicker.date)
-        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: drawDate, winQty: Int32(winnerQty)))
-        
-        var refreshAlert=UIAlertController(title: "RaffleCreated", message: "", preferredStyle: .alert)
+         if(raffleType == 0){
+              
+             if (!validator){
+                        alertSomeTextFieldNull()
+                 
+                        return
+                    }
+             else if (!isWinnerQtySetRight()){
+                 alertWinnerSetProblem()
+                 return
+             }
+            
+         }else if(raffleType == 1){
+             if (!validatorForMargin){
+                        alertSomeTextFieldNull()
+                        return
+                    }
+         
+         }
+         
+         
+         
+         raffleName = raffleNameTextField.text ?? "Raffle"
+         raffleDes = raffleDescriptionTextField.text ?? "null"
+         
+         raffleDrawDate = drawDateTextField.text ?? "null"
+         raffleLimit = Int( maxTicketNumberTextField.text!) ?? 10000
+         rafflePrice = Int( rafflePriceTextField.text!) ?? 5
+         launtchStatus = 0
+         drawStatus = 0
+         winnerQty=Int(winnerQtyTextField.text!) ?? 1
+         //verify
+           let dateformatter = DateFormatter()
+                dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+         let  drawDate = dateformatter.string(from: datePicker.date)
+         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: drawDate, winQty: Int32(winnerQty)))
+         
+         var refreshAlert=UIAlertController(title: "RaffleCreated", message: "", preferredStyle: .alert)
 
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-          self.performSegue(withIdentifier: "GoRaffleList", sender: self)
-          }))
-
-
-
-        present(refreshAlert, animated: true, completion: nil)
-                
+         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+           self.performSegue(withIdentifier: "GoRaffleList", sender: self)
+           }))
 
 
-        
+
+         present(refreshAlert, animated: true, completion: nil)
     }
+
    //validate textfield if no input or string return false
      
     func isAnInt(string: String) -> Bool {

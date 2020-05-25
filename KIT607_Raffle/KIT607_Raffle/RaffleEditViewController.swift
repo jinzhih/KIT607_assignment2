@@ -146,79 +146,79 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBAction func backToRaffleDetailBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    @IBAction func editRaffleBtn(_ sender: UIButton) {
-        
+    
+    @IBAction func confirmEditRaffleBtn(_ sender: UIButton) {
         let validator = isAllFieldFilled(name: ((raffleNameTextField?.text) ?? ""), description: ((raffleDescriptionTextField?.text) ?? ""), maxTicketNumber: maxTicketNumberTextField.text!, price: rafflePriceTextField.text!, winnerQty: winnerQtyTextField.text!,date:((drawDateTextField?.text) ?? "") )
-               let validatorForMargin = isAllFieldFilledForMargin(name: ((raffleNameTextField?.text) ?? ""), description: ((raffleDescriptionTextField?.text) ?? ""), maxTicketNumber: maxTicketNumberTextField.text!, price: rafflePriceTextField.text!,date:((drawDateTextField?.text) ?? ""))
-              
-               if(raffleType == 0){
-                    
-                   if (!validator){
-                              alertSomeTextFieldNull()
-                       
-                              return
-                          }
-                   else if (!isWinnerQtySetRight()){
-                       alertWinnerSetProblem()
-                       return
-                   }
+                   let validatorForMargin = isAllFieldFilledForMargin(name: ((raffleNameTextField?.text) ?? ""), description: ((raffleDescriptionTextField?.text) ?? ""), maxTicketNumber: maxTicketNumberTextField.text!, price: rafflePriceTextField.text!,date:((drawDateTextField?.text) ?? ""))
                   
-               }else if(raffleType == 1){
-                   if (!validatorForMargin){
-                              alertSomeTextFieldNull()
-                              return
-                          }
-               
+                   if(raffleType == 0){
+                        
+                       if (!validator){
+                                  alertSomeTextFieldNull()
+                           
+                                  return
+                              }
+                       else if (!isWinnerQtySetRight()){
+                           alertWinnerSetProblem()
+                           return
+                       }
+                      
+                   }else if(raffleType == 1){
+                       if (!validatorForMargin){
+                                  alertSomeTextFieldNull()
+                                  return
+                              }
+                   
+                   }
+                   
+                   
+                   
+                   raffleName = raffleNameTextField.text ?? "Raffle"
+                   raffleDes = raffleDescriptionTextField.text ?? "null"
+                   
+                   raffleDrawDate = drawDateTextField.text ?? "null"
+                   raffleLimit = Int( maxTicketNumberTextField.text!) ?? 10000
+                   rafflePrice = Int( rafflePriceTextField.text!) ?? 5
+                   launtchStatus = 0
+                   drawStatus = 0
+                   winnerQty=Int(winnerQtyTextField.text!) ?? 1
+                   //verify
+                   
+                   
+                   let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        //database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)))
+            database.updateRaffle(raffle: Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)), id: raffle!.ID)
+                   
+                   var refreshAlert=UIAlertController(title: "RaffleUpdated", message: "", preferredStyle: .alert)
+
+                   refreshAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+                     self.performSegue(withIdentifier: "goToRaffleListFromEdit", sender: self)
+                     }))
+
+
+
+                   present(refreshAlert, animated: true, completion: nil)
+                           
+        }
+        //validate textfield if no input or string return false
+            
+           func isAnInt(string: String) -> Bool {
+               if( Int(string) != nil)
+               {
+                   return true
+                   
                }
-               
-               
-               
-               raffleName = raffleNameTextField.text ?? "Raffle"
-               raffleDes = raffleDescriptionTextField.text ?? "null"
-               
-               raffleDrawDate = drawDateTextField.text ?? "null"
-               raffleLimit = Int( maxTicketNumberTextField.text!) ?? 10000
-               rafflePrice = Int( rafflePriceTextField.text!) ?? 5
-               launtchStatus = 0
-               drawStatus = 0
-               winnerQty=Int(winnerQtyTextField.text!) ?? 1
-               //verify
-               
-               
-               let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        //database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)))
-        database.updateRaffle(raffle: Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)), id: raffle!.ID)
-               
-               var refreshAlert=UIAlertController(title: "RaffleUpdated", message: "", preferredStyle: .alert)
-
-               refreshAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-                 self.performSegue(withIdentifier: "goToRaffleListFromEdit", sender: self)
-                 }))
-
-
-
-               present(refreshAlert, animated: true, completion: nil)
-                       
-    }
-    //validate textfield if no input or string return false
-        
-       func isAnInt(string: String) -> Bool {
-           if( Int(string) != nil)
-           {
-               return true
-               
+                   return false
            }
-               return false
-       }
-       // validate textfield if no input
-       
-         func isAnString(string: String) -> Bool {
-             if( string != "")
-             {
-                 return true
-                 
-             }
-                 return false
-         }
+           // validate textfield if no input
+           
+             func isAnString(string: String) -> Bool {
+                 if( string != "")
+                 {
+                     return true
+                     
+                 }
+                     return false
+    }
        
        //validate all the field
        func isAllFieldFilled(name: String, description: String, maxTicketNumber: String, price: String, winnerQty: String, date: String) -> Bool{
