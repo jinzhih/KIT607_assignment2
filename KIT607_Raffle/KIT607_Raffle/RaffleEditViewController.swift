@@ -64,6 +64,7 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 return
             }else if (raffle!.type == 1){
                 raffleType = 1
+                print(raffleType)
                 marginRaffleBtn.isSelected = true
                 normalRaffleBtn.isSelected = false
                 winnerQtyLable.isHidden = true
@@ -204,6 +205,7 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
                    
                    
                    let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        //database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)))
+        print(raffleType)
             database.updateRaffle(raffle: Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty), imageURL: imageurl), id: raffle!.ID)
                    
                    var refreshAlert=UIAlertController(title: "RaffleUpdated", message: "", preferredStyle: .alert)

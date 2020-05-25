@@ -2510,7 +2510,7 @@
                                                     <constraint firstAttribute="width" constant="36" id="Iv2-Qf-7kO"/>
                                                     <constraint firstAttribute="height" constant="37" id="J0S-rA-C67"/>
                                                 </constraints>
-                                                <state key="normal" image="41731589896131_.pic"/>
+                                                <state key="normal" image="icons8-edit-64"/>
                                                 <connections>
                                                     <action selector="editRaffleBtn:" destination="JO6-Ai-2bh" eventType="touchUpInside" id="nmX-rC-P7F"/>
                                                 </connections>
@@ -3512,15 +3512,6 @@
                                                     <action selector="backToRaffleDetailBtn:" destination="T0N-ei-9Jb" eventType="touchUpInside" id="1Hr-5M-zh9"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTm-aY-wlS">
-                                                <rect key="frame" x="358" y="3" width="36" height="37"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="36" id="bYS-U9-JOe"/>
-                                                    <constraint firstAttribute="height" constant="37" id="bjB-b1-Gh3"/>
-                                                </constraints>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="pencil" catalog="system"/>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Raffle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYg-jN-N4Q">
                                                 <rect key="frame" x="127.5" y="8" width="159" height="27"/>
                                                 <constraints>
@@ -3533,13 +3524,11 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="eTm-aY-wlS" firstAttribute="centerY" secondItem="uhm-iQ-AjY" secondAttribute="centerY" id="0HX-KO-QQg"/>
                                             <constraint firstItem="loM-W7-g0I" firstAttribute="leading" secondItem="uhm-iQ-AjY" secondAttribute="leading" constant="20" id="2fR-Wa-hnw"/>
                                             <constraint firstItem="rYg-jN-N4Q" firstAttribute="centerX" secondItem="uhm-iQ-AjY" secondAttribute="centerX" id="Ild-eq-oMr"/>
                                             <constraint firstItem="loM-W7-g0I" firstAttribute="centerY" secondItem="uhm-iQ-AjY" secondAttribute="centerY" id="RtL-qO-jsh"/>
                                             <constraint firstItem="rYg-jN-N4Q" firstAttribute="centerY" secondItem="uhm-iQ-AjY" secondAttribute="centerY" id="TzU-4R-eeA"/>
                                             <constraint firstAttribute="height" constant="43" id="aOr-tr-FYY"/>
-                                            <constraint firstAttribute="trailing" secondItem="eTm-aY-wlS" secondAttribute="trailing" constant="20" id="zeS-Bg-f4R"/>
                                         </constraints>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A9b-UQ-gFX" userLabel="MiddleScrollView">
@@ -4296,8 +4285,8 @@
         <segue reference="L4R-22-gjm"/>
         <segue reference="7hi-dA-LJE"/>
         <segue reference="hsb-3V-YPk"/>
-        <segue reference="Ack-cW-t02"/>
-        <segue reference="lA4-jP-awY"/>
+        <segue reference="hbe-7k-8a8"/>
+        <segue reference="QKX-YE-RhC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1282410-ticket-png-clipart-ticket-png-400_320 copy" width="394" height="197"/>
@@ -4323,7 +4312,6 @@
         <image name="icons8-unchecked-radio-button-24" width="24" height="24"/>
         <image name="icons8-unchecked-radio-button-24 (1)" width="24" height="24"/>
         <image name="icons8-添加图片-80" width="80" height="80"/>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.badge.plus.fill" catalog="system" width="128" height="116"/>
         <image name="person.crop.square" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>

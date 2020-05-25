@@ -437,8 +437,9 @@ class SQLiteDatabase
             
           sqlite3_bind_text(updateSatement, 1, NSString(string: raffle.name).utf8String, -1, nil)
             sqlite3_bind_text(updateSatement, 2, NSString(string: raffle.description).utf8String, -1, nil)
-           sqlite3_bind_int(updateSatement, 3, raffle.maxNumber)
-            sqlite3_bind_int(updateSatement, 4, raffle.type)
+                    sqlite3_bind_int(updateSatement, 3, raffle.type)
+           sqlite3_bind_int(updateSatement, 4, raffle.maxNumber)
+       
             sqlite3_bind_int(updateSatement, 5, raffle.ticketPrice)
             sqlite3_bind_int(updateSatement, 6, raffle.launchStatus)
             sqlite3_bind_int(updateSatement, 7, raffle.drawStatus)

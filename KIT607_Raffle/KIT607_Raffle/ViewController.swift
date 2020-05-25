@@ -46,7 +46,7 @@ var ticketID : [Int32]?
       //  print(raffles)
      
        // database.updateWinStatusbyID(winStatus: 1, id: 49)
-       print(database.selectRaffleByName(raffleName: "1234"))
+       print(database.selectAllRaffles())
          // tickets2=database.selectTicketNoAndIDByRaffleID(id: 6)
       //  tickets2=database.selectTicketByTicketID(id: 49)
       //   print(tickets2)
