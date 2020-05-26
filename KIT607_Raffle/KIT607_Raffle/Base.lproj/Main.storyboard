@@ -4004,7 +4004,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GwZ-hI-25y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-265" y="-553"/>
+            <point key="canvasLocation" x="-265" y="-579"/>
         </scene>
         <!--Edit Ticket View Controller-->
         <scene sceneID="zYB-3u-gTX">
@@ -4286,7 +4286,7 @@
         <segue reference="7hi-dA-LJE"/>
         <segue reference="hsb-3V-YPk"/>
         <segue reference="hbe-7k-8a8"/>
-        <segue reference="QKX-YE-RhC"/>
+        <segue reference="lA4-jP-awY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1282410-ticket-png-clipart-ticket-png-400_320 copy" width="394" height="197"/>

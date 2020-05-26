@@ -22,7 +22,7 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
     var winnerQty = 1
     var imageName = ""
        var isSelectCover = false
-       var imageurl = ""
+       var imageurl = "1"
    
      let datePicker = UIDatePicker()
     
@@ -51,8 +51,13 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
                      raffleNameTextField.text  = displayRaffle.name
                      raffleDescriptionTextField.text = displayRaffle.description
                      drawDateTextField.text = displayRaffle.drawTime
-                     
-                     maxTicketNumberTextField.text = String(displayRaffle.maxNumber)
+            if(displayRaffle.imageURL != "1"){
+            
+            imageView.image = loadImageFromName(name: displayRaffle.name)
+                
+            }
+            
+                  maxTicketNumberTextField.text = String(displayRaffle.maxNumber)
                      rafflePriceTextField.text = String(displayRaffle.ticketPrice)
                   //   winnerQtyTextField.text = String( displayRaffle.winQty)
             print(raffle!.type)
@@ -165,6 +170,23 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBAction func backToRaffleDetailBtn(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    func loadImageFromName(name: String) -> UIImage? {
+        print("Loading image with name \(name)")
+        let path = getDocumentsDirectory().appendingPathComponent(name).path
+
+        let image = UIImage(contentsOfFile: path)
+
+        if image == nil {
+
+            print("missing image at: \(path)")
+        }
+        return image
+    }
     
     @IBAction func confirmEditRaffleBtn(_ sender: UIButton) {
         let validator = isAllFieldFilled(name: ((raffleNameTextField?.text) ?? ""), description: ((raffleDescriptionTextField?.text) ?? ""), maxTicketNumber: maxTicketNumberTextField.text!, price: rafflePriceTextField.text!, winnerQty: winnerQtyTextField.text!,date:((drawDateTextField?.text) ?? "") )
@@ -204,8 +226,9 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
                    //verify
                    
                    
-                   let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");        //database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty)))
-        print(raffleType)
+                   let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
+        
+     
             database.updateRaffle(raffle: Raffle(name:raffleName,  description:raffleDes, type: Int32(Int(raffleType)),maxNumber:Int32(raffleLimit), ticketPrice: Int32(rafflePrice), launchStatus: 0, drawStatus:0, drawTime: raffleDrawDate, winQty: Int32(winnerQty), imageURL: imageurl), id: raffle!.ID)
                    
                    var refreshAlert=UIAlertController(title: "RaffleUpdated", message: "", preferredStyle: .alert)
