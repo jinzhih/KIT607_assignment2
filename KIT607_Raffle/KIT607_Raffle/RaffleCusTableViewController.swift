@@ -56,7 +56,7 @@ func getDocumentsDirectory() -> URL {
        let documentsDirectory = paths[0]
        return documentsDirectory
    }
-//retrieve image
+//retrievimagehttps://stackoverflow.com/questions/41641771/save-image-to-library-from-url-rename-and-share-it-using-swift
 func loadImageFromName(name: String) -> UIImage? {
     print("Loading image with name \(name)")
     let path = //getDocumentsDirectory().appendingPathComponent(name).path

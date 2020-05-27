@@ -23,7 +23,7 @@ class CreateRaffleViewController: UIViewController, UITextFieldDelegate, UIImage
     var winnerQty = 1
     var imageName = ""
     var isSelectCover = false
-    var imageurl = ""
+    var imageurl = "1"
 
     @IBOutlet weak var raffleNameTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!

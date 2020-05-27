@@ -54,13 +54,13 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
             if(displayRaffle.imageURL != "1"){
             
             imageView.image = loadImageFromName(name: displayRaffle.name)
-                
+              
             }
             
                   maxTicketNumberTextField.text = String(displayRaffle.maxNumber)
                      rafflePriceTextField.text = String(displayRaffle.ticketPrice)
                   //   winnerQtyTextField.text = String( displayRaffle.winQty)
-            print(raffle!.type)
+          
             if(raffle!.type == 0){
                 print(displayRaffle.winQty)
                 winnerQtyTextField.text = String(displayRaffle.winQty)
@@ -161,7 +161,7 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     func saveImage (image: UIImage, filename: String ){
-              print("Saving image with name \(filename)")
+             // print("Saving image with name \(filename)")
               if let data = image.pngData() {
                   let fullURL = getDocumentsDirectory().appendingPathComponent(filename)
                   try? data.write(to: fullURL)
@@ -176,9 +176,11 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
         return documentsDirectory
     }
     func loadImageFromName(name: String) -> UIImage? {
-        print("Loading image with name \(name)")
-        let path = getDocumentsDirectory().appendingPathComponent(name).path
+      //  print("Loading image with name \(name)")
+        //"\(name).jpg"
+        let path =   getDocumentsDirectory().appendingPathComponent("\(name).jpg").path
 
+        print(path)
         let image = UIImage(contentsOfFile: path)
 
         if image == nil {
@@ -224,7 +226,12 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
                    drawStatus = 0
                    winnerQty=Int(winnerQtyTextField.text!) ?? 1
                    //verify
-                   
+                   if isSelectCover{
+                              imageurl = getDocumentsDirectory().appendingPathComponent("\(imageName).jpg").path
+                              print(imageurl)
+                          }else{
+                    imageurl = getDocumentsDirectory().appendingPathComponent("\(raffle!.name).jpg").path
+                          }
                    
                    let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
         

@@ -517,7 +517,7 @@ class SQLiteDatabase
 
     func selectAllRaffles() -> [Raffle]{
         var result = [Raffle]()
-        let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty, ImageURL FROM Raffle"
+        let selectStatementQuery = "SELECT ID, Name, Description, Raffletype, Maxnumber, Ticketprice, Launchstatus, Drawstatus, Drawtime, WinnerQty, ImageURL FROM Raffle ORDER BY ID DESC"
         selectWithQuery(selectStatementQuery, eachRow: { (row) in
             //create a movie object from each result
             let raffle = Raffle(
@@ -543,7 +543,7 @@ class SQLiteDatabase
     
     func selectAllCustomers() -> [Customer]{
            var result = [Customer]()
-           let selectStatementQuery = "SELECT ID, CustomerName FROM Customer"
+           let selectStatementQuery = "SELECT ID, CustomerName FROM Customer ORDER BY ID DESC"
            selectWithQuery(selectStatementQuery, eachRow: { (row) in
                //create a movie object from each result
                let customer = Customer(
