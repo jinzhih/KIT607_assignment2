@@ -20,18 +20,20 @@ class RaffleCusTableViewController: UIViewController {
     var searchResult = [Raffle]()
     var searching = false
     
+
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var raffleTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         raffleTable.dataSource = self
 //               raffleTable.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "Cell")
 
           var database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
-//        database.insert(raffle:Raffle(name:raffleName,  description:raffleDes, type:0,maxNumber:30, ticketPrice: 1, launchStatus: 0, drawStatus:0, drawTime: "tomorrow"))
+
         raffles1 = database.selectAllRaffles()
-        print(raffles1)
+        
         
     }
     
@@ -109,7 +111,7 @@ if searching {
        print(searching)
     print(searchResult)
    var raffle = searchResult[indexPath.row]
-    print()
+    
        if   let  raffleCell = cell as? RaffleUITableViewCell
        {
            raffleCell.nameRaffle.text = raffle.name
@@ -117,7 +119,7 @@ if searching {
         if(raffle.imageURL != "1"){
         
              raffleCell.raffleImage.image = loadImageFromName(name: raffle.name)
-            
+           
         }
        }
     
@@ -129,6 +131,8 @@ if searching {
        {
         raffleCell.nameRaffle.text = raffle.name
            raffleCell.desRaffle.text = raffle.description
+        
+      //  raffleCell.raffleView.backgroundColor = UIColorFromHex(rgbValue: 0xd4f3ef,alpha: 1)
           if(raffle.imageURL != "1"){
                   
                        raffleCell.raffleImage.image = loadImageFromName(name: raffle.name)
@@ -179,5 +183,12 @@ if searching {
             
             }
 
+        func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+            let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+            let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+            let blue = CGFloat(rgbValue & 0xFF)/256.0
+
+            return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+        }
 }
 

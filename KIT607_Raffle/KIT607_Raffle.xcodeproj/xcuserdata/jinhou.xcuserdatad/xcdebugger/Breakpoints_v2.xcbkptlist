@@ -46,8 +46,8 @@
             filePath = "KIT607_Raffle/SQliteDatabase.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "990"
-            endingLineNumber = "990"
+            startingLineNumber = "1020"
+            endingLineNumber = "1020"
             landmarkName = "SQLiteDatabase"
             landmarkType = "3">
          </BreakpointContent>

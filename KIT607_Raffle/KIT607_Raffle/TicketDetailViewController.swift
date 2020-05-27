@@ -18,6 +18,8 @@ var ticket : Ticket?
     var showTicketNO = ""
     var showPrice = ""
     var showPurchaseDate = ""
+    var winStatus = "0"
+    var isNewTicket = Int()
     @IBOutlet weak var raffleName: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var drawDate: UILabel!
@@ -25,16 +27,18 @@ var ticket : Ticket?
     @IBOutlet weak var customerID: UILabel!
     @IBOutlet weak var customerName: UILabel!
     @IBOutlet weak var purchaseDate: UILabel!
-    @IBOutlet weak var winStatus: UILabel!
+
     
     @IBOutlet weak var winStatusShow: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+ var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
+        //
         if let  displayTicket = ticket
         {//raffle draw time show
-            var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
+           
+            
             showCustomerName = displayTicket.customerName
             showTicketNO = String(displayTicket.ticketNumber)
             showPrice = String(displayTicket.ticketPrice)
@@ -47,12 +51,13 @@ var ticket : Ticket?
            
             
             raffleName.text = displayTicket.raffleName
-            price.text = String(displayTicket.ticketPrice)
+            price.text = "$\(displayTicket.ticketPrice)"
             ticketNO.text = String(displayTicket.ticketNumber)
             customerID.text = String(displayTicket.customerID)
             customerName.text = displayTicket.customerName
             purchaseDate.text = displayTicket.purchaseDate
-            winStatus.text = String(displayTicket.winStatus)
+            print(displayTicket.winStatus)
+            winStatus = String(displayTicket.winStatus)
             
                        let imgArray = [#imageLiteral(resourceName: "Won"), #imageLiteral(resourceName: "Lose"), #imageLiteral(resourceName: "NotStart")]
                        //if draw date over not show not started
@@ -67,12 +72,12 @@ var ticket : Ticket?
                         
                       //     viewDidLoad()
                         return
-                       }else if(winStatus.text == "0"){
+                       }else if(winStatus == "0"){
                            winStatusShow.image = imgArray[1]
                        
                         return
                          //  viewDidLoad()
-                       }else if(winStatus.text == "1"){
+                       }else if(winStatus == "1"){
                            winStatusShow.image = imgArray[0]
                   
                           // viewDidLoad()
@@ -138,11 +143,14 @@ var ticket : Ticket?
             let   editViewController = segue.destination as! EditTicketViewController
                let  selectedRaffle = ticket
            editViewController.ticket = selectedRaffle
+            editViewController.raffle = raffle
+            editViewController.isNewTicket = isNewTicket
            } else if
             segue.identifier == "backToTicketListSegue"
                   {
                        let ticketListViewController = segue.destination as! TicketCusTableViewController
-                    ticketListViewController.raffleID = Int(ticket!.raffleID)
+                    ticketListViewController.raffle = raffle
+                    ticketListViewController.isNewTicket = isNewTicket
                   }
            
             else

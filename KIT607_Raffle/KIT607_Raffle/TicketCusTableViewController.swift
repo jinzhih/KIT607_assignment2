@@ -26,7 +26,7 @@ UIViewController {
 
         ticketTable.dataSource = self
        var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
-         tickets1 = database.selectTicketBy(id: Int32(raffleID))
+        tickets1 = database.selectTicketBy(id: raffle!.ID)
     
     }
     @IBAction func returnRaffleList(_ sender: UIButton) {
@@ -108,8 +108,9 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
                    ticketCell.ticketNO.text = String(ticket.ticketNumber)
                 ticketCell.customerName.text = ticket.customerName
                 ticketCell.price.text = String(ticket.ticketPrice)
-                    ticketCell.purchaseDate.text = ticket.purchaseDate
+                ticketCell.purchaseDate.text = String(ticket.purchaseDate.prefix(10))
                        ticketCell.raffleName.text = ticket.raffleName
+               
                }
            }
    
@@ -123,7 +124,7 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
                {
                   ticketCell.ticketNO.text = String(ticket.ticketNumber)
                    ticketCell.customerName.text = ticket.customerName
-                ticketCell.purchaseDate.text = ticket.purchaseDate
+                ticketCell.purchaseDate.text = String(ticket.purchaseDate.prefix(10))
                    ticketCell.price.text = String(ticket.ticketPrice)
                   ticketCell.raffleName.text = ticket.raffleName
                 
@@ -166,6 +167,8 @@ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> 
                     }
                     let  selectedTicket = tickets1[indexPath.row]
                     detailViewController.ticket = selectedTicket
+                detailViewController.raffle = raffle
+                detailViewController.isNewTicket = isNewTicket
                     
                 }
         else if segue.identifier == "backToRaffleDetailFromExistingTicketList"

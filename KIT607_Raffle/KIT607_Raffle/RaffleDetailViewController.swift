@@ -58,7 +58,7 @@ class RaffleDetailViewController: UIViewController {
                 winnerQty.text = String( displayRaffle.winQty)
               //set time
 
-                let imgArray = [#imageLiteral(resourceName: "671590154412_.pic"), #imageLiteral(resourceName: "Draw Time is not up!")]
+                let imgArray = [#imageLiteral(resourceName: "671590154412_.pic"), #imageLiteral(resourceName: "48471590377484_.pic")]
                      
                      let drawDateFlag = convertDateFormat(inputDate: drawDate.text!)
                      if(drawDateFlag >

@@ -11,7 +11,7 @@ import UIKit
 class EditTicketViewController: UIViewController,UITextFieldDelegate {
     var ticket : Ticket?
     var raffle: Raffle?
-   
+   var isNewTicket = Int()
     @IBOutlet weak var raffleName: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var drawDate: UILabel!
@@ -33,7 +33,7 @@ class EditTicketViewController: UIViewController,UITextFieldDelegate {
                 raffle=database.selectRaffleBy(id: Int32(ticket!.raffleID))
                 drawDate.text = raffle?.drawTime
                 raffleName.text = displayTicket.raffleName
-                price.text = String(displayTicket.ticketPrice)
+                price.text = "$\(displayTicket.ticketPrice)"
                 ticketNO.text = String(displayTicket.ticketNumber)
                 customerID.text = String(displayTicket.customerID)
                 customerName.text = displayTicket.customerName
@@ -55,7 +55,7 @@ class EditTicketViewController: UIViewController,UITextFieldDelegate {
         var database : SQLiteDatabase = SQLiteDatabase(databaseName:"MyDatabase")
         let customerIDNumber = ticket?.customerID
         let newCustomerName = customerName.text!
-        database.updateCustomer(customerName: newCustomerName, id: customerIDNumber!)
+       
         database.updateTicket(customerName: newCustomerName, id: ticket!.ID)
        alertSuccessfulUpdateCustomer()
     }
@@ -109,6 +109,7 @@ class EditTicketViewController: UIViewController,UITextFieldDelegate {
             let   backToTicketDetailViewController = segue.destination as! TicketDetailViewController
             let  selectedTicket = database.selectTicketByTicketID(id: ticket!.ID)
             backToTicketDetailViewController.ticket = selectedTicket
+            backToTicketDetailViewController.isNewTicket = isNewTicket
         }
         
          else

@@ -23,6 +23,7 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
     var imageName = ""
        var isSelectCover = false
        var imageurl = "1"
+    var imageurlNew = "1"
    
      let datePicker = UIDatePicker()
     
@@ -227,11 +228,23 @@ class RaffleEditViewController: UIViewController, UITextFieldDelegate, UIImagePi
                    winnerQty=Int(winnerQtyTextField.text!) ?? 1
                    //verify
                    if isSelectCover{
-                              imageurl = getDocumentsDirectory().appendingPathComponent("\(imageName).jpg").path
-                              print(imageurl)
-                          }else{
-                    imageurl = getDocumentsDirectory().appendingPathComponent("\(raffle!.name).jpg").path
-                          }
+                              imageurlNew = getDocumentsDirectory().appendingPathComponent("\(imageName).jpg").path
+                              imageurl = imageurlNew
+                   }else
+                   {
+                    if(imageurl != "1")
+                    {
+//                    imageurlNew = getDocumentsDirectory().appendingPathComponent("\(raffle!.name).jpg").path
+//                    imageurl = imageurlNew
+                  print(imageurl)
+                   }
+                    else{
+                    imageurlNew = getDocumentsDirectory().appendingPathComponent("\(raffle!.name).jpg").path
+                                       imageurl = imageurlNew
+                                       print(imageurl)
+                    }
+                    
+                    }
                    
                    let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase");
         
